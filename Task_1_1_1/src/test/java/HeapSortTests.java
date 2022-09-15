@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Class HeapSortTest for testing heapsort.
  */
-class HeapSortTest {
+public class HeapSortTests {
     /**
      * Test number 1 for already sorted array.
      */
