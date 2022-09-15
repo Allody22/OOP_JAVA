@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Class TestHeapSortTest for heapsort with tests.
+ * Tests for heapsort.
  */
 class HeapSortTest {
     /**
@@ -21,7 +21,7 @@ class HeapSortTest {
      * Test number 2 for empty array.
      */
     @Test
-    public void secondTest() {
+    public void secondTest(){
         int[] expected = new int[] {};
         int [] actual = HeapSort.heapSort(new int[] {});
         Assertions.assertArrayEquals(expected, actual);
