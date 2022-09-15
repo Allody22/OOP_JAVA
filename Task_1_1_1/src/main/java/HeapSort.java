@@ -8,6 +8,7 @@ public class HeapSort {
      * heapify function - swap elements.
      * we find the largest element among father and his sons
      * and make that largest element new father
+     *
      * @param array array
      * @param i index of element
      * @param length length of array
@@ -37,9 +38,10 @@ public class HeapSort {
      *      10 (1)   3 (2)
      *      /    \
      *   5 (3)  1 (4)
+     *
      * @param array unsorted array
-     * output - sorted array
      */
+
     public static int[] heapSort(int[] array) {
         int length = array.length;
         for (int i = length / 2 - 1; i >= 0; i--) {
