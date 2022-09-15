@@ -1,17 +1,16 @@
 /**
- * Heapsort - sort algorithm based on array (heap).
- * Array {4,10,3,5,1} becomes a binary heap:
- *          4 (0)
- *         /     \
- *      10 (1)   3 (2)
- *      /    \
- *   5 (3)  1 (4)
+ * Heapsort algorithm.
+ *
+ *@author Михаил Allody22 Богданов
  */
 public class HeapSort {
     /**
-     * heapify function - swap elements
+     * heapify function - swap elements.
      * we find the largest element among father and his sons
      * and make that largest element new father
+     * @param array array
+     * @param i index of element
+     * @param length length of array
      */
     public static void heapify(int[] array, int length, int i) {
         int leftChild = 2 * i + 1;
@@ -31,8 +30,14 @@ public class HeapSort {
         }
     }
     /**
-     * heapSort() - main sorting func.
-     * input - array of int
+     * Heapsort - sort algorithm based on array (heap).
+     * Array {4,10,3,5,1} becomes a binary heap:
+     *          4 (0)
+     *         /     \
+     *      10 (1)   3 (2)
+     *      /    \
+     *   5 (3)  1 (4)
+     * @param array unsorted array
      * output - sorted array
      */
     public static int[] heapSort(int[] array) {
