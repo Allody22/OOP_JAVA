@@ -2,9 +2,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Class HeapSortTest for testing heapsort.
+ * Class HeapSortTest for test heapsort.
  */
-public class HeapSortTests {
+class HeapSortTests {
     /**
      * Test number 1 for already sorted array.
      */
