@@ -54,7 +54,7 @@ class HeapSortTests {
      * Import of java.util.Random helps us to ger random variable
      */
     @Test
-    public void randomArrayTest() {
+    public void randomArrayTest()  {
         Random randomNumber = new Random();
         int [] randomArray = new int [7];
         for (int i = 0; i < randomArray.length; i++){
