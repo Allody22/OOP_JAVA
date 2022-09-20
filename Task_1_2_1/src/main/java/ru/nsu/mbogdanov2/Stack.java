@@ -29,27 +29,28 @@ public class Stack<T> {
 
     public void push(T element) {
         if ((top + 1) == stack.length) {
-          stack = Arrays.copyOf(stack, stack.length + 1);
+            stack = Arrays.copyOf(stack, stack.length + 1);
         }
         stack[++top] = element;
     }
 
     /**
-     * pop function to delete last stack element with error out of bounds handling that fails the
-     * test
+     * pop function to delete last stack element.
+     * Its also handle out of bounds error that fails the test
      */
 
     public void pop() {
-      try {
-        stack[top--] = null;
-      } catch (ArrayIndexOutOfBoundsException exception) {
-        throw new AssertionError("Stack is already empty,don't use pop when top = 0\n"
-            + "Test failed, because of last pop");
-      }
+        try {
+          stack[top--] = null;
+        }
+        catch (ArrayIndexOutOfBoundsException exception) {
+            throw new AssertionError("Stack is already empty,don't use pop when top = 0\n"
+                + "Test failed, because of last pop");
+        }
     }
 
     /**
-     * count function to get the number of elements in stack
+     * Count function to get the number of elements in stack.
      */
 
     public int count() {
@@ -57,33 +58,33 @@ public class Stack<T> {
     }
 
     /**
-     * pushStack function to put several new elements into stack
+     * pushStack function to put several new elements into stack.
      *
      * @param newStack - new array to combine its elements
      */
 
     public void pushStack(Stack<T> newStack) {
         for (int i = 0; i < newStack.stack.length; i++) {
-          push(newStack.stack[i]);
+            push(newStack.stack[i]);
         }
     }
 
     /**
-     * popStack function to delete several last stack elements with error out of bounds handling that
-     * fails the test
+     * popStack function to delete several last stack elements.
+     * Its also handle out of bounds error that fails the test
      *
      * @param n - number of elements to delete
      */
 
     public void popStack(int n) {
         for (int i = 0; i < n; i++) {
-          pop();
+            pop();
         }
     }
 
     /**
-     * Override of toString method in order for the checks to work correctly with generics arrays, to
-     * compare them
+     * Override of toString method.
+     * It's needed for checks to work correctly with generics arrays, to compare them
      */
 
     @Override
