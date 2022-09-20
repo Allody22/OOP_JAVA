@@ -17,8 +17,8 @@ public class Stack<T> {
      * Stack itself. with array stack to contain elements and int variable top to get last element
      */
     public Stack() {
-      stack = (T[]) new Object[1];
-      top = -1;
+        stack = (T[]) new Object[1];
+        top = -1;
     }
 
     /**
@@ -28,10 +28,10 @@ public class Stack<T> {
      */
 
     public void push(T element) {
-      if ((top + 1) == stack.length) {
-        stack = Arrays.copyOf(stack, stack.length + 1);
-      }
-      stack[++top] = element;
+        if ((top + 1) == stack.length) {
+          stack = Arrays.copyOf(stack, stack.length + 1);
+        }
+        stack[++top] = element;
     }
 
     /**
@@ -59,26 +59,26 @@ public class Stack<T> {
     /**
      * pushStack function to put several new elements into stack
      *
-     * @param NewStack - new array to combine its elements
+     * @param newStack - new array to combine its elements
      */
 
-    public void pushStack(Stack<T> NewStack) {
-      for (int i = 0; i < NewStack.stack.length; i++) {
-        push(NewStack.stack[i]);
-      }
+    public void pushStack(Stack<T> newStack) {
+        for (int i = 0; i < newStack.stack.length; i++) {
+          push(newStack.stack[i]);
+        }
     }
 
     /**
      * popStack function to delete several last stack elements with error out of bounds handling that
      * fails the test
      *
-     * @param N - number of elements to delete
+     * @param n - number of elements to delete
      */
 
-    public void popStack(int N) {
-      for (int i = 0; i < N; i++) {
-        pop();
-      }
+    public void popStack(int n) {
+        for (int i = 0; i < n; i++) {
+          pop();
+        }
     }
 
     /**
@@ -88,6 +88,6 @@ public class Stack<T> {
 
     @Override
     public String toString() {
-      return Arrays.toString(Arrays.copyOf(stack, top + 1));
+        return Arrays.toString(Arrays.copyOf(stack, top + 1));
     }
 }
