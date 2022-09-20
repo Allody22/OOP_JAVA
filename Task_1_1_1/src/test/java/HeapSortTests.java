@@ -46,4 +46,21 @@ class HeapSortTests {
         int[] actual = HeapSort.heapSort(new int[] {2});
         Assertions.assertArrayEquals(expected, actual);
     }
+    
+    /**
+     * Test for array with random elements.
+     * Import of java.util.Random helps us to ger random variable
+     */
+    @Test
+    public void randomArrayTest() {
+        Random randomNumber = new Random();
+        int [] randomArray = new int [7];
+        for(int i = 0; i < randomArray.length; i++){
+            randomArray[i] = randomNumber.nextInt(7);
+        }
+        int [] expected = randomArray;
+        int [] actual = HeapSort.heapSort(randomArray);
+        Arrays.sort(expected);
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
