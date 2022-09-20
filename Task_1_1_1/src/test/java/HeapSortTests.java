@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
  */
 class HeapSortTests {
     /**
-     * Test number 1 for already sorted array.
+     * Test for already sorted array.
      */
     @Test
-    public void firstTest() {
+    public void sortedArrayTest() {
 
         int[] expected = new int[] {1, 2, 3, 4};
         int []actual = HeapSort.heapSort(new int[] {1, 2, 3, 4});
@@ -18,30 +18,30 @@ class HeapSortTests {
     }
 
     /**
-     * Test number 2 for empty array.
+     * Test for empty array.
      */
     @Test
-    public void secondTest() {
+    public void emptyArrayTest() {
         int[] expected = new int[] {};
         int [] actual = HeapSort.heapSort(new int[] {});
         Assertions.assertArrayEquals(expected, actual);
     }
 
     /**
-     * Test number 3 for normal arrays.
+     * Test for normal arrays.
      */
     @Test
-    public void thirdTest() {
+    public void normalArrayTest() {
         int[] expected = new int[] {-1000, 0, 1000, 2500, 2578, 3000};
         int[] actual = HeapSort.heapSort(new int[] {3000, 1000, 2500, 2578, -1000, 0});
         Assertions.assertArrayEquals(expected, actual);
     }
 
     /**
-     * Test number 4 for 1 element.
+     * Test for 1 element.
      */
     @Test
-    public void fourthTest() {
+    public void oneElementArrayTest() {
         int[] expected = new int[] {2};
         int[] actual = HeapSort.heapSort(new int[] {2});
         Assertions.assertArrayEquals(expected, actual);
