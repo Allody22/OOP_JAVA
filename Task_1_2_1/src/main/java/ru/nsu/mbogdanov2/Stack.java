@@ -55,7 +55,7 @@ public class Stack<T> {
      */
 
     public int count() {
-      return top + 1;
+        return top + 1;
     }
 
     /**
