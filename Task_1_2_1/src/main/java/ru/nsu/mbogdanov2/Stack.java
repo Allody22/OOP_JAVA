@@ -1,11 +1,14 @@
+package ru.nsu.mbogdanov2;
+
 import java.util.Arrays;
+
 
 /**
  * My generic stack realization.
  *
  *@author Михаил Allody22 Богданов
  */
-public class Stack<T> {
+public class Stack<T> { 
   int top;
   T[] stack;
   /**
