@@ -14,7 +14,9 @@ public class Stack<T> {
     T[] stack;
 
     /**
-     * Stack itself. with array stack to contain elements and int variable top to get last element
+     * Stack itself.
+     * Its also has array stack to contain elements
+     * and int variable top to get last element
      */
     public Stack() {
         stack = (T[]) new Object[1];
@@ -22,7 +24,7 @@ public class Stack<T> {
     }
 
     /**
-     * push function to put new element into stack
+     * push function to put new element into stack.
      *
      * @param element - any variable of type T
      */
@@ -41,9 +43,8 @@ public class Stack<T> {
 
     public void pop() {
         try {
-          stack[top--] = null;
-        }
-        catch (ArrayIndexOutOfBoundsException exception) {
+            stack[top--] = null;
+        } catch (ArrayIndexOutOfBoundsException exception) {
             throw new AssertionError("Stack is already empty,don't use pop when top = 0\n"
                 + "Test failed, because of last pop");
         }
