@@ -1,3 +1,5 @@
+package ru.nsu.mbogdanov2;
+
 import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Assertions;

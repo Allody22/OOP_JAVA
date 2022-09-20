@@ -1,3 +1,5 @@
+package ru.nsu.mbogdanov2;
+
 /**
  * Heapsort algorithm.
  *
