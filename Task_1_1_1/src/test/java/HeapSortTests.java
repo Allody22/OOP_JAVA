@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Random;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -55,7 +57,7 @@ class HeapSortTests {
     public void randomArrayTest() {
         Random randomNumber = new Random();
         int [] randomArray = new int [7];
-        for(int i = 0; i < randomArray.length; i++){
+        for (int i = 0; i < randomArray.length; i++){
             randomArray[i] = randomNumber.nextInt(7);
         }
         int [] expected = randomArray;
