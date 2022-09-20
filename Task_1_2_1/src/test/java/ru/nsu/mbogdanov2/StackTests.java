@@ -20,7 +20,7 @@ public class StackTests {
       Stack<Integer> expected = new Stack<>();
       expected.push(6);
       expected.push(6);
-      Assertions.assertEquals(actual.count(),expected.count());
+      Assertions.assertEquals(actual.count(), expected.count());
       actual.pop();
       Stack<Integer> NewArr = new Stack<>();
       NewArr.push(6);
@@ -29,11 +29,11 @@ public class StackTests {
       actual.pop();
       expected.push(6);
       expected.pop();
-      Assertions.assertEquals(expected.toString(),actual.toString());
+      Assertions.assertEquals(expected.toString(), actual.toString());
       actual.popStack(2);
       expected.pop();
       expected.pop();
-      Assertions.assertEquals(expected.toString(),actual.toString());
+      Assertions.assertEquals(expected.toString(), actual.toString());
     }
 
     /**
@@ -52,8 +52,8 @@ public class StackTests {
       actual.popStack(2);
       Stack<Integer> expected = new Stack<>();
       expected.push(2);
-      Assertions.assertEquals(expected.count(),actual.count());
-      Assertions.assertEquals(expected.toString(),actual.toString());
+      Assertions.assertEquals(expected.count(), actual.count());
+      Assertions.assertEquals(expected.toString(), actual.toString());
     }
 
     /**
@@ -74,12 +74,12 @@ public class StackTests {
       actual.pushStack(NewArr);
       actual.pushStack(NewArr);
       int expCount = 9;
-      Assertions.assertEquals(expCount,actual.count());
+      Assertions.assertEquals(expCount, actual.count());
       Stack<Integer> expected = new Stack<>();
       expected.push(x1);
       expected.push(x2);
       expected.push(x3);
       actual.popStack(6);
-      Assertions.assertEquals(expected.toString(),actual.toString());
+      Assertions.assertEquals(expected.toString(), actual.toString());
     }
 }
