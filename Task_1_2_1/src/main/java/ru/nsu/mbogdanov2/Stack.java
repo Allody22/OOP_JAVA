@@ -1,7 +1,6 @@
 package ru.nsu.mbogdanov2;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 
 /**
@@ -83,24 +82,6 @@ public class Stack<T> {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Stack<?> stack1 = (Stack<?>) o;
-        return top == stack1.top && Arrays.equals(stack, stack1.stack);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(top);
-        result = 31 * result + Arrays.hashCode(stack);
-        return result;
-    }
     /**
      * Override of toString method.
      * It's needed for checks to work correctly with generics arrays, to compare them
