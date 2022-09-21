@@ -85,8 +85,12 @@ public class Stack<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Stack<?> stack1 = (Stack<?>) o;
         return top == stack1.top && Arrays.equals(stack, stack1.stack);
     }
