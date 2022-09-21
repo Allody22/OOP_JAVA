@@ -16,7 +16,7 @@ class HeapSortTests {
     public void sortedArrayTest() {
 
         int[] expected = new int[] {1, 2, 3, 4};
-        int []actual = HeapSort.heapSort(new int[] {1, 2, 3, 4});
+        int[] actual = HeapSort.heapSort(new int[] {1, 2, 3, 4});
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -27,7 +27,7 @@ class HeapSortTests {
     @Test
     public void emptyArrayTest() {
         int[] expected = new int[] {};
-        int [] actual = HeapSort.heapSort(new int[] {});
+        int[] actual = HeapSort.heapSort(new int[] {});
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -58,12 +58,12 @@ class HeapSortTests {
     @Test
     public void randomArrayTest() { 
         Random randomNumber = new Random();
-        int [] randomArray = new int [7];
+        int[] randomArray = new int[7];
         for (int i = 0; i < randomArray.length; i++) {
             randomArray[i] = randomNumber.nextInt(7);
         }
-        int [] expected = randomArray;
-        int [] actual = HeapSort.heapSort(randomArray);
+        int[] expected = randomArray;
+        int[] actual = HeapSort.heapSort(randomArray);
         Arrays.sort(expected);
         Assertions.assertArrayEquals(expected, actual);
     }

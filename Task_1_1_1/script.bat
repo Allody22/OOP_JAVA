@@ -4,3 +4,4 @@ javac -d .\make\bin\ -sourcepath .\src\main\java .\src\main\java\ru\nsu\mbogdano
 
 mkdir .\make\jar
 jar cf .\make\jar\HeapSort.jar -C .\make\bin .
+java -classpath .\make\jar\HeapSort.jar ru.nsu.mbogdanov2.HeapSort
