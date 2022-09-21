@@ -38,6 +38,7 @@ public class StackTests {
 
     /**
      * Test number 2 from OOP tasks example.
+     * It also has test for empty stack pop
      */
     @Test
     public void exampleTest() {
@@ -54,6 +55,8 @@ public class StackTests {
         expected.push(2);
         Assertions.assertEquals(expected.count(), actual.count());
         Assertions.assertEquals(expected.toString(), actual.toString());
+        actual.pop();
+        Assertions.assertNull(expected.pop());
     }
 
     /**

@@ -1,6 +1,7 @@
 package ru.nsu.mbogdanov2;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 /**
@@ -38,16 +39,15 @@ public class Stack<T> {
 
     /**
      * pop function to delete last stack element.
-     * Its also handle out of bounds error that fails the test
+     * Its also handle error with empty stack and return null
      */
 
-    public void pop() {
-        try {
-            stack[top--] = null;
-        } catch (ArrayIndexOutOfBoundsException exception) {
-            throw new AssertionError("Stack is already empty,don't use pop when top = 0\n"
-                + "Test failed, because of last pop");
+    public T[] pop() {
+        if (top == 0) {
+            return null;
         }
+        stack[top--] = null;
+        return stack;
     }
 
     /**
@@ -72,7 +72,7 @@ public class Stack<T> {
 
     /**
      * popStack function to delete several last stack elements.
-     * Its also handle out of bounds error that fails the test
+     * Its also handle error with empty stack and return null
      *
      * @param n - number of elements to delete
      */
@@ -83,6 +83,20 @@ public class Stack<T> {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Stack<?> stack1 = (Stack<?>) o;
+        return top == stack1.top && Arrays.equals(stack, stack1.stack);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(top);
+        result = 31 * result + Arrays.hashCode(stack);
+        return result;
+    }
     /**
      * Override of toString method.
      * It's needed for checks to work correctly with generics arrays, to compare them
