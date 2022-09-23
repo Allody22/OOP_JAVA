@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -183,38 +183,45 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
+<td class="colLast">
+<div class="block">Override of equals method.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Override of hashCode method.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="Stack.html" title="type parameter in Stack">T</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pop()">pop</a></span>()</code></th>
 <td class="colLast">
 <div class="block">pop function to delete last stack element.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#popStack(int)">popStack</a></span>&#8203;(int&nbsp;n)</code></th>
 <td class="colLast">
 <div class="block">popStack function to delete several last stack elements.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#push(T)">push</a></span>&#8203;(<a href="Stack.html" title="type parameter in Stack">T</a>&nbsp;element)</code></th>
 <td class="colLast">
 <div class="block">push function to put new element into stack.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pushStack(ru.nsu.mbogdanov2.Stack)">pushStack</a></span>&#8203;(<a href="Stack.html" title="class in ru.nsu.mbogdanov2">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;&nbsp;newStack)</code></th>
 <td class="colLast">
 <div class="block">pushStack function to put several new elements into stack.</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Override of toString method.</div>
 </td>
 </tr>
 </table>
@@ -223,7 +230,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -329,18 +336,33 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="toString()">
+<a id="equals(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">Override of equals method.
+ It's needed for checks to work correctly with generics arrays, to compare them</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a id="hashCode()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>toString</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
-<div class="block">Override of toString method.
+<h4>hashCode</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<div class="block">Override of hashCode method.
  It's needed for checks to work correctly with generics arrays, to compare them</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
