@@ -1,6 +1,7 @@
 package ru.nsu.mbogdanov2;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 /**
@@ -45,8 +46,8 @@ public class Stack<T> {
         if (top == 0) {
             return null;
         }
-        stack[top--] = null;
-        return stack;
+        top--;
+        return stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
     }
 
     /**
@@ -83,12 +84,32 @@ public class Stack<T> {
     }
 
     /**
-     * Override of toString method.
+     * Override of equals method.
      * It's needed for checks to work correctly with generics arrays, to compare them
      */
 
     @Override
-    public String toString() {
-        return Arrays.toString(Arrays.copyOf(stack, top + 1));
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Stack)) {
+            return false;
+        }
+        Stack<?> stack1 = (Stack<?>) o;
+        return top == stack1.top && Arrays.equals(stack, stack1.stack);
     }
+
+    /**
+     * Override of hashCode method.
+     * It's needed for checks to work correctly with generics arrays, to compare them
+     */
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(top);
+        result = 31 * result + Arrays.hashCode(stack);
+        return result;
+    }
+
 }
