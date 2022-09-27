@@ -42,12 +42,13 @@ public class Stack<T> {
      * Its also handle error with empty stack and return null
      */
 
-    public T[] pop() {
+    public T pop() {
         if (top == 0) {
             return null;
         }
-        top--;
-        return stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
+        T elemToDelete = stack[top--];
+        stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
+        return elemToDelete;
     }
 
     /**
