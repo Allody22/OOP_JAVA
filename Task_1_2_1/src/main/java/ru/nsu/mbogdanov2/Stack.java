@@ -43,13 +43,13 @@ public class Stack<T> {
      * or deleted element
      */
 
-    public T[] pop() {
+    public T pop() {
         if (top == 0) {
             return null;
         }
-        top--;
+        T deletedElem = stack[top--];
         stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
-        return stack;
+        return deletedElem;
     }
 
     /**
