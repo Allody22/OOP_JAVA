@@ -40,15 +40,16 @@ public class Stack<T> {
     /**
      * pop function to delete last stack element.
      * Its also handle error with empty stack and return null
+     * or deleted element
      */
 
-    public T pop() {
+    public T[] pop() {
         if (top == 0) {
             return null;
         }
-        T elemToDelete = stack[top--];
+        top--;
         stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
-        return elemToDelete;
+        return stack;
     }
 
     /**
