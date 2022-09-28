@@ -19,6 +19,8 @@ public class Stack<T> {
      * Its also has array stack to contain elements
      * and int variable top to get last element
      */
+
+    @SuppressWarnings("unchecked")
     public Stack() {
         stack = (T[]) new Object[1];
         top = -1;
