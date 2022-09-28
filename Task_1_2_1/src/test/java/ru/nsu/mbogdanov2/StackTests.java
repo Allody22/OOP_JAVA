@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  */
 public class StackTests {
     /**
-     * Test number 1 with small stack.
+     * Test with small stack.
      * All functions are tested here
      */
     @Test
@@ -37,7 +37,7 @@ public class StackTests {
     }
 
     /**
-     * Test number 2 from OOP tasks example.
+     * Test from OOP tasks example.
      * It also has test for empty stack pop
      */
     @Test
@@ -60,7 +60,7 @@ public class StackTests {
     }
 
     /**
-    * Test number 3 with a lot of random elements.
+    * Test with a lot of random elements.
     */
     @Test
     public void thirdTest() {
