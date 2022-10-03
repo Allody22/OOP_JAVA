@@ -3,7 +3,6 @@ package ru.nsu.mbogdanov2;
 import java.util.Arrays;
 import java.util.Objects;
 
-
 /**
  * My generic stack realization.
  *
@@ -11,8 +10,8 @@ import java.util.Objects;
  */
 public class Stack<T> {
 
-    int top;
-    T[] stack;
+    private int top;
+    private T[] stack;
 
     /**
      * Stack itself.
@@ -34,7 +33,7 @@ public class Stack<T> {
 
     public void push(T element) {
         if ((top + 1) == stack.length) {
-            stack = Arrays.copyOf(stack, stack.length + 1);
+            stack = Arrays.copyOf(stack, stack.length *2);
         }
         stack[++top] = element;
     }
@@ -46,12 +45,10 @@ public class Stack<T> {
      */
 
     public T pop() {
-        if (top == 0) {
+        if (top == -1) {
             return null;
         }
-        T deletedElem = stack[top--];
-        stack = Arrays.copyOfRange(stack, 0, stack.length - 1);
-        return deletedElem;
+        return stack[top--];
     }
 
     /**
@@ -69,7 +66,7 @@ public class Stack<T> {
      */
 
     public void pushStack(Stack<T> newStack) {
-        for (int i = 0; i < newStack.stack.length; i++) {
+        for (int i = 0; i < newStack.top+1; i++) {
             push(newStack.stack[i]);
         }
     }
@@ -82,16 +79,16 @@ public class Stack<T> {
      */
 
     public void popStack(int n) {
-        for (int i = 0; i < n; i++) {
-            pop();
-        }
+        top -= n;
     }
 
     /**
      * Override of equals method.
      * It's needed for checks to work correctly with generics arrays, to compare them
+     * I have to use filter, because equals compare
      */
 
+    @SuppressWarnings("unchecked")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -101,7 +98,7 @@ public class Stack<T> {
             return false;
         }
         Stack<?> stack1 = (Stack<?>) o;
-        return top == stack1.top && Arrays.equals(stack, stack1.stack);
+        return top == stack1.top && compare(stack, (T[]) stack1.stack,top);
     }
 
     /**
@@ -116,4 +113,20 @@ public class Stack<T> {
         return result;
     }
 
+    /**
+     * My own compare function for equals method.
+     *
+     * @param stack1 - original stack for comparing
+     * @param stack2 - new stack to compare
+     * @param top - top of the original stack
+     */
+
+    boolean compare(T[] stack1, T [] stack2,int top) {
+        for (int i = 0; i< top; i++){
+            if (!(stack1[i].equals(stack2[i]))){
+                return false;
+            }
+        }
+        return true;
+    }
 }

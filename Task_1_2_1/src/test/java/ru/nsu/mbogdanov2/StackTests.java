@@ -9,11 +9,10 @@ import org.junit.jupiter.api.Test;
  */
 public class StackTests {
     /**
-     * Test with small stack.
-     * All functions are tested here
+     * Test for count function.
      */
     @Test
-    public void smallStackTest() {
+    public void countStackTest() {
         Stack<Integer> actual = new Stack<>();
         actual.push(6);
         actual.push(5);
@@ -21,49 +20,51 @@ public class StackTests {
         expected.push(6);
         expected.push(6);
         Assertions.assertEquals(actual.count(), expected.count());
-        actual.pop();
-        Stack<Integer> newArr = new Stack<>();
-        newArr.push(6);
-        newArr.push(6);
-        actual.pushStack(newArr);
-        actual.pop();
-        expected.push(6);
-        expected.pop();
-        Assertions.assertEquals(expected, actual);
-        actual.popStack(2);
-        expected.pop();
-        expected.pop();
-        Assertions.assertEquals(expected, actual);
     }
 
     /**
-     * Test from OOP tasks example.
-     * It also has test for empty stack pop
+     * Test for pushStack function.
+     * We push {4,8} in actual stack with pushStack
+     * And we push {4},{8} in expected with pop twice
      */
     @Test
-    public void exampleTest() {
+    public void pushStackTest() {
         Stack<Integer> actual = new Stack<>();
-        actual.push(2);
-        actual.push(7);
         Stack<Integer> newArr = new Stack<>();
         newArr.push(4);
         newArr.push(8);
         actual.pushStack(newArr);
-        actual.pop();
-        actual.popStack(2);
+        actual.pushStack(newArr);
         Stack<Integer> expected = new Stack<>();
-        expected.push(2);
-        Assertions.assertEquals(expected.count(), actual.count());
+        expected.push(4);
+        expected.push(8);
+        expected.push(4);
+        expected.push(8);
         Assertions.assertEquals(expected, actual);
-        actual.pop();
-        Assertions.assertNull(expected.pop());
     }
 
     /**
-    * Test with a lot of random elements.
-    */
+     * Test pop function.
+     * We push 4 elements, then pop them
+     * And see what pop function returns
+     */
     @Test
-    public void thirdTest() {
+    public void popTest() {
+        Stack<Integer> actual = new Stack<>();
+        actual.push(4);
+        actual.push(4);
+        actual.pop();
+        int expected = 4;
+        Assertions.assertEquals(expected, actual.pop());
+    }
+
+    /**
+     * Test for popStack with random elements.
+     * We push 3 random elements with push stack in actual array 3 times
+     * Then we pop 8 elements with popStack
+     */
+    @Test
+    public void randomElementsTest() {
         Random randomNumbers = new Random();
         int x1 = randomNumbers.nextInt(120);
         int x2 = randomNumbers.nextInt(300);
@@ -76,13 +77,9 @@ public class StackTests {
         actual.pushStack(newArr);
         actual.pushStack(newArr);
         actual.pushStack(newArr);
-        int expCount = 9;
-        Assertions.assertEquals(expCount, actual.count());
         Stack<Integer> expected = new Stack<>();
         expected.push(x1);
-        expected.push(x2);
-        expected.push(x3);
-        actual.popStack(6);
+        actual.popStack(8);
         Assertions.assertEquals(expected, actual);
     }
 }
