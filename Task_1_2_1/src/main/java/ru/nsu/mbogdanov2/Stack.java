@@ -33,7 +33,7 @@ public class Stack<T> {
 
     public void push(T element) {
         if ((top + 1) == stack.length) {
-            stack = Arrays.copyOf(stack, stack.length *2);
+            stack = Arrays.copyOf(stack, stack.length * 2);
         }
         stack[++top] = element;
     }
@@ -66,7 +66,7 @@ public class Stack<T> {
      */
 
     public void pushStack(Stack<T> newStack) {
-        for (int i = 0; i < newStack.top+1; i++) {
+        for (int i = 0; i < newStack.top + 1; i++) {
             push(newStack.stack[i]);
         }
     }
@@ -98,7 +98,7 @@ public class Stack<T> {
             return false;
         }
         Stack<?> stack1 = (Stack<?>) o;
-        return top == stack1.top && compare(stack, (T[]) stack1.stack,top);
+        return top == stack1.top && compare(stack, (T[]) stack1.stack, top);
     }
 
     /**
@@ -121,9 +121,9 @@ public class Stack<T> {
      * @param top - top of the original stack
      */
 
-    boolean compare(T[] stack1, T [] stack2,int top) {
-        for (int i = 0; i< top; i++){
-            if (!(stack1[i].equals(stack2[i]))){
+    boolean compare(T[] stack1, T[] stack2, int top) {
+        for (int i = 0; i < top; i++) {
+            if (!(stack1[i].equals(stack2[i]))) {
                 return false;
             }
         }
