@@ -81,7 +81,7 @@ public class Stack<T> {
      */
 
     public void popStack(int n) {
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             pop();
         }
     }
