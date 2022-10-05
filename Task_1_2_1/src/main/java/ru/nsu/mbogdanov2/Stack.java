@@ -21,7 +21,7 @@ public class Stack<T> {
 
     @SuppressWarnings("unchecked")
     public Stack() {
-        stack = (T[]) new Object[16];
+        stack = (T[]) new Object[8];
         top = -1;
     }
 
