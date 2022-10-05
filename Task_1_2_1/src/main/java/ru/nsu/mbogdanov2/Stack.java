@@ -21,7 +21,7 @@ public class Stack<T> {
 
     @SuppressWarnings("unchecked")
     public Stack() {
-        stack = (T[]) new Object[1];
+        stack = (T[]) new Object[16];
         top = -1;
     }
 
@@ -33,7 +33,7 @@ public class Stack<T> {
 
     public void push(T element) {
         if ((top + 1) == stack.length) {
-            stack = Arrays.copyOf(stack, stack.length * 2);
+            stack = Arrays.copyOf(stack, stack.length * 3/2);
         }
         stack[++top] = element;
     }
@@ -121,7 +121,7 @@ public class Stack<T> {
      * @param top - top of the original stack
      */
 
-    boolean compare(T[] stack1, T[] stack2, int top) {
+    private boolean compare(T[] stack1, T[] stack2, int top) {
         for (int i = 0; i < top; i++) {
             if (!(stack1[i].equals(stack2[i]))) {
                 return false;
