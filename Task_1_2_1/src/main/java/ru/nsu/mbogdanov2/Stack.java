@@ -48,7 +48,9 @@ public class Stack<T> {
         if (top == -1) {
             return null;
         }
-        return stack[top--];
+        T deletedElem = stack[top];
+        stack[top--] = null;
+        return deletedElem;
     }
 
     /**
@@ -79,7 +81,9 @@ public class Stack<T> {
      */
 
     public void popStack(int n) {
-        top -= n;
+        for(int i = 0; i < n; i++) {
+            pop();
+        }
     }
 
     /**
