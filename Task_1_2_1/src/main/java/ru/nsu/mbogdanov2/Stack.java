@@ -33,7 +33,7 @@ public class Stack<T> {
 
     public void push(T element) {
         if ((top + 1) == stack.length) {
-            stack = Arrays.copyOf(stack, stack.length * 3/2);
+            stack = Arrays.copyOf(stack, stack.length * 3 / 2);
         }
         stack[++top] = element;
     }
