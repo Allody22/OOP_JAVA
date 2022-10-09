@@ -14,19 +14,19 @@ public class TreeTests {
      */
     @Test
     public void numberOfChildrenTest() {
-        Node <Integer> root = new Node <>(10);
-        Node <Integer> childA = new Node <>(322);
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(322);
         root.addChildren(childA);
-        Node <Integer> childA2 = new Node <>(3221);
+        Node<Integer> childA2 = new Node<>(3221);
         root.addChildren(childA2);
-        Node <Integer> childB = new Node <>(522);
+        Node<Integer> childB = new Node<>(522);
         childA.addChildren(childB);
-        Node <Integer> childB2 = new Node <>(5221);
+        Node<Integer> childB2 = new Node<>(5221);
         childA.addChildren(childB2);
-        Node <Integer> childB3 = new Node <>(6221);
+        Node<Integer> childB3 = new Node<>(6221);
         childA2.addChildren(childB3);
         root.removeChildAt(0);
-        Node <Integer> childC = new Node <>(722);
+        Node<Integer> childC = new Node<>(722);
         childB.addChildren(childC);
         Assertions.assertEquals(root.getNumberOfChildren(), 3);
     }
@@ -37,27 +37,27 @@ public class TreeTests {
      */
     @Test
     public void deepFirstSearchTest() {
-        Node <Integer> root = new Node <>(10);
-        Node <Integer> childA = new Node <>(11);
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(11);
         root.addChildren(childA);
-        Node <Integer> childA2 = new Node <>(111);
+        Node<Integer> childA2 = new Node<>(111);
         root.addChildren(childA2);
-        Node <Integer> childB = new Node <>(21);
+        Node<Integer> childB = new Node<>(21);
         childA.addChildren(childB);
-        Node <Integer> childB2 = new Node <>(211);
+        Node<Integer> childB2 = new Node<>(211);
         childA.addChildren(childB2);
-        Node <Integer> childB3 = new Node <>(221);
+        Node<Integer> childB3 = new Node<>(221);
         childA2.addChildren(childB3);
-        Node <Integer> childC = new Node <>(311);
+        Node<Integer> childC = new Node<>(311);
         childB.addChildren(childC);
-        DeepFirstSearchIterator <Integer> dfs = new DeepFirstSearchIterator <>(root);
-        ArrayList <Integer> actualSearchList = new ArrayList <>();
-        ArrayList <Integer> expectedDFSList =
-                new ArrayList <>(Arrays.asList(10, 111, 221, 11, 211, 21, 311));
+        DeepFirstSearchIterator<Integer> dfs = new DeepFirstSearchIterator<>(root);
+        ArrayList<Integer> actualSearchList = new ArrayList<>();
+        ArrayList<Integer> expectedSearchList =
+                new ArrayList<>(Arrays.asList(10, 111, 221, 11, 211, 21, 311));
         while (dfs.hasNext()) {
             actualSearchList.add(dfs.next());
         }
-        Assertions.assertEquals(actualSearchList, expectedDFSList);
+        Assertions.assertEquals(actualSearchList, expectedSearchList);
     }
 
     /**
@@ -66,21 +66,21 @@ public class TreeTests {
      */
     @Test
     public void removeChildrenTest() {
-        Tree <Integer> actual = new Tree <>();
-        Node <Integer> root = new Node <>(10);
+        Tree<Integer> actual = new Tree<>();
+        Node<Integer> root = new Node<>(10);
         actual.setRoot(root);
-        Node <Integer> childA = new Node <>(11);
+        Node<Integer> childA = new Node<>(11);
         root.addChildren(childA);
-        Node <Integer> childA2 = new Node <>(111);
+        Node<Integer> childA2 = new Node<>(111);
         root.addChildren(childA2);
-        Node <Integer> childB = new Node <>(21);
+        Node<Integer> childB = new Node<>(21);
         childA.addChildren(childB);
-        Node <Integer> childB2 = new Node <>(211);
+        Node<Integer> childB2 = new Node<>(211);
         childA.addChildren(childB2);
-        Node <Integer> childB3 = new Node <>(221);
+        Node<Integer> childB3 = new Node<>(221);
         childA2.addChildren(childB3);
         root.removeChildAt(0);
-        Node <Integer> childC = new Node <>(311);
+        Node<Integer> childC = new Node<>(311);
         childB.addChildren(childC);
         int expected = 6;
         Assertions.assertEquals(actual.getNumberOfNodesInTree(),expected);
