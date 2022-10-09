@@ -7,16 +7,19 @@ import java.util.Iterator;
  *
  *@author Михаил Allody22 Богданов
  */
-public class Tree<T> implements Iterable<T> {
+public class Tree <T> implements Iterable <T> {
     private Node <T> root;
 
     private boolean deepFirstSearch;
 
-    public Tree(){
+    public Tree() {
         super();
     }
 
-    public Tree(Node<T> value){
+    /**
+     * Creating of tree, seating the root and choose DPS iterator.
+     */
+    public Tree(Node <T> value) {
         this();
         setRoot(value);
         setDeepFirstSearch(true);
@@ -31,7 +34,7 @@ public class Tree<T> implements Iterable<T> {
     public int getNumberOfNodesInTree() {
         Iterator<T> treeIterator = iterator();
         int number = 0;
-        while (treeIterator.hasNext()){
+        while (treeIterator.hasNext()) {
             treeIterator.next();
             number++;
         }
@@ -41,10 +44,10 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Function to set the root of the tree.
      *
-     * @param root - root of the tree with type Node<T>
+     * @param root - root of the tree with type Node T
      */
 
-    public void setRoot(Node<T> root) {
+    public void setRoot(Node <T> root) {
         this.root = root;
     }
 
@@ -53,7 +56,7 @@ public class Tree<T> implements Iterable<T> {
      * If the boolean value of this field is true - DFS iterator is on
      * Else BFS iterator turns on
      *
-     * @param deepFirstSearch - root of the tree with type Node<T>
+     * @param deepFirstSearch - root of the tree with type Node T
      */
 
     public void setDeepFirstSearch(boolean deepFirstSearch) {
@@ -64,13 +67,11 @@ public class Tree<T> implements Iterable<T> {
      * Overriding of iterator, where you can choose type of iterator.
      */
     @Override
-    public Iterator<T> iterator() {
-        if (deepFirstSearch){
-            return new DeepFirstSearchIterator<>(root);
+    public Iterator <T> iterator() {
+        if (deepFirstSearch) {
+            return new DeepFirstSearchIterator <>(root);
         }
-        else{
-            return new BreadthFirstSearchIterator<>(root);
-        }
+        return new BreadthFirstSearchIterator <>(root);
     }
 
 }

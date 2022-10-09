@@ -16,12 +16,12 @@ public class Node<T> {
      * Node constructor that calls Tree constructor if it's needed.
      */
 
-    public Node(){
+    public Node() {
         super();
         listOfChildren = new ArrayList<>();
     }
 
-    public Node(T value){
+    public Node(T value) {
         this();
         setValue(value);
     }
@@ -72,7 +72,7 @@ public class Node<T> {
      * Function that add children to this node.
      * It save child node into the next free cell
      *
-     * @param child - type <T> child node
+     * @param child - type T child node
      */
 
     public void addChildren(Node<T> child) {
@@ -86,8 +86,8 @@ public class Node<T> {
      * @param index - id of the child that should be removed
      */
     public void removeChildAt(int index) {
-        if (index > listOfChildren.size()-1){
-            throw new IndexOutOfBoundsException( "This index is incorrect");
+        if (index > listOfChildren.size() - 1) {
+            throw new IndexOutOfBoundsException("This index is incorrect");
         }
         else {
             Node<T> element = this.listOfChildren.get(index);

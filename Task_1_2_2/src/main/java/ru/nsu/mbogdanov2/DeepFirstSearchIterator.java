@@ -5,6 +5,9 @@ import java.util.ConcurrentModificationException;
 import java.util.Deque;
 import java.util.Iterator;
 
+/**
+ * DFS iterator class for Tree class.
+ */
 public class DeepFirstSearchIterator<T> implements Iterator<T> {
 
     private final Deque<Node<T>> stack = new ArrayDeque<>();
@@ -21,11 +24,9 @@ public class DeepFirstSearchIterator<T> implements Iterator<T> {
     @Override
     public T next() {
         Node<T> next = stack.pop();
-
-        for (Node<T> tNode: next.getListOfChildren()) {
-            stack.push(tNode);
+        for (Node<T> treeNode : next.getListOfChildren()) {
+            stack.push(treeNode);
         }
-
         return next.getValue();
     }
 
