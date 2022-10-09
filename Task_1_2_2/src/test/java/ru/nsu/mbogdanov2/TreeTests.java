@@ -16,10 +16,21 @@ public class TreeTests {
      * Test for setRoot function.
      */
     @Test
-    public void SetRootTest() {
+    public void setRootValueTest() {
         Node<Integer> actualRoot = new Node<>(10);
         Integer expectedRoot = 10;
         Assertions.assertEquals(actualRoot.getValue(), expectedRoot);
+    }
+
+    /**
+     * Test to check iterator of the tree.
+     */
+    @Test
+    public void iteratorTest() {
+        Tree<Integer> actual = new Tree<>();
+        actual.setDeepFirstSearch(false);
+        boolean expected = false;
+        Assertions.assertEquals(actual.getDeepFirstSearch(), expected);
     }
 
     /**
