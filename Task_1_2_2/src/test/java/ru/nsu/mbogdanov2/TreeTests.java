@@ -1,15 +1,27 @@
 package ru.nsu.mbogdanov2;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 /**
  * Different test for tree realization.
  */
 public class TreeTests {
+    /**
+     * Test for setRoot function.
+     */
+    @Test
+    public void SetRootTest() {
+        Node<Integer> actualRoot = new Node<>(10);
+        Integer expectedRoot = 10;
+        Assertions.assertEquals(actualRoot.getValue(), expectedRoot);
+    }
+
     /**
      * Test for addChildren function with the help of numberOfChildren function.
      */
@@ -96,7 +108,8 @@ public class TreeTests {
         Node<Integer> root = new Node<>(10);
         Node<Integer> childA = new Node<>(11);
         root.addChildren(childA);
-        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> root.removeChildAt(-1));
+        IndexOutOfBoundsException exception =
+                assertThrows(IndexOutOfBoundsException.class, () -> root.removeChildAt(-1));
         Assertions.assertEquals("This index is incorrect", exception.getMessage());
     }
 }
