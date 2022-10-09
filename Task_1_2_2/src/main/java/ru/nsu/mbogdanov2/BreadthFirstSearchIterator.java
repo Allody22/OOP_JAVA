@@ -10,10 +10,10 @@ import java.util.Queue;
  */
 public class BreadthFirstSearchIterator<T> implements Iterator<T> {
 
-    Queue<Node<T>> queue = new LinkedList <>();
+    Queue<Node<T>> queue = new LinkedList<>();
 
     public BreadthFirstSearchIterator(Node<T> vertex) {
-        this.queue.add( vertex);
+        this.queue.add(vertex);
     }
 
 

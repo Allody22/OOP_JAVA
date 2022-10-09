@@ -88,8 +88,7 @@ public class Node<T> {
     public void removeChildAt(int index) {
         if (index > listOfChildren.size() - 1) {
             throw new IndexOutOfBoundsException("This index is incorrect");
-        }
-        else {
+        }else {
             Node<T> element = this.listOfChildren.get(index);
             if (element.listOfChildren.size() > 0) {
                 this.listOfChildren.addAll(element.listOfChildren);

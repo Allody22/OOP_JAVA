@@ -7,8 +7,8 @@ import java.util.Iterator;
  *
  *@author Михаил Allody22 Богданов
  */
-public class Tree <T> implements Iterable <T> {
-    private Node <T> root;
+public class Tree<T> implements Iterable<T> {
+    private Node<T> root;
 
     private boolean deepFirstSearch;
 
@@ -19,7 +19,9 @@ public class Tree <T> implements Iterable <T> {
     /**
      * Creating of tree, seating the root and choose DPS iterator.
      */
-    public Tree(Node <T> value) {
+
+    @SuppressWarnings("unused")
+    public Tree(Node<T> value) {
         this();
         setRoot(value);
         setDeepFirstSearch(true);
@@ -47,7 +49,7 @@ public class Tree <T> implements Iterable <T> {
      * @param root - root of the tree with type Node T
      */
 
-    public void setRoot(Node <T> root) {
+    public void setRoot(Node<T> root) {
         this.root = root;
     }
 
@@ -67,7 +69,7 @@ public class Tree <T> implements Iterable <T> {
      * Overriding of iterator, where you can choose type of iterator.
      */
     @Override
-    public Iterator <T> iterator() {
+    public Iterator<T> iterator() {
         if (deepFirstSearch) {
             return new DeepFirstSearchIterator <>(root);
         }
