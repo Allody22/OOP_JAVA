@@ -12,17 +12,11 @@ public class Tree<T> implements Iterable<T> {
 
     private boolean deepFirstSearch;
 
-    public Tree() {
-        super();
-    }
-
     /**
      * Creating of tree, seating the root and choose DPS iterator.
      */
 
-    @SuppressWarnings("unused")
     public Tree(Node<T> value) {
-        this();
         setRoot(value);
         setDeepFirstSearch(true);
     }

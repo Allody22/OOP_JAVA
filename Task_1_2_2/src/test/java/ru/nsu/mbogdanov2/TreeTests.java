@@ -66,8 +66,8 @@ public class TreeTests {
      */
     @Test
     public void removeChildrenTest() {
-        Tree<Integer> actual = new Tree<>();
         Node<Integer> root = new Node<>(10);
+        Tree<Integer> actual = new Tree<>(root);
         actual.setRoot(root);
         Node<Integer> childA = new Node<>(11);
         root.addChildren(childA);
