@@ -43,6 +43,10 @@ public class Tree<T> implements Iterable<T> {
         return number;
     }
 
+    public boolean getDeepFirstSearch() {
+        return deepFirstSearch;
+    }
+
     /**
      * Function to set the root of the tree.
      *
@@ -75,5 +79,4 @@ public class Tree<T> implements Iterable<T> {
         }
         return new BreadthFirstSearchIterator<>(root);
     }
-
 }
