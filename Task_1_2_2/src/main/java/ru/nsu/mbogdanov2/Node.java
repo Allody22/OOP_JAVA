@@ -28,6 +28,8 @@ public class Node<T> {
 
     /**
      * Get value function to get the value of this node.
+     *
+     * @return type T value (data) of this node
      */
 
     public T getValue() {
@@ -36,6 +38,8 @@ public class Node<T> {
 
     /**
      * Set parent function to set the parent of this node.
+     *
+     * @param parent of current node
      */
 
     public void setParent(Node<T> parent) {
@@ -44,6 +48,8 @@ public class Node<T> {
 
     /**
      * Function that return list of children of this node.
+     *
+     * @return list of children nodes of this node
      */
 
     public List<Node<T>> getListOfChildren() {
@@ -62,6 +68,8 @@ public class Node<T> {
 
     /**
      * Function that return number of children of this node.
+     *
+     * @return number of children of this node
      */
 
     public int getNumberOfChildren() {
@@ -86,7 +94,7 @@ public class Node<T> {
      * @param index - id of the child that should be removed
      */
     public void removeChildAt(int index) {
-        if (index > listOfChildren.size() - 1) {
+        if (index > listOfChildren.size() - 1 || index < 0) {
             throw new IndexOutOfBoundsException("This index is incorrect");
         }
         Node<T> element = this.listOfChildren.get(index);
