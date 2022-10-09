@@ -83,6 +83,6 @@ public class TreeTests {
         Node<Integer> childC = new Node<>(311);
         childB.addChildren(childC);
         int expected = 6;
-        Assertions.assertEquals(actual.getNumberOfNodesInTree(),expected);
+        Assertions.assertEquals(actual.getNumberOfNodesInTree(), expected);
     }
 }
