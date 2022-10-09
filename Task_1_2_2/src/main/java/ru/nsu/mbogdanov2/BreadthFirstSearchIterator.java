@@ -5,9 +5,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * BFS iterator class for Tree class.
+ */
 public class BreadthFirstSearchIterator<T> implements Iterator<T> {
 
-    Queue<Node<T>> queue = new LinkedList<>();
+    Queue<Node<T>> queue = new LinkedList <>();
 
     public BreadthFirstSearchIterator(Node<T> vertex) {
         this.queue.add( vertex);
