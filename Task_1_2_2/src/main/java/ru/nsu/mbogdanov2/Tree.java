@@ -71,9 +71,9 @@ public class Tree<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         if (deepFirstSearch) {
-            return new DeepFirstSearchIterator <>(root);
+            return new DeepFirstSearchIterator<>(root);
         }
-        return new BreadthFirstSearchIterator <>(root);
+        return new BreadthFirstSearchIterator<>(root);
     }
 
 }

@@ -88,14 +88,13 @@ public class Node<T> {
     public void removeChildAt(int index) {
         if (index > listOfChildren.size() - 1) {
             throw new IndexOutOfBoundsException("This index is incorrect");
-        }else {
-            Node<T> element = this.listOfChildren.get(index);
-            if (element.listOfChildren.size() > 0) {
-                this.listOfChildren.addAll(element.listOfChildren);
-                element.listOfChildren.forEach(child -> child.setParent(child.parent));
-            }
-            listOfChildren.remove(index);
         }
+        Node<T> element = this.listOfChildren.get(index);
+        if (element.listOfChildren.size() > 0) {
+            this.listOfChildren.addAll(element.listOfChildren);
+            element.listOfChildren.forEach(child -> child.setParent(child.parent));
+        }
+        listOfChildren.remove(index);
     }
 
 }
