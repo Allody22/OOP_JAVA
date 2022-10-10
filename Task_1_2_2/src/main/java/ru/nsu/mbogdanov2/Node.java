@@ -121,8 +121,8 @@ public class Node<T> {
             return false;
         }
         Node<?> node = (Node<?>) o;
-        return Objects.equals(value, node.value) && Objects.equals
-                (listOfChildren, node.listOfChildren) && Objects.equals(parent, node.parent);
+        return value.equals(node.value) && Objects.equals(listOfChildren, node.listOfChildren)
+                && Objects.equals(parent, node.parent);
     }
 
     /**
