@@ -2,6 +2,7 @@ package ru.nsu.mbogdanov2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Node class to define vertex.
@@ -105,4 +106,27 @@ public class Node<T> {
         listOfChildren.remove(index);
     }
 
+    /**
+     * Override of equals method for nodes.
+     *
+     * @param o some node to compare
+     * @return boolean value of the comparing
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node)) return false;
+        Node<?> node = (Node<?>) o;
+        return Objects.equals(value, node.value) && Objects.equals(listOfChildren, node.listOfChildren) && Objects.equals(parent, node.parent);
+    }
+
+    /**
+     * Override of hash function for nodes.
+     *
+     * @return hash of the object
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, listOfChildren, parent);
+    }
 }

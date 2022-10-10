@@ -23,14 +23,26 @@ public class TreeTests {
     }
 
     /**
+     * Test for getRoot function with special equals method.
+     */
+    @Test
+    public void sameRootTest() {
+        Node<Integer> actualRoot = new Node<>(10);
+        Tree<Integer> actual = new Tree<>(actualRoot);
+        Node<Integer> expectedRoot = new Node<>(10);
+        Tree<Integer> expected = new Tree<>(expectedRoot);
+        Assertions.assertEquals(actual.getRoot(), expected.getRoot());
+    }
+
+    /**
      * Test to check iterator of the tree.
      */
     @Test
     public void iteratorTest() {
         Tree<Integer> actual = new Tree<>();
         actual.setDeepFirstSearch(false);
-        boolean expected = false;
-        Assertions.assertEquals(actual.getDeepFirstSearch(), expected);
+        Tree<String> expected = new Tree<>();
+        Assertions.assertEquals(actual.getDeepFirstSearch(), expected.getDeepFirstSearch());
     }
 
     /**
