@@ -2,6 +2,7 @@ package ru.nsu.mbogdanov2;
 
 import java.util.Iterator;
 
+
 /**
  * My realization of generic tree.
  *
@@ -41,6 +42,15 @@ public class Tree<T> implements Iterable<T> {
             number++;
         }
         return number;
+    }
+
+    /**
+     * Method to get the root of this tree.
+     *
+     * @return root of this tree
+     */
+    public Node<T> getRoot() {
+        return root;
     }
 
     public boolean getDeepFirstSearch() {
