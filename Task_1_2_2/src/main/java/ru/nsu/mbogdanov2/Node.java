@@ -1,16 +1,17 @@
 package ru.nsu.mbogdanov2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Node class to define vertex.
  */
-public class Node<T> {
+public class Node<T> implements Iterable<T>{
     private T value;
     private final List<Node<T>> listOfChildren;
-
+    private boolean deepFirstSearch;
     private Node<T> parent;
 
     /**
@@ -24,6 +25,12 @@ public class Node<T> {
     public Node(T value) {
         this();
         setValue(value);
+        setDeepFirstSearch(true);
+        parent = null;
+    }
+
+    public boolean getDeepFirstSearch() {
+        return deepFirstSearch;
     }
 
     /**
@@ -72,8 +79,21 @@ public class Node<T> {
      * @return number of children of this node
      */
 
+
     public int getNumberOfChildren() {
         return listOfChildren.size();
+    }
+
+    /**
+     * Function to choose the iterator.
+     * If the boolean value of this field is true - DFS iterator is on
+     * Else BFS iterator turns on
+     *
+     * @param deepFirstSearch - root of the tree with type Node T
+     */
+
+    public void setDeepFirstSearch(boolean deepFirstSearch) {
+        this.deepFirstSearch = deepFirstSearch;
     }
 
     /**
@@ -86,6 +106,22 @@ public class Node<T> {
     public void addChildren(Node<T> child) {
         parent = this;
         listOfChildren.add(child);
+    }
+
+    /**
+     * push function to put new element into stack.
+     *
+     * @return number of nodes
+     */
+
+    public int getNumberOfNodesInTree() {
+        Iterator<T> treeIterator = iterator();
+        int number = 0;
+        while (treeIterator.hasNext()) {
+            treeIterator.next();
+            number++;
+        }
+        return number;
     }
 
     /**
@@ -132,5 +168,13 @@ public class Node<T> {
     @Override
     public int hashCode() {
         return Objects.hash(value, listOfChildren, parent);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        if (deepFirstSearch) {
+            return new DeepFirstSearchIterator<>(this);
+        }
+        return new BreadthFirstSearchIterator<>(this);
     }
 }

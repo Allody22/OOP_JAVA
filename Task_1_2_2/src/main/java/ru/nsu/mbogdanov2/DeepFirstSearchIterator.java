@@ -24,7 +24,7 @@ public class DeepFirstSearchIterator<T> implements Iterator<T> {
     @Override
     public T next() {
         Node<T> next = stack.pop();
-        for (Node<T> treeNode : next.getListOfChildren()) {
+        for (var treeNode : next.getListOfChildren()) {
             stack.push(treeNode);
         }
         return next.getValue();

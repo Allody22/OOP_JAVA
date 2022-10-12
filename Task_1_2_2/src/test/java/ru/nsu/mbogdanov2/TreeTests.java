@@ -28,10 +28,8 @@ public class TreeTests {
     @Test
     public void sameRootTest() {
         Node<Integer> actualRoot = new Node<>(10);
-        Tree<Integer> actual = new Tree<>(actualRoot);
         Node<Integer> expectedRoot = new Node<>(10);
-        Tree<Integer> expected = new Tree<>(expectedRoot);
-        Assertions.assertEquals(actual.getRoot(), expected.getRoot());
+        Assertions.assertEquals(actualRoot, expectedRoot);
     }
 
     /**
@@ -40,11 +38,9 @@ public class TreeTests {
     @Test
     public void iteratorTest() {
         Node<Integer> actualRoot = new Node<>(10);
-        Tree<Integer> actual = new Tree<>(actualRoot);
-        actual.setDeepFirstSearch(true);
+        actualRoot.setDeepFirstSearch(true);
         Node<String> expectedRoot = new Node<>("Hello World");
-        Tree<String> expected = new Tree<>(expectedRoot);
-        Assertions.assertEquals(actual.getDeepFirstSearch(), expected.getDeepFirstSearch());
+        Assertions.assertEquals(actualRoot.getDeepFirstSearch(), expectedRoot.getDeepFirstSearch());
     }
 
     /**
@@ -104,9 +100,7 @@ public class TreeTests {
      */
     @Test
     public void removeChildrenTest() {
-        Tree<String> actual = new Tree<>();
         Node<String> root = new Node<>("FirstLevel");
-        actual.setRoot(root);
         Node<String> childA = new Node<>("SecondLevelOne");
         root.addChildren(childA);
         Node<String> childA2 = new Node<>("SecondLevelTwo");
@@ -121,7 +115,7 @@ public class TreeTests {
         Node<String> childC = new Node<>("FourthLevel");
         childB.addChildren(childC);
         int expected = 6;
-        Assertions.assertEquals(actual.getNumberOfNodesInTree(), expected);
+        Assertions.assertEquals(root.getNumberOfNodesInTree(), expected);
     }
 
     /**
