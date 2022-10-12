@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="125e8e4e-8b19-4805-b5d3-f9fd41034b50" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Task_1_2_1/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_10_2022_12_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_2_1/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_10_2022_12_55__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task_1_2_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_2_1/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Task_1_1_1/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Task_1_2_1/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Task_1_2_1/.idea/.gitignore" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
