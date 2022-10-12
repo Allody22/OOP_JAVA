@@ -104,8 +104,8 @@ public class TreeTests {
      */
     @Test
     public void removeChildrenTest() {
+        Tree<String> actual = new Tree<>();
         Node<String> root = new Node<>("FirstLevel");
-        Tree<String> actual = new Tree<>(root);
         actual.setRoot(root);
         Node<String> childA = new Node<>("SecondLevelOne");
         root.addChildren(childA);
