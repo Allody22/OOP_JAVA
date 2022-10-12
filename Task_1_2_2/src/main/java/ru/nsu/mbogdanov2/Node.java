@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Node class to define vertex.
  */
-public class Node<T> implements Iterable<T>{
+public class Node<T> implements Iterable<T> {
     private T value;
     private final List<Node<T>> listOfChildren;
     private boolean deepFirstSearch;
@@ -22,6 +22,11 @@ public class Node<T> implements Iterable<T>{
         listOfChildren = new ArrayList<>();
     }
 
+    /**
+     * Constructor for node with value.
+     *
+     * @param value - generic type value
+     */
     public Node(T value) {
         this();
         setValue(value);
