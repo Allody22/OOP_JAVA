@@ -1,0 +1,32 @@
+Index: ../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Tree.java
+===================================================================
+diff --git a/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Tree.java b/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Tree.java
+--- a/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Tree.java	
++++ b/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Tree.java	
+@@ -1,9 +1,5 @@
+ package ru.nsu.mbogdanov2;
+ 
+-import java.util.ArrayList;
+-import java.util.LinkedList;
+-import java.util.Queue;
+-
+ public class Tree<T> extends Algorithms<T>{
+     private Node <T> root;
+ 
+Index: ../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Node.java
+===================================================================
+diff --git a/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Node.java b/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Node.java
+--- a/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Node.java	
++++ b/../Task_1_2_2/src/main/java/ru/nsu/mbogdanov2/Node.java	
+@@ -43,11 +43,6 @@
+             if (element.listOfChildren.size() == 0) {
+                 listOfChildren.remove(index);
+             }
+-            else {
+-                for(int i =0; i < element.listOfChildren.size(); i++){
+-                    listOfChildren.remove(index);
+-                }
+-            }
+         }
+     }
+ 

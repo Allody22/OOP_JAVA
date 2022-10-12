@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7310e286-7ffc-4f90-b773-6c6cb1a4b16a" name="Changes" comment="deleting of bad branche" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="task-1-2-1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2F81DxFDWPz0BkRaKnl0rYDPok4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/IAMNO/OOP_JAVA/Task_1_2_2",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="ru.nsu.mbogdanov2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Run Tests">
+    <configuration name="Run Tests" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Task_1_2_1 [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.Task_1_2_1 [build]" />
+      <item itemvalue="Gradle.Run Tests" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7310e286-7ffc-4f90-b773-6c6cb1a4b16a" name="Changes" comment="" />
+      <created>1663858781169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663858781169</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Yra, починились методы (спасибо парню с 4 курса из нашего блока в общаге). Интересная ошибка была в том, что джава меняет размер массива с помощью Arrays.copyOf, но не удаляет прошлые элементы, а при присваиванию нулю, размер массива дефакто оставался. Короче проблема какая-то сумасшедшая. Никита (так зовут этого парня) сказал что в джаве придётся очень долго боротся с ошибка с null. Сейчас загружу и всё должно быть хорошо">
+      <created>1663951290870</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663951290870</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Почитал, что pop должен возвращаться всё-таки элемент">
+      <created>1664283655444</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664283655444</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Почитал, что pop должен возвращаться всё-таки элемент">
+      <created>1664284128625</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664284128625</updated>
+    </task>
+    <task id="LOCAL-00004" summary="В смысле эдд море комитс бай пушинг к ветке, нормально же всё было">
+      <created>1664284979928</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664284979928</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Я просто поменял всё назад, а потом обратно вперед">
+      <created>1664285099497</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664285099497</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Я просто поменял всё назад, а потом обратно вперед">
+      <created>1664346724013</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664346724014</updated>
+    </task>
+    <task id="LOCAL-00007" summary="@SuppressWarnings(&quot;unchecked&quot;)">
+      <created>1664347250115</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1664347250115</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Что-то поменяли">
+      <created>1664348045174</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1664348045174</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Кажется исправил всё что надо от 03.10">
+      <created>1664809875857</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1664809875857</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Немного красоты для ревьюв дога">
+      <created>1664810188039</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1664810188039</updated>
+    </task>
+    <task id="LOCAL-00011" summary="comparator is private now&#10;minimal size of stack is 16 now">
+      <created>1664951140458</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664951140458</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Coverage became bad">
+      <created>1664952106168</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664952106168</updated>
+    </task>
+    <task id="LOCAL-00013" summary="New whitespaces">
+      <created>1664952284021</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1664952284021</updated>
+    </task>
+    <task id="LOCAL-00014" summary="new files?">
+      <created>1664952790084</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1664952790084</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Pop method makes deleted element equal to null">
+      <created>1664966355921</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1664966355921</updated>
+    </task>
+    <task id="LOCAL-00016" summary="I forgot about whitespace">
+      <created>1664966452022</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1664966452022</updated>
+    </task>
+    <task id="LOCAL-00017" summary="deleting of bad branche">
+      <created>1665153933594</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1665153933594</updated>
+    </task>
+    <task id="LOCAL-00018" summary="deleting of bad branche">
+      <created>1665155355814</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1665155355814</updated>
+    </task>
+    <task id="LOCAL-00019" summary="deleting of bad branche">
+      <created>1665155658188</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1665155658188</updated>
+    </task>
+    <task id="LOCAL-00020" summary="deleting of bad branche">
+      <created>1665155875985</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1665155875985</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Yra, починились методы (спасибо парню с 4 курса из нашего блока в общаге). Интересная ошибка была в том, что джава меняет размер массива с помощью Arrays.copyOf, но не удаляет прошлые элементы, а при присваиванию нулю, размер массива дефакто оставался. Короче проблема какая-то сумасшедшая. Никита (так зовут этого парня) сказал что в джаве придётся очень долго боротся с ошибка с null. Сейчас загружу и всё должно быть хорошо" />
+    <MESSAGE value="Почитал, что pop должен возвращаться всё-таки элемент" />
+    <MESSAGE value="В смысле эдд море комитс бай пушинг к ветке, нормально же всё было" />
+    <MESSAGE value="Я просто поменял всё назад, а потом обратно вперед" />
+    <MESSAGE value="@SuppressWarnings(&quot;unchecked&quot;)" />
+    <MESSAGE value="Что-то поменяли" />
+    <MESSAGE value="Кажется исправил всё что надо от 03.10" />
+    <MESSAGE value="Немного красоты для ревьюв дога" />
+    <MESSAGE value="comparator is private now&#10;minimal size of stack is 16 now" />
+    <MESSAGE value="Coverage became bad" />
+    <MESSAGE value="New whitespaces" />
+    <MESSAGE value="new files?" />
+    <MESSAGE value="Pop method makes deleted element equal to null" />
+    <MESSAGE value="I forgot about whitespace" />
+    <MESSAGE value="deleting of bad branche" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleting of bad branche" />
+  </component>
+</project>

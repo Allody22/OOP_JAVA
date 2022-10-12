@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.mbogdanov2","c":"Tree","l":"Tree()","url":"%3Cinit%3E()"}]
