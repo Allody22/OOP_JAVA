@@ -39,9 +39,11 @@ public class TreeTests {
      */
     @Test
     public void iteratorTest() {
-        Tree<Integer> actual = new Tree<>();
-        actual.setDeepFirstSearch(false);
-        Tree<String> expected = new Tree<>();
+        Node<Integer> actualRoot = new Node<>(10);
+        Tree<Integer> actual = new Tree<>(actualRoot);
+        actual.setDeepFirstSearch(true);
+        Node<String> expectedRoot = new Node<>("Hello World");
+        Tree<String> expected = new Tree<>(expectedRoot);
         Assertions.assertEquals(actual.getDeepFirstSearch(), expected.getDeepFirstSearch());
     }
 
@@ -102,8 +104,8 @@ public class TreeTests {
      */
     @Test
     public void removeChildrenTest() {
-        Tree<String> actual = new Tree<>();
         Node<String> root = new Node<>("FirstLevel");
+        Tree<String> actual = new Tree<>(root);
         actual.setRoot(root);
         Node<String> childA = new Node<>("SecondLevelOne");
         root.addChildren(childA);
