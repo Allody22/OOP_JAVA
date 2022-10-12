@@ -18,7 +18,6 @@ public class Node<T> {
      */
 
     public Node() {
-        super();
         listOfChildren = new ArrayList<>();
     }
 
