@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.mbogdanov2.TreeTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-10-12T07:03:54" hostname="LAPTOP-E3RAOUQ0" time="0.041">
+  <properties/>
+  <testcase name="removeChildrenTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.027"/>
+  <testcase name="numberOfChildrenTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.001"/>
+  <testcase name="deepFirstSearchTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.004"/>
+  <testcase name="invalidNumberOfChildrenTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.003"/>
+  <testcase name="iteratorTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.001"/>
+  <testcase name="sameRootTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.0"/>
+  <testcase name="setRootValueTest()" classname="ru.nsu.mbogdanov2.TreeTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
