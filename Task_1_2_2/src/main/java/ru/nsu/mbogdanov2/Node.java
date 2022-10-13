@@ -173,7 +173,7 @@ public class Node<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        if (typeOfFirstSearch == 1){
+        if (typeOfFirstSearch == 1) {
             return new DepthFirstSearchIterator<>(this);
         }
         return new BreadthFirstSearchIterator<>(this);
