@@ -8,11 +8,11 @@ import java.util.Iterator;
 /**
  * DFS iterator class for Tree class.
  */
-public class DeepFirstSearchIterator<T> implements Iterator<T> {
+public class DepthFirstSearchIterator<T> implements Iterator<T> {
 
     private final Deque<Node<T>> stack = new ArrayDeque<>();
 
-    public DeepFirstSearchIterator(Node<T> vertex) {
+    public DepthFirstSearchIterator(Node<T> vertex) {
         this.stack.push(vertex);
     }
 

@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Node<T> implements Iterable<T> {
     private T value;
     private final List<Node<T>> listOfChildren;
-    private boolean deepFirstSearch;
+    private int typeOfFirstSearch;
     private Node<T> parent;
 
     /**
@@ -30,12 +30,8 @@ public class Node<T> implements Iterable<T> {
     public Node(T value) {
         this();
         setValue(value);
-        setDeepFirstSearch(true);
+        setTypeOfFirstSearch(1);
         parent = null;
-    }
-
-    public boolean getDeepFirstSearch() {
-        return deepFirstSearch;
     }
 
     /**
@@ -94,11 +90,11 @@ public class Node<T> implements Iterable<T> {
      * If the boolean value of this field is true - DFS iterator is on
      * Else BFS iterator turns on
      *
-     * @param deepFirstSearch - root of the tree with type Node T
+     * @param typeOfFirstSearch - number 1 for DFS or number 2 for BFS
      */
 
-    public void setDeepFirstSearch(boolean deepFirstSearch) {
-        this.deepFirstSearch = deepFirstSearch;
+    public void setTypeOfFirstSearch(int typeOfFirstSearch) {
+        this.typeOfFirstSearch = typeOfFirstSearch;
     }
 
     /**
@@ -177,8 +173,8 @@ public class Node<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        if (deepFirstSearch) {
-            return new DeepFirstSearchIterator<>(this);
+        if (typeOfFirstSearch == 1){
+            return new DepthFirstSearchIterator<>(this);
         }
         return new BreadthFirstSearchIterator<>(this);
     }
