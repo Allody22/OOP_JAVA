@@ -49,7 +49,7 @@ public class DepthFirstSearchTests {
         Node<Integer> childB3 = new Node<>(221);
         childA2.addChildren(childB3);
         DepthFirstSearchIterator<Integer> dfs = new DepthFirstSearchIterator<>(root);
-        for (int i = 0; i <6; i ++){
+        for (int i = 0; i < 6; i++) {
             Assertions.assertTrue(dfs.hasNext());
             dfs.next();
         }
