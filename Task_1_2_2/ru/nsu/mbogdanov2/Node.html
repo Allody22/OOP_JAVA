@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -201,72 +201,67 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDeepFirstSearch()">getDeepFirstSearch</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getListOfChildren()">getListOfChildren</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Function that return list of children of this node.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfChildren()">getNumberOfChildren</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Function that return number of children of this node.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfNodesInTree()">getNumberOfNodesInTree</a></span>()</code></th>
 <td class="colLast">
 <div class="block">push function to put new element into stack.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Node.html" title="type parameter in Node">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue()">getValue</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get value function to get the value of this node.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Override of hash function for nodes.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeChildAt(int)">removeChildAt</a></span>&#8203;(int&nbsp;index)</code></th>
 <td class="colLast">
 <div class="block">Function that returns child of this node.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDeepFirstSearch(boolean)">setDeepFirstSearch</a></span>&#8203;(boolean&nbsp;deepFirstSearch)</code></th>
-<td class="colLast">
-<div class="block">Function to choose the iterator.</div>
-</td>
-</tr>
-<tr id="i11" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setParent(ru.nsu.mbogdanov2.Node)">setParent</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;parent)</code></th>
 <td class="colLast">
 <div class="block">Set parent function to set the parent of this node.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTypeOfFirstSearch(int)">setTypeOfFirstSearch</a></span>&#8203;(int&nbsp;typeOfFirstSearch)</code></th>
+<td class="colLast">
+<div class="block">Function to choose the iterator.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setValue(T)">setValue</a></span>&#8203;(<a href="Node.html" title="type parameter in Node">T</a>&nbsp;value)</code></th>
 <td class="colLast">
@@ -340,15 +335,6 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getDeepFirstSearch()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getDeepFirstSearch</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;getDeepFirstSearch()</pre>
-</li>
-</ul>
 <a id="getValue()">
 <!--   -->
 </a>
@@ -421,19 +407,19 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </dl>
 </li>
 </ul>
-<a id="setDeepFirstSearch(boolean)">
+<a id="setTypeOfFirstSearch(int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setDeepFirstSearch</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setDeepFirstSearch&#8203;(boolean&nbsp;deepFirstSearch)</pre>
+<h4>setTypeOfFirstSearch</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTypeOfFirstSearch&#8203;(int&nbsp;typeOfFirstSearch)</pre>
 <div class="block">Function to choose the iterator.
  If the boolean value of this field is true - DFS iterator is on
  Else BFS iterator turns on</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>deepFirstSearch</code> - - root of the tree with type Node T</dd>
+<dd><code>typeOfFirstSearch</code> - - number 1 for DFS or number 2 for BFS</dd>
 </dl>
 </li>
 </ul>
