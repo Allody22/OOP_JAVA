@@ -88,7 +88,7 @@ public class Node<T> implements Iterable<T> {
     /**
      * Function to choose the iterator.
      * If the boolean value of this field is true - DFS iterator is on
-     * Else BFS iterator turns on
+     * Else BFS iterator becomes main iterator
      *
      * @param typeOfFirstSearch - number 1 for DFS or number 2 for BFS
      */
