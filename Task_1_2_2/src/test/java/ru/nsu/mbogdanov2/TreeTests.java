@@ -89,4 +89,47 @@ public class TreeTests {
                 assertThrows(IndexOutOfBoundsException.class, () -> root.removeChildAt(-1));
         Assertions.assertEquals("This index is incorrect", exception.getMessage());
     }
+
+    /**
+     * Test for function that returns the root.
+     */
+    @Test
+    public void getRootTest() {
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(322);
+        root.addChildren(childA);
+        Node<Integer> childA2 = new Node<>(3221);
+        root.addChildren(childA2);
+        Node<Integer> childB = new Node<>(522);
+        childA.addChildren(childB);
+        Node<Integer> childB2 = new Node<>(5221);
+        childA.addChildren(childB2);
+        Node<Integer> childB3 = new Node<>(6221);
+        childA2.addChildren(childB3);
+        childA.getRoot();
+        Assertions.assertEquals(root, childA.getRoot());
+    }
+
+    /**
+     * Test for modCount function.
+     * It returns the number of modifications in tree
+     */
+    @Test
+    public void modCountTest() {
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(322);
+        root.addChildren(childA);
+        Node<Integer> childA2 = new Node<>(3221);
+        root.addChildren(childA2);
+        Node<Integer> childB = new Node<>(522);
+        childA.addChildren(childB);
+        Node<Integer> childB2 = new Node<>(5221);
+        childA.addChildren(childB2);
+        Node<Integer> childB3 = new Node<>(6221);
+        childA2.addChildren(childB3);
+        root.removeChildAt(0);
+        Node<Integer> childC = new Node<>(722);
+        childB.addChildren(childC);
+        Assertions.assertEquals(7, root.getModCount());
+    }
 }

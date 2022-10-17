@@ -2,8 +2,10 @@ package ru.nsu.mbogdanov2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Queue;
 
 /**
  * Node class to define vertex.
@@ -13,6 +15,7 @@ public class Node<T> implements Iterable<T> {
     private final List<Node<T>> listOfChildren;
     private int typeOfFirstSearch;
     private Node<T> parent;
+    private int modCount;
 
     /**
      * Node constructor that calls Tree constructor if it's needed.
@@ -31,7 +34,8 @@ public class Node<T> implements Iterable<T> {
         this();
         setValue(value);
         setTypeOfFirstSearch(1);
-        parent = null;
+        setParent(null);
+        modCount = 0;
     }
 
     /**
@@ -86,6 +90,47 @@ public class Node<T> implements Iterable<T> {
     }
 
     /**
+     * Function to check number of operations with this node.
+     *
+     * @return modifications count
+     */
+    public int getModCount() {
+        Node<T> root = getRoot();
+        int modCount = 0;
+        Queue<Node<T>> stack = new LinkedList<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            Node<T> node = stack.remove();
+            modCount += node.modCount;
+            for(int i = 0; i < node.getListOfChildren().size(); i++){
+                stack.add(node.listOfChildren.get(i));
+            }
+        }
+        return modCount;
+    }
+
+    /**
+     * Function to get the parent of the current vetrex.
+     *
+     * @return parent
+     */
+    public Node<T> getParent() {
+        return parent;
+    }
+
+    /**
+     * Function to get the root of the tree from any vertex.
+     *
+     * @return the root of the tree
+     */
+    public Node<T> getRoot(){
+        Node<T> step = this;
+        while (step.getParent() != null){
+            step = step.getParent();
+        }
+        return step;
+    }
+    /**
      * Function to choose the iterator.
      * If the boolean value of this field is true - DFS iterator is on
      * Else BFS iterator becomes main iterator
@@ -105,8 +150,9 @@ public class Node<T> implements Iterable<T> {
      */
 
     public void addChildren(Node<T> child) {
-        parent = this;
+        child.setParent(this);
         listOfChildren.add(child);
+        modCount++;
     }
 
     /**
@@ -135,11 +181,13 @@ public class Node<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException("This index is incorrect");
         }
         Node<T> element = this.listOfChildren.get(index);
+        this.getRoot().modCount += this.modCount;
         if (element.listOfChildren.size() > 0) {
             this.listOfChildren.addAll(element.listOfChildren);
             element.listOfChildren.forEach(child -> child.setParent(child.parent));
         }
         listOfChildren.remove(index);
+        this.getRoot().modCount++;
     }
 
     /**

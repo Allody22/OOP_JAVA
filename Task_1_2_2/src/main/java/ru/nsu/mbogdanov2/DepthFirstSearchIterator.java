@@ -11,9 +11,11 @@ import java.util.Iterator;
 public class DepthFirstSearchIterator<T> implements Iterator<T> {
 
     private final Deque<Node<T>> stack = new ArrayDeque<>();
+    private final int modCounter;
 
     public DepthFirstSearchIterator(Node<T> vertex) {
         this.stack.push(vertex);
+        modCounter = vertex.getModCount();
     }
 
     @Override
@@ -24,14 +26,12 @@ public class DepthFirstSearchIterator<T> implements Iterator<T> {
     @Override
     public T next() {
         Node<T> next = stack.pop();
+        if (modCounter != next.getModCount()) {
+            throw new ConcurrentModificationException();
+        }
         for (var treeNode : next.getListOfChildren()) {
             stack.push(treeNode);
         }
         return next.getValue();
-    }
-
-    @Override
-    public void remove() {
-        throw new ConcurrentModificationException();
     }
 }

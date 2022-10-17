@@ -11,15 +11,12 @@ import java.util.Queue;
 public class BreadthFirstSearchIterator<T> implements Iterator<T> {
 
     Queue<Node<T>> queue = new LinkedList<>();
+    private final int modCount;
+
 
     public BreadthFirstSearchIterator(Node<T> vertex) {
         this.queue.add(vertex);
-    }
-
-
-    @Override
-    public void remove() {
-        throw new ConcurrentModificationException();
+        modCount = vertex.getModCount();
     }
 
     @Override
@@ -31,6 +28,9 @@ public class BreadthFirstSearchIterator<T> implements Iterator<T> {
     public T next() {
         Node<T> next = queue.poll();
         assert next != null;
+        if (modCount != next.getModCount()) {
+            throw new ConcurrentModificationException("Don't change collection while iterator is on");
+        }
         queue.addAll(next.getListOfChildren());
         return next.getValue();
     }
