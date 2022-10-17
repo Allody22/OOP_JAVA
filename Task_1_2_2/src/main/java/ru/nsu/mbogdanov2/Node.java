@@ -102,9 +102,7 @@ public class Node<T> implements Iterable<T> {
         while (!stack.isEmpty()) {
             Node<T> node = stack.remove();
             modCount += node.modCount;
-            for(int i = 0; i < node.getListOfChildren().size(); i++){
-                stack.add(node.listOfChildren.get(i));
-            }
+            stack.addAll(node.getListOfChildren());
         }
         return modCount;
     }
@@ -123,9 +121,9 @@ public class Node<T> implements Iterable<T> {
      *
      * @return the root of the tree
      */
-    public Node<T> getRoot(){
+    public Node<T> getRoot() {
         Node<T> step = this;
-        while (step.getParent() != null){
+        while (step.getParent() != null) {
             step = step.getParent();
         }
         return step;

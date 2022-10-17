@@ -29,7 +29,8 @@ public class BreadthFirstSearchIterator<T> implements Iterator<T> {
         Node<T> next = queue.poll();
         assert next != null;
         if (modCount != next.getModCount()) {
-            throw new ConcurrentModificationException("Don't change collection while iterator is on");
+            throw new ConcurrentModificationException("Don't change the collection " +
+                    "while iterator is on");
         }
         queue.addAll(next.getListOfChildren());
         return next.getValue();
