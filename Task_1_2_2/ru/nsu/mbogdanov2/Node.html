@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -209,59 +209,80 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getModCount()">getModCount</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Function to check number of operations with this node.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfChildren()">getNumberOfChildren</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Function that return number of children of this node.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfNodesInTree()">getNumberOfNodesInTree</a></span>()</code></th>
 <td class="colLast">
 <div class="block">push function to put new element into stack.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent()">getParent</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Function to get the parent of the current vetrex.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRoot()">getRoot</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Function to get the root of the tree from any vertex.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Node.html" title="type parameter in Node">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue()">getValue</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get value function to get the value of this node.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Override of hash function for nodes.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeChildAt(int)">removeChildAt</a></span>&#8203;(int&nbsp;index)</code></th>
 <td class="colLast">
 <div class="block">Function that returns child of this node.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setParent(ru.nsu.mbogdanov2.Node)">setParent</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;parent)</code></th>
 <td class="colLast">
 <div class="block">Set parent function to set the parent of this node.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTypeOfFirstSearch(int)">setTypeOfFirstSearch</a></span>&#8203;(int&nbsp;typeOfFirstSearch)</code></th>
 <td class="colLast">
 <div class="block">Function to choose the iterator.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setValue(T)">setValue</a></span>&#8203;(<a href="Node.html" title="type parameter in Node">T</a>&nbsp;value)</code></th>
 <td class="colLast">
@@ -404,6 +425,48 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>number of children of this node</dd>
+</dl>
+</li>
+</ul>
+<a id="getModCount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getModCount</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getModCount()</pre>
+<div class="block">Function to check number of operations with this node.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>modifications count</dd>
+</dl>
+</li>
+</ul>
+<a id="getParent()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getParent</h4>
+<pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;getParent()</pre>
+<div class="block">Function to get the parent of the current vetrex.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>parent</dd>
+</dl>
+</li>
+</ul>
+<a id="getRoot()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRoot</h4>
+<pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.mbogdanov2">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;getRoot()</pre>
+<div class="block">Function to get the root of the tree from any vertex.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the root of the tree</dd>
 </dl>
 </li>
 </ul>
