@@ -1,7 +1,10 @@
 package ru.nsu.mbogdanov2;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +57,55 @@ public class DepthFirstSearchTests {
             dfs.next();
         }
         Assertions.assertFalse(dfs.hasNext());
+    }
+
+    /** Test that my DFS gives exceptions.
+     * We walk through the tree and call hasNext() and next()
+     * Then we make some modifications in tree and call iterator again
+     * We will see error message about modifications
+     */
+    @Test
+    public void modificationsExceptionsTest() {
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(11);
+        root.addChildren(childA);
+        Node<Integer> childA2 = new Node<>(111);
+        root.addChildren(childA2);
+        Node<Integer> childB = new Node<>(21);
+        childA.addChildren(childB);
+        Node<Integer> childB2 = new Node<>(211);
+        childA.addChildren(childB2);
+        DepthFirstSearchIterator<Integer> dfs = new DepthFirstSearchIterator<>(root);
+        dfs.next();
+        dfs.next();
+        childA.addChildren(childB2);
+        ConcurrentModificationException exception =
+                        assertThrows(ConcurrentModificationException.class, dfs::next);
+        Assertions.assertEquals("Don't change the collection"
+                + " while iterator is on", exception.getMessage());
+    }
+
+    /** Test that my DFS doesn't give redundant exceptions.
+     * We walk through the tree and call hasNext() and next()
+     * methods for existing elements
+     */
+    @Test
+    public void noExceptionsTest() {
+        Node<Integer> root = new Node<>(10);
+        Node<Integer> childA = new Node<>(11);
+        root.addChildren(childA);
+        Node<Integer> childA2 = new Node<>(111);
+        root.addChildren(childA2);
+        Node<Integer> childB = new Node<>(21);
+        childA.addChildren(childB);
+        DepthFirstSearchIterator<Integer> dfs = new DepthFirstSearchIterator<>(root);
+        Assertions.assertDoesNotThrow(dfs::hasNext);
+        Assertions.assertDoesNotThrow(dfs::next);
+        Assertions.assertDoesNotThrow(dfs::hasNext);
+        Assertions.assertDoesNotThrow(dfs::next);
+        Assertions.assertDoesNotThrow(dfs::hasNext);
+        Assertions.assertDoesNotThrow(dfs::next);
+        Assertions.assertDoesNotThrow(dfs::hasNext);
+        Assertions.assertDoesNotThrow(dfs::next);
     }
 }

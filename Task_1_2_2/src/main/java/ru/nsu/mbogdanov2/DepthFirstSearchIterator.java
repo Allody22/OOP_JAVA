@@ -27,7 +27,8 @@ public class DepthFirstSearchIterator<T> implements Iterator<T> {
     public T next() {
         Node<T> next = stack.pop();
         if (modCounter != next.getModCount()) {
-            throw new ConcurrentModificationException();
+            throw new ConcurrentModificationException("Don't change the collection "
+                    + "while iterator is on");
         }
         for (var treeNode : next.getListOfChildren()) {
             stack.push(treeNode);
