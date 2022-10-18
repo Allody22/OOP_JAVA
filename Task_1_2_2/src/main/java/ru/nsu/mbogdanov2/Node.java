@@ -2,10 +2,9 @@ package ru.nsu.mbogdanov2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Queue;
+
 
 /**
  * Node class to define vertex.
@@ -96,15 +95,7 @@ public class Node<T> implements Iterable<T> {
      */
     public int getModCount() {
         Node<T> root = getRoot();
-        int modCount = 0;
-        Queue<Node<T>> stack = new LinkedList<>();
-        stack.add(root);
-        while (!stack.isEmpty()) {
-            Node<T> node = stack.remove();
-            modCount += node.modCount;
-            stack.addAll(node.getListOfChildren());
-        }
-        return modCount;
+        return root.modCount;
     }
 
     /**
@@ -149,8 +140,9 @@ public class Node<T> implements Iterable<T> {
 
     public void addChildren(Node<T> child) {
         child.setParent(this);
+        Node<T> root = getRoot();
         listOfChildren.add(child);
-        modCount++;
+        root.modCount++;
     }
 
     /**
@@ -178,14 +170,15 @@ public class Node<T> implements Iterable<T> {
         if (index > listOfChildren.size() - 1 || index < 0) {
             throw new IndexOutOfBoundsException("This index is incorrect");
         }
-        Node<T> element = this.listOfChildren.get(index);
-        this.getRoot().modCount += this.modCount;
+        Node<T> root = getRoot();
+        Node<T> element = listOfChildren.get(index);
+        root.modCount += listOfChildren.get(index).modCount;
         if (element.listOfChildren.size() > 0) {
-            this.listOfChildren.addAll(element.listOfChildren);
+            listOfChildren.addAll(element.listOfChildren);
             element.listOfChildren.forEach(child -> child.setParent(child.parent));
         }
         listOfChildren.remove(index);
-        this.getRoot().modCount++;
+        root.modCount++;
     }
 
     /**

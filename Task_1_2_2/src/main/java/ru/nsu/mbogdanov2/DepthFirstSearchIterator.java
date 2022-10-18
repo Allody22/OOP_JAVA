@@ -14,7 +14,7 @@ public class DepthFirstSearchIterator<T> implements Iterator<T> {
     private final int modCounter;
 
     public DepthFirstSearchIterator(Node<T> vertex) {
-        this.stack.push(vertex);
+        stack.push(vertex);
         modCounter = vertex.getModCount();
     }
 
