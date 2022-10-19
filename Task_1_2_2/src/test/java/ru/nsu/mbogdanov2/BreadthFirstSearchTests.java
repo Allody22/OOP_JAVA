@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class BreadthFirstSearchTests {
         Node<Integer> childC = new Node<>(311);
         childB.addChildren(childC);
         BreadthFirstSearchIterator<Integer> bfs = new BreadthFirstSearchIterator<>(root);
-        ArrayList<Integer> actualSearchList = new ArrayList<>();
+        List<Integer> actualSearchList = new ArrayList<>();
         ArrayList<Integer> expectedSearchList =
                 new ArrayList<>(Arrays.asList(10, 11, 111, 21, 211, 221, 311));
         while (bfs.hasNext()) {
@@ -60,7 +61,7 @@ public class BreadthFirstSearchTests {
         Assertions.assertFalse(bfs.hasNext());
     }
 
-    /** Test that my DFS gives exceptions.
+    /** Test that my BFS gives exceptions.
      * We walk through the tree and call hasNext() and next()
      * Then we make some modifications in tree and call iterator again
      * We will see error message about modifications
@@ -86,7 +87,7 @@ public class BreadthFirstSearchTests {
                 + " while iterator is on", exception.getMessage());
     }
 
-    /** Test that my DFS doesn't give redundant exceptions.
+    /** Test that my BFS doesn't give redundant exceptions.
      * We walk through the tree and call hasNext() and next()
      * methods for existing elements
      */

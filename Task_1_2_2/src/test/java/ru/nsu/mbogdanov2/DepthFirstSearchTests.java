@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +30,7 @@ public class DepthFirstSearchTests {
         Node<Integer> childC = new Node<>(311);
         childB.addChildren(childC);
         DepthFirstSearchIterator<Integer> dfs = new DepthFirstSearchIterator<>(root);
-        ArrayList<Integer> actualSearchList = new ArrayList<>();
+        List<Integer> actualSearchList = new ArrayList<>();
         ArrayList<Integer> expectedSearchList =
                 new ArrayList<>(Arrays.asList(10, 111, 221, 11, 211, 21, 311));
         while (dfs.hasNext()) {
