@@ -73,7 +73,50 @@ public class VertexTest {
         expectedGraph.addEdge("one", "two", 33);
         expectedGraph.addEdge("one", "two", 66);
 
-        Assertions.assertNotEquals(expectedGraph.getEdge("one","two",33).getV1().getName(), "two");
-        Assertions.assertEquals(expectedGraph.getEdge("one","two",33).getV1().getName(), "one");
+        Assertions.assertNotEquals(expectedGraph.getEdge("one", "two", 33).getV1().getName(), "two");
+        Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getV1().getName(), "one");
+    }
+
+    @Test
+    public void distanceOfVertexesTest() {
+        Graph<String> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex("one");
+        expectedGraph.addVertex("two");
+        expectedGraph.addVertex("three");
+        expectedGraph.addEdge("one", "two", 10);
+        expectedGraph.addEdge("two", "one", 11);
+
+        Assertions.assertNull(expectedGraph.getVertex("one").getDistance());
+        Assertions.assertNull(expectedGraph.getVertex("one").getDistance());
+
+        expectedGraph.dijkstra("one");
+        Assertions.assertEquals(expectedGraph.getVertex("one").getDistance(), 0);
+        Assertions.assertEquals(expectedGraph.getVertex("three").getDistance(), Integer.MAX_VALUE);
+    }
+
+    @Test
+    public void markOfVertexesTest() {
+        Graph<Integer> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex(0);
+        expectedGraph.addVertex(1);
+        expectedGraph.addVertex(2);
+        expectedGraph.addEdge(0, 1, 10);
+        expectedGraph.addEdge(2, 0, 11);
+        expectedGraph.addEdge(2, 1, 11);
+
+        var vertexes = expectedGraph.getVertexes();
+        int expectedMark = 1;
+        for (int i = 0; i < vertexes.size(); i++){
+            Assertions.assertEquals(vertexes.get(i).getMark(), expectedMark);
+        }
+
+        expectedGraph.dijkstra(2);
+        var newVertexes = expectedGraph.getVertexes();
+        int expectedNewMark = 3;
+        for (int i = 0; i < newVertexes.size(); i++) {
+            Assertions.assertEquals(expectedNewMark, newVertexes.get(i).getMark());
+        }
     }
 }
