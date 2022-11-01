@@ -43,7 +43,8 @@ public class GraphTest {
         Assertions.assertEquals("No vertex with this name", exceptionDijkstra.getMessage());
 
         IllegalArgumentException exceptionAddEdge =
-                assertThrows(IllegalArgumentException.class, () -> graph.addEdge("one", "two", -10));
+                assertThrows(IllegalArgumentException.class,
+                        () -> graph.addEdge("one", "two", -10));
         Assertions.assertEquals("Only positive weight", exceptionAddEdge.getMessage());
 
         NullPointerException exceptionDeleteVertex =

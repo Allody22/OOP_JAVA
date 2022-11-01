@@ -195,7 +195,7 @@ public class Graph<T> {
                         currentVertex.getDistance() + edges.getWeight(), to.getDistance()));
                 if (to.getMark() != 3) {
                     to.setMark(2);
-               }
+                }
             }
         }
         result.sort(Comparator.comparingInt(Vertex::getDistance));
