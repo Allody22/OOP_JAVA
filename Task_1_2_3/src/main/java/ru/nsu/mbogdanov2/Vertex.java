@@ -7,14 +7,13 @@ import java.util.Objects;
  * Vertex is a point in the graph with distance.
  * Vertexes are connected by edges
  * Name is a string name of this vertex. For example: A,B,C etc.
- *
  */
-public class Vertex<T extends Comparable<T>> {
+public class Vertex<T> {
     private final T name;
     private Integer distance;
     private int mark;
 
-    public Vertex(T name){
+    public Vertex(T name) {
         this.name = name;
         distance = null;
         mark = 1;
@@ -49,7 +48,8 @@ public class Vertex<T extends Comparable<T>> {
             return false;
         }
         Vertex<?> vertex = (Vertex<?>) o;
-        return mark == vertex.mark && Objects.equals(name, vertex.name) && Objects.equals(distance, vertex.distance);
+        return mark == vertex.mark && Objects.equals(name, vertex.name) &&
+                Objects.equals(distance, vertex.distance);
     }
 
     @Override

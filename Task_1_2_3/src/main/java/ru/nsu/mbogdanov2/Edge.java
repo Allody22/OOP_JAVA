@@ -1,14 +1,15 @@
 package ru.nsu.mbogdanov2;
 
 
+import java.util.Objects;
+
 /**
- * Edge connects vertexes in the graph.
- *
+ * Edge connects vertexes or one vertex in the graph.
  */
-public class Edge<T extends Comparable<T>> {
+public class Edge<T> {
     private final Vertex<T> v1;
     private final Vertex<T> v2;
-    private Integer weight;
+    private final Integer weight;
 
     /**
      *Edge constructor.
@@ -19,13 +20,9 @@ public class Edge<T extends Comparable<T>> {
      * @param to in coming vertex
      * @param weight weight of the edge
      */
-    public Edge( Vertex<T> from, Vertex<T> to, Integer weight){
+    public Edge(Vertex<T> from, Vertex<T> to, Integer weight) {
         v1 = from;
         v2 = to;
-        this.weight = weight;
-    }
-
-    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -33,11 +30,25 @@ public class Edge<T extends Comparable<T>> {
         return weight;
     }
 
-    public Vertex<T> getV1() {
-        return v1;
-    }
-
     public Vertex<T> getV2() {
         return v2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Edge)) {
+            return false;
+        }
+        Edge<?> edge = (Edge<?>) o;
+        return Objects.equals(v1, edge.v1) && Objects.equals(v2, edge.v2)
+                && Objects.equals(weight, edge.weight);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(v1, v2, weight);
     }
 }

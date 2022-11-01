@@ -6,19 +6,18 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * We implement directed weighted graph.
  * Three different constructors for matrix of incidents and adjacency
  * and for list of adjacency
- *
- * @param <T>
  */
-public class Graph<T extends Comparable<T>> {
+public class Graph<T> {
 
     private final Map<T, Vertex<T>> vertexes;
     private final Map<T, List<Edge<T>>> edges;
-    private final int INF = Integer.MAX_VALUE;
+    private final int inf = Integer.MAX_VALUE;
 
     public Graph() {
         vertexes = new HashMap<>();
@@ -28,10 +27,13 @@ public class Graph<T extends Comparable<T>> {
     /**
      * Matrix of adjacency.
      * Matrix is in a row-major implemented
-     *  example of row-major matrix
+     * example of row-major matrix
      *   |a b c |
-     *   |d e f |   =>  [a,b,c,d,e,f,j,k,l]
+     *   |d e f |   =  [a,b,c,d,e,f,j,k,l]
      *   |j k d |
+     * This matrix size is [n * n] or [n][n], so
+     * element number i in column number j
+     * is equal to [i * len + j] = [i][j]
      *
      * @param vertexArray - vertexes
      * @param matrix - row-major matrix
@@ -47,7 +49,7 @@ public class Graph<T extends Comparable<T>> {
 
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
-                if (matrix[i * len + j] != 0){
+                if (matrix[i * len + j] != 0) {
                     addEdge(vertexArray[i], vertexArray[j], matrix[i * len + j]);
                 }
             }
@@ -61,8 +63,10 @@ public class Graph<T extends Comparable<T>> {
      * Matrix is in a row-major implemented
      * example of row-major matrix
      *   |a b c |
-     *   |d e f |   =>  [a,b,c,d,e,f,j,k,l]
-     *   |j k d |
+     *   |d e f |   =  [a,b,c,d,e,f]
+     * This matrix size is [n * m] or [n][m], where n = edgeNumber and m = vertexNumber
+     * element number i in column number j
+     * is equal to [i * n + j] = [i][j]
      *
      * @param vertexArray array of vertexes name in matrix
      * @param incidentMatrix matrix of incident itself
@@ -82,13 +86,13 @@ public class Graph<T extends Comparable<T>> {
             T k1 = null;
             T k2 = null;
             for (int j = 0; j < len; j++) {
-                if (incidentMatrix[j*edgeNumber+i] > 0) {
+                if (incidentMatrix[j * edgeNumber + i] > 0) {
                     k1 = vertexArray[j];
-                    weight = incidentMatrix[j*edgeNumber+i];
+                    weight = incidentMatrix[j * edgeNumber + i];
                 }
-                if (incidentMatrix[j*edgeNumber+i] < 0) {
+                if (incidentMatrix[j * edgeNumber + i] < 0) {
                     k2 = vertexArray[j];
-                    weight = Math.abs(incidentMatrix[j*edgeNumber+i]);
+                    weight = Math.abs(incidentMatrix[j * edgeNumber + i]);
                 }
             }
             if (k1 != null && k2 != null) {
@@ -103,31 +107,27 @@ public class Graph<T extends Comparable<T>> {
         }
     }
 
-    /**
-     * Graph representation from list of adjacency.
+    /**Graph representation with list of adjacency.
+     * We have list with special type ListOfAdjacency
+     * Then we just get information from this list and create edges
      *
-     * @param vertexArray array of existing vertexes
-     * @param vertexList list of adjacency
-     * @param weights weights of the edges
+     * @param vertexArray array of vertexes name
+     * @param listOfAdjacency list of adjacency itself
      */
-    public Graph(T[] vertexArray, List<T>[] vertexList, List<Integer>[] weights) {
+    public Graph(T[] vertexArray, List<ListOfAdjacency<T>> listOfAdjacency) {
         vertexes = new HashMap<>();
         edges = new HashMap<>();
 
-        int len = vertexArray.length;
         for (T t : vertexArray) {
             addVertex(t);
         }
-
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; j < vertexList[i].size(); j++) {
-                addEdge(vertexArray[i], vertexList[i].get(j), weights[i].get(j));
+        for (ListOfAdjacency<T> currentArray : listOfAdjacency) {
+            for (int i = 0; i < currentArray.getSize(); i++){
+                addEdge(currentArray.getVertex(), currentArray.getVertexNameFromId(i),
+                        currentArray.getWeightFromId(i));
             }
-        }
-    }
 
-    public Vertex<T> getVertex(T name) {
-        return vertexes.get(name);
+        }
     }
 
     /**We use this method to find vertexes for dijkstra.
@@ -137,13 +137,13 @@ public class Graph<T extends Comparable<T>> {
      * @return container with boolean value and vertex
      */
     public MyContainer<T> grayExist() {
-        for(Map.Entry<T, Vertex<T>> entry : vertexes.entrySet()) {
+        for (Map.Entry<T, Vertex<T>> entry : vertexes.entrySet()) {
             var value = entry.getValue();
-            if (value.getMark() == 2){
-                return new MyContainer<>(true,value);
+            if (value.getMark() == 2) {
+                return new MyContainer<>(true, value);
             }
         }
-        return new MyContainer<>(false,null);
+        return new MyContainer<>(false, null);
     }
 
     /**Dijkstra algorithm.
@@ -157,7 +157,7 @@ public class Graph<T extends Comparable<T>> {
      *                           2) D[u] = min
      *     mark[u] = 3
      *     for uv in E:
-     *       if D[v] > D[u] + w(uv):
+     *       if D[v] bigger than D[u] + w(uv):
      *         D[v] = D[u] + w(uv)
      *         mark[v] = G
      *
@@ -174,7 +174,7 @@ public class Graph<T extends Comparable<T>> {
 
         vertexes.forEach((k, v) -> {
             result.add(v);
-            v.setDistance(INF);
+            v.setDistance(inf);
             v.setMark(1);
         });
 
@@ -183,25 +183,22 @@ public class Graph<T extends Comparable<T>> {
 
         MyContainer<T> pair;
         while ((pair = grayExist()).getValueBoolean()) {
-            Vertex<T> cur = pair.getValueVertex();
-            List<Edge<T>> currEdgeList = edges.get(cur.getName());
-            cur.setMark(3); //algorithm for this vertex is ended
+            Vertex<T> currentVertex = pair.getValueVertex();
+            List<Edge<T>> currEdgeList = edges.get(currentVertex.getName());
+            currentVertex.setMark(3); //algorithm for this vertex is ended
 
             if (currEdgeList == null) {
                 continue;
             }
 
-            for (var i : currEdgeList) {
-                Vertex<T> from = i.getV1();
-                Vertex<T> to = i.getV2();
+            for (var edges : currEdgeList) {
+                Vertex<T> to = edges.getV2();
                 to.setDistance(Math.min(
-                        from.getDistance()+i.getWeight(),to.getDistance()
-                ));
+                        currentVertex.getDistance() + edges.getWeight(), to.getDistance()));
                 if (to.getMark() != 3) {
                     to.setMark(2);
                }
             }
-
         }
         result.sort(Comparator.comparingInt(Vertex::getDistance));
         return result;
@@ -215,8 +212,8 @@ public class Graph<T extends Comparable<T>> {
      * @param name name of the vertex that we want to add
      */
     public void addVertex(T name){
-        if (vertexes.containsKey(name) || name == null){
-            return;
+        if (vertexes.containsKey(name) || name == null) {
+            throw new IllegalArgumentException("Invalid vertex name");
         }
         Vertex<T> v = new Vertex<>(name);
         edges.put(v.getName(), new ArrayList<>());
@@ -231,14 +228,13 @@ public class Graph<T extends Comparable<T>> {
      * @param weight positive weights of the vertex
      */
     public void addEdge(T name1, T name2, Integer weight) {
-        if (weight <= 0 ){
+        if (weight <= 0 ) {
             throw new IllegalArgumentException("Only positive weight");
         }
 
-        if (name1 == null || name2 == null){
-            throw new IllegalArgumentException("Not null names");
+        if (name1 == null || name2 == null) {
+            throw new IllegalArgumentException("Only not null names");
         }
-
 
         Vertex<T> v1 = vertexes.get(name1);
         Vertex<T> v2 = vertexes.get(name2);
@@ -257,11 +253,8 @@ public class Graph<T extends Comparable<T>> {
      * @return deleted vertex
      */
     public Vertex<T> deleteVertex(T name) {
-        if (vertexes.get(name) == null){
-                throw new NullPointerException("This key is null, don't try to use it");
-        }
-        if(!vertexes.containsKey(name)) {
-            throw new IllegalArgumentException("No vertex with this name");
+        if (vertexes.get(name) == null || !vertexes.containsKey(name)) {
+                throw new NullPointerException("Invalid vertex name");
         }
         edges.remove(name);
         var deletedVertex = vertexes.get(name);
@@ -277,17 +270,47 @@ public class Graph<T extends Comparable<T>> {
      * @param name2 name of incoming vertex
      * @return return deleted edge or throw exception
      */
-    public Edge<T> deleteEdge(T name1, T name2) {
-        List<Edge<T>> listOfEdges = edges.get(name1);
-        for (int i = 0; i < listOfEdges.size(); i++) {
-            if (listOfEdges.get(i).getV2().getName() == name2) {
-                return listOfEdges.remove(i);
+    public Edge<T> deleteEdge(T name1, T name2, Integer weight) {
+        if (!edges.containsKey(name1)) {
+            throw new NullPointerException("No edges from this vertex");
+        }
+        for (var edge : edges.get(name1)) {
+            if (edge.getV2().getName() == name2 && edge.getWeight() == weight) {
+                edges.get(name1).remove(edge);
+                return edge;
             }
         }
         throw new IllegalArgumentException("No such edge");
     }
 
-    private static class MyContainer<T extends Comparable<T>> {
+    /**Getter of vertex.
+     *
+     * @param name name of the vertex
+     * @return vertex
+     */
+    public Vertex<T> getVertex(T name) {
+        return vertexes.get(name);
+    }
+
+    /**Method to get one edge from the graph with input data.
+     *
+     * @param nameFrom vertex - start of the edge
+     * @param nameTo vertex - end of the edge
+     * @param weight weight of this edge
+     * @return edge or exception if there are no such edge
+     */
+    public Edge<T> getEdge(T nameFrom, T nameTo, Integer weight) {
+        List<Edge<T>> nameFromEdges = edges.get(nameFrom);
+        for (var edges : nameFromEdges) {
+            if (edges.getV2().getName() == nameTo && edges.getWeight() == weight) {
+                return edges;
+            }
+
+        }
+        throw new IllegalArgumentException("Invalid vertexes names");
+    }
+
+    private static class MyContainer<T> {
         private final boolean valueBoolean;
         private final Vertex<T> valueVertex;
 
@@ -305,5 +328,21 @@ public class Graph<T extends Comparable<T>> {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Graph)) {
+            return false;
+        }
+        Graph<?> graph = (Graph<?>) o;
+        return Objects.equals(vertexes, graph.vertexes)
+                && Objects.equals(edges, graph.edges);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(vertexes, edges);
+    }
 }
