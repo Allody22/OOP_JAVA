@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.mbogdanov2","l":"Edge"},{"p":"ru.nsu.mbogdanov2","l":"Graph"},{"p":"ru.nsu.mbogdanov2","l":"ListOfAdjacency"},{"p":"ru.nsu.mbogdanov2","l":"Vertex"}]
