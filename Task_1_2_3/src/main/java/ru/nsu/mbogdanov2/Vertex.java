@@ -13,6 +13,10 @@ public class Vertex<T> {
     private Integer distance;
     private int mark;
 
+    /**Constructor of the vertex.
+     *
+     * @param name key or name of the vertex to be created
+     */
     public Vertex(T name) {
         this.name = name;
         distance = null;
@@ -48,8 +52,8 @@ public class Vertex<T> {
             return false;
         }
         Vertex<?> vertex = (Vertex<?>) o;
-        return mark == vertex.mark && Objects.equals(name, vertex.name) &&
-                Objects.equals(distance, vertex.distance);
+        return mark == vertex.mark && Objects.equals(name, vertex.name)
+                && Objects.equals(distance, vertex.distance);
     }
 
     @Override

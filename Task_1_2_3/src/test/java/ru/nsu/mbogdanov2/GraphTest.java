@@ -2,7 +2,6 @@ package ru.nsu.mbogdanov2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +21,8 @@ public class GraphTest {
 
     @Test
     public void exceptionsTest() {
-        InputStream file = getClass().getClassLoader().
-                getResourceAsStream("matrixOfAdjacencyTest.txt");
+        InputStream file =
+                getClass().getClassLoader().getResourceAsStream("matrixOfAdjacencyTest.txt");
         assert file != null;
         Scanner sc = new Scanner(file);
         String vertexesLine = sc.nextLine();
@@ -32,19 +31,19 @@ public class GraphTest {
         int numberOfVertexes = vertexArray.length;
         int[] matrixOfAdjacency = new int[numberOfVertexes * numberOfVertexes];
 
-        for( int i = 0; i < numberOfVertexes; i++) {
-            for( int j = 0; j < numberOfVertexes; j++) {
+        for (int i = 0; i < numberOfVertexes; i++) {
+            for (int j = 0; j < numberOfVertexes; j++) {
                 matrixOfAdjacency[i * numberOfVertexes + j] = sc.nextInt();
             }
         }
-        Graph<String> graph = new Graph<>(vertexArray,matrixOfAdjacency);
+        Graph<String> graph = new Graph<>(vertexArray, matrixOfAdjacency);
 
         IllegalArgumentException exceptionDijkstra =
                 assertThrows(IllegalArgumentException.class, () -> graph.dijkstra("seven"));
         Assertions.assertEquals("No vertex with this name", exceptionDijkstra.getMessage());
 
         IllegalArgumentException exceptionAddEdge =
-                assertThrows(IllegalArgumentException.class, () -> graph.addEdge("one","two",-10));
+                assertThrows(IllegalArgumentException.class, () -> graph.addEdge("one", "two", -10));
         Assertions.assertEquals("Only positive weight", exceptionAddEdge.getMessage());
 
         NullPointerException exceptionDeleteVertex =
@@ -52,14 +51,15 @@ public class GraphTest {
         Assertions.assertEquals("Invalid vertex name", exceptionDeleteVertex.getMessage());
 
         IllegalArgumentException exceptionDeleteEdge =
-                assertThrows(IllegalArgumentException.class, () -> graph.deleteEdge("two","two",33));
+                assertThrows(IllegalArgumentException.class,
+                        () -> graph.deleteEdge("two", "two", 33));
         Assertions.assertEquals("No such edge", exceptionDeleteEdge.getMessage());
     }
 
     @Test
     public void matrixOfIncidentTest() {
-        var file = getClass().getClassLoader().
-                getResourceAsStream("matrixOfIncidentTest.txt");
+        var file =
+                getClass().getClassLoader().getResourceAsStream("matrixOfIncidentTest.txt");
         assert file != null;
         var sc = new Scanner(file);
         var vertexesLine = sc.nextLine();
@@ -92,8 +92,8 @@ public class GraphTest {
 
     @Test
     public void matrixOfAdjacencyTest() {
-        InputStream file = getClass().getClassLoader().
-                getResourceAsStream("matrixOfAdjacencyTest.txt");
+        InputStream file =
+                getClass().getClassLoader().getResourceAsStream("matrixOfAdjacencyTest.txt");
         assert file != null;
         var sc = new Scanner(file);
         var vertexesLine = sc.nextLine();
@@ -112,7 +112,7 @@ public class GraphTest {
         int[] expectedDistance = {0, 10, 10, 20, 30};
         String[] expectedNames = {"five", "one", "three", "two", "four"};
 
-        for(int i = 0; i < actual.size(); i++) {
+        for (int i = 0; i < actual.size(); i++) {
             Assertions.assertEquals(actual.get(i).getDistance(), expectedDistance[i]);
             Assertions.assertEquals(actual.get(i).getName(), expectedNames[i]);
         }
@@ -120,8 +120,8 @@ public class GraphTest {
 
     @Test
     public void listOfAdjacencyTest() {
-        InputStream file = getClass().getClassLoader().
-                getResourceAsStream("listOfAdjacencyTest.txt");
+        InputStream file =
+                getClass().getClassLoader().getResourceAsStream("listOfAdjacencyTest.txt");
         assert file != null;
         Scanner sc = new Scanner(file);
         String vertexesLine = sc.nextLine();
@@ -135,7 +135,7 @@ public class GraphTest {
             var arrayForLineOfAdjacency = lineOfAdjacency.split("\\s");
             var vertexPair = new ListOfAdjacency<String>();
             vertexPair.setVertex(arrayForLineOfAdjacency[0]);
-            for (int j = 1; j < arrayForLineOfAdjacency.length - 1; j+=2) {
+            for (int j = 1; j < arrayForLineOfAdjacency.length - 1; j += 2) {
                 vertexPair.setVertexName(arrayForLineOfAdjacency[j]);
                 vertexPair.setWeight(Integer.valueOf(arrayForLineOfAdjacency[j + 1]));
             }
@@ -143,7 +143,7 @@ public class GraphTest {
         }
         var expectedGraph = new Graph<>(vertexArray, listOfAdjacency);
         var actual = expectedGraph.dijkstra("b");
-        for (int i = 1; i < actual.size(); i++){
+        for (int i = 1; i < actual.size(); i++) {
             Assertions.assertEquals(actual.get(i).getDistance(), Integer.MAX_VALUE);
         }
     }

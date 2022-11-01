@@ -122,7 +122,7 @@ public class Graph<T> {
             addVertex(t);
         }
         for (ListOfAdjacency<T> currentArray : listOfAdjacency) {
-            for (int i = 0; i < currentArray.getSize(); i++){
+            for (int i = 0; i < currentArray.getSize(); i++) {
                 addEdge(currentArray.getVertex(), currentArray.getVertexNameFromId(i),
                         currentArray.getWeightFromId(i));
             }
@@ -186,11 +186,9 @@ public class Graph<T> {
             Vertex<T> currentVertex = pair.getValueVertex();
             List<Edge<T>> currEdgeList = edges.get(currentVertex.getName());
             currentVertex.setMark(3); //algorithm for this vertex is ended
-
             if (currEdgeList == null) {
                 continue;
             }
-
             for (var edges : currEdgeList) {
                 Vertex<T> to = edges.getV2();
                 to.setDistance(Math.min(
@@ -211,7 +209,7 @@ public class Graph<T> {
      *
      * @param name name of the vertex that we want to add
      */
-    public void addVertex(T name){
+    public void addVertex(T name) {
         if (vertexes.containsKey(name) || name == null) {
             throw new IllegalArgumentException("Invalid vertex name");
         }
@@ -228,7 +226,7 @@ public class Graph<T> {
      * @param weight positive weights of the vertex
      */
     public void addEdge(T name1, T name2, Integer weight) {
-        if (weight <= 0 ) {
+        if (weight <= 0) {
             throw new IllegalArgumentException("Only positive weight");
         }
 
@@ -254,7 +252,7 @@ public class Graph<T> {
      */
     public Vertex<T> deleteVertex(T name) {
         if (vertexes.get(name) == null || !vertexes.containsKey(name)) {
-                throw new NullPointerException("Invalid vertex name");
+            throw new NullPointerException("Invalid vertex name");
         }
         edges.remove(name);
         var deletedVertex = vertexes.get(name);

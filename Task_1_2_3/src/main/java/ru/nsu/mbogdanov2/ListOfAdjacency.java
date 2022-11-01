@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**Class for comfortable representation of lists of adjacency.
- *
  */
 public class ListOfAdjacency<T> {
     private T vertex;
@@ -12,7 +11,8 @@ public class ListOfAdjacency<T> {
     private final List<Integer> weight;
     private int size;
 
-
+    /**Constructor of the vertex.
+     */
     public ListOfAdjacency() {
         vertex = null;
         vertexName = new ArrayList<>();

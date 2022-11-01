@@ -14,23 +14,24 @@ public class VertexTest {
         var secondVertex = new Vertex<>(2);
         expectedGraph.addVertex(1);
         expectedGraph.addVertex(2);
-        Assertions.assertNotEquals(secondVertex,expectedGraph.getVertex(1));
-        Assertions.assertEquals(secondVertex,expectedGraph.getVertex(2));
+        Assertions.assertNotEquals(secondVertex, expectedGraph.getVertex(1));
+        Assertions.assertEquals(secondVertex, expectedGraph.getVertex(2));
     }
 
     @Test
     public void deleteVertexTest() {
         Graph<String> expectedGraph = new Graph<>();
-        var startVertex = new Vertex<>("one");
         expectedGraph.addVertex("one");
         expectedGraph.addVertex("two");
-        expectedGraph.addEdge("one","two",33);
-        expectedGraph.addEdge("one","two",66);
+        expectedGraph.addEdge("one", "two", 33);
+        expectedGraph.addEdge("one", "two", 66);
         var actualDeletedVertex = expectedGraph.deleteVertex("one");
         NullPointerException exceptionDeleteEdge =
                 assertThrows(NullPointerException.class,
-                        () -> expectedGraph.deleteEdge("one","two",33));
+                        () -> expectedGraph.deleteEdge("one", "two", 33));
+
         Assertions.assertEquals("No edges from this vertex", exceptionDeleteEdge.getMessage());
+        var startVertex = new Vertex<>("one");
         Assertions.assertEquals(actualDeletedVertex, startVertex);
     }
 
