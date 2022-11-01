@@ -43,4 +43,37 @@ public class VertexTest {
         Assertions.assertDoesNotThrow(() -> expectedGraph.addVertex(2));
         Assertions.assertEquals(expectedGraph.getVertex(1), expectedVertex);
     }
+
+    @Test
+    public void getMapOfVertexesTest() {
+        Graph<Integer> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex(1);
+        expectedGraph.addVertex(2);
+        expectedGraph.addVertex(3);
+        expectedGraph.addEdge(1, 2, 33);
+        expectedGraph.addEdge(2, 3, 44);
+        expectedGraph.addEdge(2, 2, 88);
+
+        var vertexes = expectedGraph.getVertexes();
+        Assertions.assertDoesNotThrow(() -> vertexes.containsKey(1));
+        Assertions.assertDoesNotThrow(() -> vertexes.containsKey(2));
+
+        var startVertex = new Vertex<>(1);
+        Assertions.assertNotEquals(vertexes.get(2), startVertex);
+        Assertions.assertEquals(vertexes.get(1), startVertex);
+    }
+
+    @Test
+    public void namesOfVertexesTest() {
+        Graph<String> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex("one");
+        expectedGraph.addVertex("two");
+        expectedGraph.addEdge("one", "two", 33);
+        expectedGraph.addEdge("one", "two", 66);
+
+        Assertions.assertNotEquals(expectedGraph.getEdge("one","two",33).getV1().getName(), "two");
+        Assertions.assertEquals(expectedGraph.getEdge("one","two",33).getV1().getName(), "one");
+    }
 }

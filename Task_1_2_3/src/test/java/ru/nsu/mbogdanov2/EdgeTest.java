@@ -50,4 +50,38 @@ public class EdgeTest {
         Assertions.assertDoesNotThrow(() -> expectedGraph.addEdge(2, 1, 43));
         Assertions.assertEquals(expectedGraph.getEdge(1, 2, 33), expectedEdge);
     }
+
+    @Test
+    public void getMapOfEdgeTest() {
+        Graph<Integer> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex(1);
+        expectedGraph.addVertex(2);
+        expectedGraph.addVertex(3);
+        expectedGraph.addEdge(1, 2, 33);
+        expectedGraph.addEdge(2, 3, 44);
+        expectedGraph.addEdge(2, 2, 88);
+
+        var edges = expectedGraph.getEdges();
+        Assertions.assertDoesNotThrow(() -> edges.containsKey(1));
+        Assertions.assertDoesNotThrow(() -> edges.containsKey(2));
+
+        var startVertex = new Vertex<>(1);
+        var secondVertex = new Vertex<>(2);
+        Edge<Integer> actualEdge = new Edge<>(startVertex ,secondVertex, 33);
+        Assertions.assertEquals(edges.get(1).get(0), actualEdge);
+    }
+
+    @Test
+    public void weightsOfEdgesTest() {
+        Graph<String> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex("one");
+        expectedGraph.addVertex("two");
+        expectedGraph.addEdge("one", "two", 33);
+        expectedGraph.addEdge("one", "two", 66);
+
+        Assertions.assertNotEquals(expectedGraph.getEdge("one","two",33).getWeight(), 32);
+        Assertions.assertEquals(expectedGraph.getEdge("one","two",33).getWeight(), 33);
+    }
 }

@@ -34,6 +34,10 @@ public class Edge<T> {
         return v2;
     }
 
+    public Vertex<T> getV1() {
+        return v1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

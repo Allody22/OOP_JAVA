@@ -303,11 +303,20 @@ public class Graph<T> {
             if (edges.getV2().getName() == nameTo && edges.getWeight() == weight) {
                 return edges;
             }
-
         }
         throw new IllegalArgumentException("Invalid vertexes names");
     }
 
+    public Map<T, List<Edge<T>>> getEdges() {
+        return edges;
+    }
+
+    public Map<T, Vertex<T>> getVertexes() {
+        return vertexes;
+    }
+
+    /**Special private static class to return Vertex and boolean value in one time.
+     */
     private static class MyContainer<T> {
         private final boolean valueBoolean;
         private final Vertex<T> valueVertex;
