@@ -298,13 +298,16 @@ public class Graph<T> {
      * @return edge or exception if there are no such edge
      */
     public Edge<T> getEdge(T nameFrom, T nameTo, Integer weight) {
+        if (!vertexes.containsKey(nameFrom) || !vertexes.containsKey(nameTo)) {
+            throw new NullPointerException("Invalid vertex name");
+        }
         List<Edge<T>> nameFromEdges = edges.get(nameFrom);
         for (var edges : nameFromEdges) {
             if (edges.getV2().getName() == nameTo && edges.getWeight() == weight) {
                 return edges;
             }
         }
-        throw new IllegalArgumentException("Invalid vertexes names");
+        throw new IllegalArgumentException("No edge with this weight");
     }
 
     public Map<T, List<Edge<T>>> getEdges() {

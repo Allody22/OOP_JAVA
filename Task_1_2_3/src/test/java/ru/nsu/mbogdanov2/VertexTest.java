@@ -73,7 +73,8 @@ public class VertexTest {
         expectedGraph.addEdge("one", "two", 33);
         expectedGraph.addEdge("one", "two", 66);
 
-        Assertions.assertNotEquals(expectedGraph.getEdge("one", "two", 33).getV1().getName(), "two");
+        Assertions.assertNotEquals(expectedGraph.getEdge("one", "two", 33)
+                .getV1().getName(), "two");
         Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getV1().getName(), "one");
     }
 
@@ -108,7 +109,7 @@ public class VertexTest {
 
         var vertexes = expectedGraph.getVertexes();
         int expectedMark = 1;
-        for (int i = 0; i < vertexes.size(); i++){
+        for (int i = 0; i < vertexes.size(); i++) {
             Assertions.assertEquals(vertexes.get(i).getMark(), expectedMark);
         }
 

@@ -47,14 +47,35 @@ public class GraphTest {
                         () -> graph.addEdge("one", "two", -10));
         Assertions.assertEquals("Only positive weight", exceptionAddEdge.getMessage());
 
+        IllegalArgumentException exceptionAddNullEdge =
+                assertThrows(IllegalArgumentException.class,
+                        () -> graph.addEdge(null, "two", 10));
+        Assertions.assertEquals("Only not null names", exceptionAddNullEdge.getMessage());
+
+        IllegalArgumentException exceptionAddVertex =
+                assertThrows(IllegalArgumentException.class,
+                        () -> graph.addVertex("one"));
+        Assertions.assertEquals("Invalid vertex name", exceptionAddVertex.getMessage());
+
         NullPointerException exceptionDeleteVertex =
                 assertThrows(NullPointerException.class, () -> graph.deleteVertex("seven"));
         Assertions.assertEquals("Invalid vertex name", exceptionDeleteVertex.getMessage());
 
-        IllegalArgumentException exceptionDeleteEdge =
+        IllegalArgumentException exceptionDeleteEdgeInvalidNameTo =
                 assertThrows(IllegalArgumentException.class,
                         () -> graph.deleteEdge("two", "two", 33));
-        Assertions.assertEquals("No such edge", exceptionDeleteEdge.getMessage());
+        Assertions.assertEquals("No such edge", exceptionDeleteEdgeInvalidNameTo.getMessage());
+
+        NullPointerException exceptionGetEdge =
+                assertThrows(NullPointerException.class,
+                        () -> graph.getEdge("seven", "two", 33));
+        Assertions.assertEquals("Invalid vertex name", exceptionGetEdge.getMessage());
+
+        IllegalArgumentException exceptionGetEdgeInvalidWeight =
+                assertThrows(IllegalArgumentException.class,
+                        () -> graph.getEdge("one", "two", -33));
+        Assertions.assertEquals("No edge with this weight",
+                exceptionGetEdgeInvalidWeight.getMessage());
     }
 
     @Test
