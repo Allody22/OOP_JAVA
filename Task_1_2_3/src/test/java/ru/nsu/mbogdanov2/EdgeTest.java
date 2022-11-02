@@ -45,7 +45,7 @@ public class EdgeTest {
         expectedGraph.addVertex(2);
         expectedGraph.addVertex(1);
 
-        Edge<Integer> expectedEdge = new Edge<>(startVertex, secondVertex, 33);
+        var expectedEdge = new Edge<>(startVertex, secondVertex, 33);
         Assertions.assertDoesNotThrow(() -> expectedGraph.addEdge(1, 2, 33));
         Assertions.assertDoesNotThrow(() -> expectedGraph.addEdge(2, 1, 43));
         Assertions.assertEquals(expectedGraph.getEdge(1, 2, 33), expectedEdge);

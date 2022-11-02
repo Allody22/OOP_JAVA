@@ -91,9 +91,12 @@ public class VertexTest {
         Assertions.assertNull(expectedGraph.getVertex("one").getDistance());
         Assertions.assertNull(expectedGraph.getVertex("one").getDistance());
 
-        expectedGraph.dijkstra("one");
+        expectedGraph.getVertex("one").setDistance(0);
+        expectedGraph.getVertex("three").setDistance(Integer.MAX_VALUE);
+        expectedGraph.getVertex("two").setDistance(Integer.MAX_VALUE);
         Assertions.assertEquals(expectedGraph.getVertex("one").getDistance(), 0);
         Assertions.assertEquals(expectedGraph.getVertex("three").getDistance(), Integer.MAX_VALUE);
+        Assertions.assertEquals(expectedGraph.getVertex("two").getDistance(), Integer.MAX_VALUE);
     }
 
     @Test
@@ -111,13 +114,20 @@ public class VertexTest {
         int expectedMark = 1;
         for (int i = 0; i < vertexes.size(); i++) {
             Assertions.assertEquals(vertexes.get(i).getMark(), expectedMark);
+            vertexes.get(i).setMark(3);
         }
 
-        expectedGraph.dijkstra(2);
         var newVertexes = expectedGraph.getVertexes();
         int expectedNewMark = 3;
         for (int i = 0; i < newVertexes.size(); i++) {
             Assertions.assertEquals(expectedNewMark, newVertexes.get(i).getMark());
+            vertexes.get(i).setMark(2);
+        }
+
+        var newVertexesLast = expectedGraph.getVertexes();
+        int expectedLastMark = 2;
+        for (int i = 0; i < newVertexes.size(); i++) {
+            Assertions.assertEquals(expectedLastMark, newVertexesLast.get(i).getMark());
         }
     }
 }
