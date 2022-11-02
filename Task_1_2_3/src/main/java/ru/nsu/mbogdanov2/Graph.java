@@ -137,7 +137,7 @@ public class Graph<T> {
      * @return container with boolean value and vertex
      */
     public MyContainer<T> grayExist() {
-        for (Map.Entry<T, Vertex<T>> entry : vertexes.entrySet()) {
+        for (var entry : vertexes.entrySet()) {
             var value = entry.getValue();
             if (value.getMark() == 2) {
                 return new MyContainer<>(true, value);
@@ -316,6 +316,10 @@ public class Graph<T> {
 
     public Map<T, Vertex<T>> getVertexes() {
         return vertexes;
+    }
+
+    public int getInf() {
+        return inf;
     }
 
     /**Special private static class to return Vertex and boolean value in one time.

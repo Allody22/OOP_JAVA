@@ -66,18 +66,17 @@ public class VertexTest {
 
     @Test
     public void namesOfVertexesTest() {
-        Graph<String> expectedGraph = new Graph<>();
-
         Vertex<String> firstVertex = new Vertex<>("one");
-        Assertions.assertEquals(firstVertex.getName(),"one");
+        Assertions.assertEquals(firstVertex.getName(), "one");
 
         Vertex<String> secondVertex = new Vertex<>("two");
-        Assertions.assertEquals(secondVertex.getName(),"two");
+        Assertions.assertEquals(secondVertex.getName(), "two");
 
         Vertex<String> thirdVertex = new Vertex<>("three");
-        Assertions.assertNotEquals(thirdVertex.getName(),"two");
-        Assertions.assertEquals(thirdVertex.getName(),"three");
+        Assertions.assertNotEquals(thirdVertex.getName(), "two");
+        Assertions.assertEquals(thirdVertex.getName(), "three");
 
+        Graph<String> expectedGraph = new Graph<>();
         expectedGraph.addVertex("one");
         expectedGraph.addVertex("two");
         expectedGraph.addEdge("one", "two", 33);
@@ -90,8 +89,6 @@ public class VertexTest {
 
     @Test
     public void distanceOfVertexesTest() {
-        Graph<String> expectedGraph = new Graph<>();
-
         Vertex<Integer> firstVertex = new Vertex<>(1);
         firstVertex.setDistance(3);
         Assertions.assertEquals(firstVertex.getDistance(),3);
@@ -102,9 +99,10 @@ public class VertexTest {
 
         Vertex<Integer> thirdVertex = new Vertex<>(3);
         thirdVertex.setDistance(5);
-        Assertions.assertNotEquals(thirdVertex.getDistance(),3);
-        Assertions.assertEquals(thirdVertex.getDistance(),5);
+        Assertions.assertNotEquals(thirdVertex.getDistance(), 3);
+        Assertions.assertEquals(thirdVertex.getDistance(), 5);
 
+        Graph<String> expectedGraph = new Graph<>();
         expectedGraph.addVertex("one");
         expectedGraph.addVertex("two");
         expectedGraph.addVertex("three");
