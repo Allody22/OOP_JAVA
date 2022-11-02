@@ -26,6 +26,11 @@ public class EdgeTest {
         var startVertex = new Vertex<>("one");
         var secondVertex = new Vertex<>("two");
 
+        var firstEdge = new Edge<>(startVertex,secondVertex,3);
+        Assertions.assertEquals(firstEdge.getWeight(), 3);
+        Assertions.assertEquals(firstEdge.getV1(), startVertex);
+        Assertions.assertEquals(firstEdge.getV2(), secondVertex);
+
         expectedGraph.addVertex("one");
         expectedGraph.addVertex("two");
         expectedGraph.addEdge("one", "two", 33);
@@ -83,6 +88,11 @@ public class EdgeTest {
 
         var actualVertexTwo = new Vertex<>("two");
         var actualVertexOne = new Vertex<>("one");
+
+        var expectedEdge = new Edge<>(actualVertexOne,actualVertexTwo,22);
+        Assertions.assertEquals(expectedEdge.getWeight(),22);
+        Assertions.assertNotEquals(expectedEdge.getWeight(),32);
+
         Assertions.assertNotEquals(expectedGraph.getEdge("one", "two", 33).getWeight(), 32);
         Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getWeight(), 33);
         Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getV2(), actualVertexTwo);
