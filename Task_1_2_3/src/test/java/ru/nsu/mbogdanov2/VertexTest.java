@@ -91,11 +91,11 @@ public class VertexTest {
     public void distanceOfVertexesTest() {
         Vertex<Integer> firstVertex = new Vertex<>(1);
         firstVertex.setDistance(3);
-        Assertions.assertEquals(firstVertex.getDistance(),3);
+        Assertions.assertEquals(firstVertex.getDistance(), 3);
 
         Vertex<Integer> secondVertex = new Vertex<>(2);
         secondVertex.setDistance(4);
-        Assertions.assertEquals(secondVertex.getDistance(),4);
+        Assertions.assertEquals(secondVertex.getDistance(), 4);
 
         Vertex<Integer> thirdVertex = new Vertex<>(3);
         thirdVertex.setDistance(5);

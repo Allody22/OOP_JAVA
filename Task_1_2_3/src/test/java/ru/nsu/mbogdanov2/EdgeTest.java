@@ -98,4 +98,32 @@ public class EdgeTest {
         Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getV2(), actualVertexTwo);
         Assertions.assertEquals(expectedGraph.getEdge("one", "two", 33).getV1(), actualVertexOne);
     }
+
+    @Test
+    public void getSecondVertexNameTests() {
+        Graph<String> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex("one");
+        expectedGraph.addVertex("two");
+        expectedGraph.addEdge("one", "two", 33);
+        expectedGraph.addEdge("one", "two", 66);
+
+        var expectedSecondVertex = new Vertex<>("two");
+        Assertions.assertEquals(expectedSecondVertex.getName(), expectedGraph.getEdge("one", "two", 33).getV2().getName());
+        Assertions.assertEquals(expectedSecondVertex.getName(), expectedGraph.getEdge("one", "two", 66).getV2().getName());
+    }
+
+    @Test
+    public void getFirstVertexNameTests() {
+        Graph<String> expectedGraph = new Graph<>();
+
+        expectedGraph.addVertex("one");
+        expectedGraph.addVertex("two");
+        expectedGraph.addEdge("one", "two", 33);
+        expectedGraph.addEdge("one", "two", 66);
+
+        var expectedSecondVertex = new Vertex<>("one");
+        Assertions.assertEquals(expectedSecondVertex.getName(), expectedGraph.getEdge("one", "two", 33).getV1().getName());
+        Assertions.assertEquals(expectedSecondVertex.getName(), expectedGraph.getEdge("one", "two", 66).getV1().getName());
+    }
 }

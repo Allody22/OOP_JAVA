@@ -24,7 +24,7 @@ public class GraphTest {
     public void exceptionsTest() throws IOException {
         try (var file =
                      getClass().getClassLoader().getResourceAsStream("matrixOfAdjacencyTest.txt")) {
-            if (file == null){
+            if (file == null) {
                 throw new FileNotFoundException("No file with this name");
             }
             Scanner sc = new Scanner(file);
@@ -86,7 +86,7 @@ public class GraphTest {
     public void matrixOfIncidentTest() throws IOException {
         try (var file = getClass()
                 .getClassLoader().getResourceAsStream("matrixOfIncidentTest.txt")) {
-            if (file == null){
+            if (file == null) {
                 throw new FileNotFoundException("No file with this name");
             }
             var sc = new Scanner(file);
@@ -95,7 +95,7 @@ public class GraphTest {
             var vertexArrayForInt = Arrays.stream(vertexesLine.split("\\s"))
                     .mapToInt(Integer::parseInt)
                     .toArray();
-            Integer[] vertexArray = Arrays.stream(vertexArrayForInt).boxed().toArray(Integer[]::new);
+            var vertexArray = Arrays.stream(vertexArrayForInt).boxed().toArray(Integer[]::new);
 
             var numberOfEdges = sc.nextInt();
             var numberOfVertexes = vertexArray.length;
