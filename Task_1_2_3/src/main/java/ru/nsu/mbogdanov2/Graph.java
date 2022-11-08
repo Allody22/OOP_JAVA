@@ -15,9 +15,9 @@ import java.util.Objects;
  */
 public class Graph<T> {
 
+    private static final int INF = Integer.MAX_VALUE;
     private final Map<T, Vertex<T>> vertexes;
     private final Map<T, List<Edge<T>>> edges;
-    private final int inf = Integer.MAX_VALUE;
 
     public Graph() {
         vertexes = new HashMap<>();
@@ -174,7 +174,7 @@ public class Graph<T> {
 
         vertexes.forEach((k, v) -> {
             result.add(v);
-            v.setDistance(inf);
+            v.setDistance(INF);
             v.setMark(1);
         });
 
@@ -319,7 +319,7 @@ public class Graph<T> {
     }
 
     public int getInf() {
-        return inf;
+        return INF;
     }
 
     /**Special private static class to return Vertex and boolean value in one time.
