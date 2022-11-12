@@ -8,7 +8,8 @@ import java.util.List;
 /**Main idea of the algorithm.
  * We find prefix function of substring (the explanation is in the findPrefixArray method)
  * Then we check the original string and if we get a mismatch, we check the prefix from the letter
- * that stands to the left of the last mismatch letter and move our substring according to the algorithm
+ * that stands to the left of the last mismatch letter and
+ * move our substring according to the algorithm
  */
 public class KnuthMorrisPratt {
     BufferedReader file;
@@ -20,12 +21,15 @@ public class KnuthMorrisPratt {
      *
      * @param file input file with text
      * @param substring pattern that should be found
-     * @throws IOException exception in case there are no file
+     * @throws IOException exception in case there are some troubles with file
      */
     public KnuthMorrisPratt(BufferedReader file, String substring) throws IOException {
+        if (substring == null || substring.equals("")){
+            throw new IllegalArgumentException("Invalid substring");
+        }
         this.file = file;
         this.substring = substring;
-        ansList = algorithmSearch(file,substring);
+        ansList = algorithmSearch(file, substring);
     }
 
     /** Method to find array p of prefixes.
@@ -48,7 +52,6 @@ public class KnuthMorrisPratt {
                 prefixLen++;
                 currentId++;
                 prefixArray[currentId] = prefixLen;
-
             }
             else if (prefixLen > 0) {
                 prefixLen = prefixArray[prefixLen];
@@ -90,9 +93,8 @@ public class KnuthMorrisPratt {
             if (pattern.charAt(idInPattern) == currentLetter) {
                 idInPattern++;
                 currentId++;
-
                 if (idInPattern == patternLen) {
-                    matchesId.add(currentId-idInPattern);
+                    matchesId.add(currentId - idInPattern);
                     idInPattern = prefixLen[idInPattern];
                 }
             }
