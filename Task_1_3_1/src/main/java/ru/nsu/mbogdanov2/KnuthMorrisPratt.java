@@ -52,11 +52,9 @@ public class KnuthMorrisPratt {
                 prefixLen++;
                 currentId++;
                 prefixArray[currentId] = prefixLen;
-            }
-            else if (prefixLen > 0) {
+            } else if (prefixLen > 0) {
                 prefixLen = prefixArray[prefixLen];
-            }
-            else {
+            } else {
                 currentId++;
                 prefixArray[currentId] = 0;
             }
