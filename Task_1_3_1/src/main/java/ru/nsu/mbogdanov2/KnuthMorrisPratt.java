@@ -24,7 +24,7 @@ public class KnuthMorrisPratt {
      * @throws IOException exception in case there are some troubles with file
      */
     public KnuthMorrisPratt(BufferedReader file, String substring) throws IOException {
-        if (substring == null || substring.equals("")){
+        if (substring == null || substring.equals("")) {
             throw new IllegalArgumentException("Invalid substring");
         }
         this.file = file;
@@ -55,7 +55,6 @@ public class KnuthMorrisPratt {
             }
             else if (prefixLen > 0) {
                 prefixLen = prefixArray[prefixLen];
-
             }
             else {
                 currentId++;
@@ -80,7 +79,8 @@ public class KnuthMorrisPratt {
      * @return list of all matching indexes
      * @throws IOException exception in case there are no file
      */
-    public static List<Integer> algorithmSearch(BufferedReader file, String pattern) throws IOException {
+    public static List<Integer> algorithmSearch(BufferedReader file, String pattern)
+            throws IOException {
         int currentId = 0;
         int idInPattern = 0;
         int patternLen = pattern.length();
