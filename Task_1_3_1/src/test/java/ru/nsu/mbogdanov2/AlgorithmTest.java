@@ -4,7 +4,6 @@ package ru.nsu.mbogdanov2;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class AlgorithmTest {
 
         String name = "C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src\\test\\resources\\warAndPeaceFirstTome.txt";
         String pattern = "Разговор показался ему интересен";
-        BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(name)));
+        BufferedReader file = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("warAndPeaceFirstTome.txt")));
         KnuthMorrisPratt ans = new KnuthMorrisPratt(file, pattern);
 
         long endTime = System.nanoTime();
@@ -37,7 +36,7 @@ public class AlgorithmTest {
     public void oneBigLine2GBTest() throws IOException {
         long startTime = System.nanoTime();
         BufferedReader file = new BufferedReader(new InputStreamReader(
-                new FileInputStream("C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src\\test\\resources\\2GB.txt")));
+                getClass().getClassLoader().getResourceAsStream("2GB.txt")));
         String pattern = "aaa";
         KnuthMorrisPratt ans = new KnuthMorrisPratt(file, pattern);
         long endTime = System.nanoTime();
@@ -50,7 +49,7 @@ public class AlgorithmTest {
     public void tenGBTest() throws IOException {
         long startTime = System.nanoTime();
         BufferedReader file = new BufferedReader(new InputStreamReader(
-                new FileInputStream("C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src\\test\\resources\\10GB.txt")));
+                getClass().getClassLoader().getResourceAsStream("10GB.txt")));
         String pattern = "aaa";
         KnuthMorrisPratt ans = new KnuthMorrisPratt(file, pattern);
         long endTime = System.nanoTime();
@@ -74,14 +73,14 @@ public class AlgorithmTest {
 
         String nameOfFile = "C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src\\test\\resources\\timeTest.txt";
         String pattern = "QWE";
-        KnuthMorrisPratt ans = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(new FileInputStream(nameOfFile))), pattern);
+        KnuthMorrisPratt ans = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("timeTest.txt"))), pattern);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
 
         long startTime2 = System.nanoTime();
 
-        BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream(nameOfFile)));
+        BufferedReader file2 = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("timeTest.txt")));
         String line = file2.readLine();
         int pos2 = line.indexOf("QWE");
 
@@ -100,7 +99,7 @@ public class AlgorithmTest {
         String nameOfFile = "C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src" +
                 "\\test\\resources\\emptyFile.txt";
         String pattern = " ";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(new FileInputStream(nameOfFile))), pattern);
+        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("emptyFile.txt"))), pattern);
         List<Integer> expected = new ArrayList<>();
         Assertions.assertEquals(expected, actual.ansList);
     }
@@ -115,13 +114,13 @@ public class AlgorithmTest {
                 "\\test\\resources\\timeTest.txt";
         IllegalArgumentException exceptionNull = assertThrows(IllegalArgumentException.class,
                 () -> new KnuthMorrisPratt(new BufferedReader(new InputStreamReader
-                        (new FileInputStream(nameOfFile))), null));
+                        (getClass().getClassLoader().getResourceAsStream("timeTest.txt"))), null));
         Assertions.assertEquals("Invalid substring", exceptionNull.getMessage());
 
         String pattern = "";
         IllegalArgumentException exceptionEmptyPattern = assertThrows(IllegalArgumentException.class,
                 () -> new KnuthMorrisPratt(new BufferedReader(new InputStreamReader
-                        (new FileInputStream(nameOfFile))), pattern));
+                        (getClass().getClassLoader().getResourceAsStream("timeTest.txt"))), pattern));
         Assertions.assertEquals("Invalid substring", exceptionEmptyPattern.getMessage());
     }
 
@@ -134,7 +133,7 @@ public class AlgorithmTest {
         String nameOfFile = "C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src" +
                 "\\test\\resources\\firstElement.txt";
         String pattern = "qwerty";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(new FileInputStream(nameOfFile))), pattern);
+        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("firstElement.txt"))), pattern);
         List<Integer> expected = new ArrayList<>();
         expected.add(0);
         Assertions.assertEquals(expected, actual.ansList);
@@ -149,7 +148,7 @@ public class AlgorithmTest {
         String nameOfFile = "C:\\Users\\IAMNO\\OOP_JAVA\\Task_1_3_1\\src" +
                 "\\test\\resources\\one.txt";
         String pattern = "a";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(new FileInputStream(nameOfFile))), pattern);
+        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("one.txt"))), pattern);
         Assertions.assertEquals(1, actual.ansList.size());
     }
 }
