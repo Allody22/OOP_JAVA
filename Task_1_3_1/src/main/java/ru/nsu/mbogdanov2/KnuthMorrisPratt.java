@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**Main idea of the algorithm.
+/**
+ * Main idea of the algorithm.
  * We find prefix function of substring (the explanation is in the findPrefixArray method)
  * Then we check the original string and if we get a mismatch, we check the prefix from the letter
  * that stands to the left of the last mismatch letter and
@@ -14,9 +15,10 @@ import java.util.List;
 public class KnuthMorrisPratt {
     BufferedReader file;
     String substring;
-    List<Integer>  ansList;
-
-    /**Constructor of the algorithm class.
+    List<Integer> ansList;
+    
+    /**
+     * Constructor of the algorithm class.
      * It will help us to get answer and to store input information
      *
      * @param file input file with text
@@ -32,7 +34,8 @@ public class KnuthMorrisPratt {
         ansList = algorithmSearch(file, substring);
     }
 
-    /** Method to find array p of prefixes.
+    /**
+     * Method to find array p of prefixes.
      * Element p[i] is equal to maximal number of matching prefixes
      * and matching suffixes before this element
      *
@@ -62,7 +65,8 @@ public class KnuthMorrisPratt {
         return prefixArray;
     }
 
-    /** Algorithm and its main idea.
+    /**
+     * Algorithm and its main idea.
      * If (substring is not matching) then
      * We check the prefix of the letter that stays to the left of the last wrong letter
      * If (this prefix is bigger than 0) then
@@ -72,7 +76,7 @@ public class KnuthMorrisPratt {
      * If (this letter is first) then
      * We move substring to the right on 1
      *
-     * @param file input file with full text
+     * @param file    input file with full text
      * @param pattern substring that should be found
      * @return list of all matching indexes
      * @throws IOException exception in case there are no file
@@ -95,8 +99,7 @@ public class KnuthMorrisPratt {
                     matchesId.add(currentId - idInPattern);
                     idInPattern = prefixLen[idInPattern];
                 }
-            }
-            else {
+            } else {
                 idInPattern = prefixLen[idInPattern];
                 if (idInPattern < 0) {
                     currentId++;
