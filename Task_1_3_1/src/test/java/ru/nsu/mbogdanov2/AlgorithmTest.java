@@ -12,12 +12,14 @@ import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/** Tests for this algorithm.
+/**
+ * Tests for this algorithm.
  * A lot of tests for all cases of life
  */
 public class AlgorithmTest {
 
-    /** This is time test and its result is not so good.
+    /**
+     * This is time test and its result is not so good.
      * Java has method indexOf that returns with index of substring in string
      * And I decided to test the speed of this function and my algorithm.
      * I made a file with one big line and one substring at the end of the file.
@@ -60,74 +62,86 @@ public class AlgorithmTest {
         Assertions.assertTrue(duration < durationJava * 3);
     }
 
-    /** Test for empty file.
+    /**
+     * Test for empty file.
      * We can see that my algorithm returns an empty list
      *
      * @throws IOException exception in case there are some troubles with file
      */
     @Test
     public void emptyFileTest() throws IOException {
-        String pattern = " ";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(
+        try (var file = new BufferedReader(new InputStreamReader(
                 Objects.requireNonNull(getClass().getClassLoader()
-                        .getResourceAsStream("emptyFile.txt")))), pattern);
-        List<Integer> expected = new ArrayList<>();
-        Assertions.assertEquals(expected, actual.ansList);
+                        .getResourceAsStream("emptyFile.txt"))))) {
+            String pattern = " ";
+            KnuthMorrisPratt actual = new KnuthMorrisPratt(file, pattern);
+            List<Integer> expected = new ArrayList<>();
+            Assertions.assertEquals(expected, actual.ansList);
+        }
     }
 
-    /** We check algorithms exceptions.
+    /**
+     * We check algorithms exceptions.
      * User can't use empty or null substring, because it's useless
-     *
      */
     @Test
-    public void exceptionsTest() {
-        IllegalArgumentException exceptionNull = assertThrows(IllegalArgumentException.class,
-                () -> new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(
-                        Objects.requireNonNull(getClass().getClassLoader()
-                                        .getResourceAsStream("timeTest.txt")))), null));
-        Assertions.assertEquals("Invalid substring", exceptionNull.getMessage());
-
-        String pattern = "";
-        IllegalArgumentException exceptionEmptyPattern = assertThrows(
-                IllegalArgumentException.class, () -> new KnuthMorrisPratt(new BufferedReader(
-                        new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader()
-                                .getResourceAsStream("timeTest.txt")))), pattern));
-        Assertions.assertEquals("Invalid substring", exceptionEmptyPattern.getMessage());
+    public void exceptionsTest() throws IOException {
+        try (var file = new BufferedReader(new InputStreamReader(
+                Objects.requireNonNull(getClass().getClassLoader()
+                        .getResourceAsStream("timeTest.txt"))))) {
+            IllegalArgumentException exceptionNull = assertThrows(IllegalArgumentException.class,
+                    () -> new KnuthMorrisPratt(file, null));
+            Assertions.assertEquals("Invalid substring", exceptionNull.getMessage());
+        }
+        try (var file = new BufferedReader(new InputStreamReader(
+                Objects.requireNonNull(getClass().getClassLoader()
+                        .getResourceAsStream("timeTest.txt"))))) {
+            String pattern = "";
+            IllegalArgumentException exceptionEmptyPattern = assertThrows(
+                    IllegalArgumentException.class, () -> new KnuthMorrisPratt(file, pattern));
+            Assertions.assertEquals("Invalid substring", exceptionEmptyPattern.getMessage());
+        }
     }
 
-    /** Test with only substring in original text.
+    /**
+     * Test with only substring in original text.
      *
      * @throws IOException exception in case there are some troubles with file
      */
     @Test
     public void firstElementTest() throws IOException {
-        String pattern = "qwerty";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(
+        try (var file = new BufferedReader(new InputStreamReader(
                 Objects.requireNonNull(getClass().getClassLoader()
-                        .getResourceAsStream("firstElement.txt")))), pattern);
-        List<Integer> expected = new ArrayList<>();
-        expected.add(0);
-        Assertions.assertEquals(expected, actual.ansList);
+                        .getResourceAsStream("firstElement.txt"))))) {
+            String pattern = "qwerty";
+            KnuthMorrisPratt actual = new KnuthMorrisPratt(file, pattern);
+            List<Integer> expected = new ArrayList<>();
+            expected.add(0);
+            Assertions.assertEquals(expected, actual.ansList);
+        }
     }
 
-    /** Test with only one element in text and substring.
+    /**
+     * Test with only one element in text and substring.
      *
      * @throws IOException exception in case there are some troubles with file
      */
     @Test
     public void oneElementTest() throws IOException {
-        String pattern = "a";
-        KnuthMorrisPratt actual = new KnuthMorrisPratt(new BufferedReader(new InputStreamReader(
+        try (var file = new BufferedReader(new InputStreamReader(
                 Objects.requireNonNull(getClass().getClassLoader()
-                        .getResourceAsStream("one.txt")))), pattern);
-        Assertions.assertEquals(1, actual.ansList.size());
+                        .getResourceAsStream("one.txt"))))) {
+            String pattern = "a";
+            KnuthMorrisPratt actual = new KnuthMorrisPratt(file, pattern);
+            Assertions.assertEquals(1, actual.ansList.size());
+        }
     }
 
-    /** Test with only one element in text and substring.
-     *
+    /**
+     * Test with only one element in text and substring.
      */
     @Test
-    public void prefixFuncTest()  {
+    public void prefixFuncTest() {
         String word1 = "aaaa";
         var prefixArrayActual = KnuthMorrisPratt.findPrefixArray(word1);
         int[] prefixArrayExpected = {-1, 0, 1, 2, 3};
@@ -135,7 +149,7 @@ public class AlgorithmTest {
 
         String word2 = "a";
         prefixArrayActual = KnuthMorrisPratt.findPrefixArray(word2);
-        prefixArrayExpected = new int[] {-1, 0};
+        prefixArrayExpected = new int[]{-1, 0};
         Assertions.assertArrayEquals(prefixArrayExpected, prefixArrayActual);
     }
 }

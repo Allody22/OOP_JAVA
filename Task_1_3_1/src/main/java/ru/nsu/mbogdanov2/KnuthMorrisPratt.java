@@ -2,6 +2,7 @@ package ru.nsu.mbogdanov2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +14,10 @@ import java.util.List;
  * move our substring according to the algorithm
  */
 public class KnuthMorrisPratt {
-    BufferedReader file;
+    Reader file;
     String substring;
     List<Integer> ansList;
-    
+
     /**
      * Constructor of the algorithm class.
      * It will help us to get answer and to store input information
@@ -81,7 +82,7 @@ public class KnuthMorrisPratt {
      * @return list of all matching indexes
      * @throws IOException exception in case there are no file
      */
-    public static List<Integer> algorithmSearch(BufferedReader file, String pattern)
+    public static List<Integer> algorithmSearch(Reader file, String pattern)
             throws IOException {
         int currentId = 0;
         int idInPattern = 0;
