@@ -25,9 +25,11 @@ public class BookFIT {
         creditBook.put(nameOfTheStudent, studentData);
     }
 
-    public BookFIT(ArrayList<String> nameOfTheStudents, ArrayList<StudentInformation> studentsData) {
+    public BookFIT(ArrayList<String> nameOfTheStudents,
+                   ArrayList<StudentInformation> studentsData) {
         if (nameOfTheStudents.size() != studentsData.size()) {
-            throw new IllegalArgumentException("Please, give correct information");
+            throw new IllegalArgumentException("Количество имён студентов не совпадает " +
+                    "с количеством информации о студентах");
         }
         for (int i = 0; i < nameOfTheStudents.size(); i++) {
             creditBook.put(nameOfTheStudents.get(i), studentsData.get(i));
@@ -62,40 +64,42 @@ public class BookFIT {
         if (!creditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        if (creditBook.get(name).getDiplomaMarks().containsValue("Три")
-                || creditBook.get(name).getDiplomaMarks().containsValue("Пересдача")) {
-            return false;
-        }
-        creditBook.get(name).setScholarship(true);
-        return true;
+        return !creditBook.get(name).getDiplomaMarks().containsValue("Три")
+                && !creditBook.get(name).getDiplomaMarks().containsValue("Пересдача");
     }
 
     public boolean checkRedDiploma(String name) {
         if (!creditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        if (creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
-                || creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
-                || !(creditBook.get(name).getDiplomaMarkForSubject("Квалификационная работа")
-                .equals("Отлично"))
-                || checkDiploma(name) < 75) {
-            creditBook.get(name).setRedDiploma(false);
-            return false;
-        }
-        creditBook.get(name).setRedDiploma(true);
-        return true;
+        return !creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
+                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
+                && creditBook.get(name).getDiplomaMarkForSubject("Квалификационная работа")
+                .equals("Отлично")
+                && !(checkDiploma(name, "Приложение к диплому") < 75);
     }
 
     public boolean checkHighScholarship(String name) {
         if (!creditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        if (checkDiploma(name) == 100) {
-            creditBook.get(name).setHighScholarship(true);
-            return false;
+        return checkDiploma(name, "Зачётная книжка") == 100;
+    }
+
+    public int getAverageMark(String name) {
+        var currentCreditBook = creditBook.get(name).getCreditBookMarks();
+        if (currentCreditBook.size() == 0) {
+            throw new IllegalArgumentException("Зачетная книжка пустая");
         }
-        creditBook.get(name).setHighScholarship(true);
-        return true;
+        int averageMark = 0;
+        for (var currentMark : currentCreditBook.entrySet()) {
+            switch (currentMark.getValue()) {
+                case "Удовлетворительно" -> averageMark += 3;
+                case "Хорошо" -> averageMark += 4;
+                case "Отлично" -> averageMark += 5;
+            }
+        }
+        return averageMark / currentCreditBook.size();
     }
 
     public void printFullStudentInformation(String name) {
@@ -113,15 +117,30 @@ public class BookFIT {
         for (var creditBookMarks : creditBook.get(name).getDiplomaMarks().entrySet()) {
             System.out.println(creditBookMarks.getKey() + " - " + creditBookMarks.getValue());
         }
-        System.out.println("Средняя оценка студента" + creditBook.get(name).getAverageMark());
-        System.out.println("Наличие стипендии у студента" + creditBook.get(name).isScholarship());
+        System.out.println("----------------------------------");
+        System.out.println("Средняя оценка студента" + getAverageMark(name));
+        System.out.println("----------------------------------");
+        System.out.println("Наличие стипендии у студента" + checkScholarship(name));
+        System.out.println("----------------------------------");
         System.out.println("Наличие повышенной стипендии у студента"
-                + creditBook.get(name).isHighScholarship());
-        System.out.println("Наличие красного диплома у студента" + creditBook.get(name).isRedDiploma());
+                + checkHighScholarship(name));
+        System.out.println("----------------------------------");
+        System.out.println("Наличие красного диплома у студента" + checkRedDiploma(name));
+        System.out.println("----------------------------------");
+        System.out.println("Это вся информация о студенте");
     }
 
-    private double checkDiploma(String name) {
-        var currentDiplomaMarks = creditBook.get(name).getDiplomaMarks();
+    private double checkDiploma(String name, String interestedBook) {
+        Map<String, String> currentDiplomaMarks = null;
+        switch (interestedBook) {
+            case "Зачётная книжка" -> currentDiplomaMarks = creditBook.get(name)
+                    .getDiplomaMarks();
+            case "Приложение к диплому" ->
+                    currentDiplomaMarks = creditBook.get(name).getCreditBookMarks();
+        }
+        if (currentDiplomaMarks == null || currentDiplomaMarks.size() == 0) {
+            throw new IllegalArgumentException("Нету оценок в данной книге");
+        }
         double bestMarkPercent = 0;
         for (var mark : currentDiplomaMarks.values()) {
             if (mark.equals("Отлично")) {
