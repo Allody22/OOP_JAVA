@@ -3,29 +3,35 @@ package ru.nsu.mbogdanov2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-public class BookFIT {
+/** Main class that realize FIT credit book.
+ * It has a lot of basic functions: add student, add marks,
+ * check different information about student knowledge
+ *
+ */
+public class BookFit {
     private Map<String, StudentInformation> creditBook = new HashMap<>();
 
-    public BookFIT() {
+    public BookFit() {
 
     }
 
-    public BookFIT(String nameOfTheStudent) {
+    public BookFit(String nameOfTheStudent) {
         creditBook.put(nameOfTheStudent, new StudentInformation());
     }
 
-    public BookFIT(ArrayList<String> namesOfTheStudents) {
+    public BookFit(ArrayList<String> namesOfTheStudents) {
         for (String namesOfTheStudent : namesOfTheStudents) {
             creditBook.put(namesOfTheStudent, new StudentInformation());
         }
     }
 
-    public BookFIT(String nameOfTheStudent, StudentInformation studentData) {
+    public BookFit(String nameOfTheStudent, StudentInformation studentData) {
         creditBook.put(nameOfTheStudent, studentData);
     }
 
-    public BookFIT(ArrayList<String> nameOfTheStudents,
+    public BookFit(ArrayList<String> nameOfTheStudents,
                    ArrayList<StudentInformation> studentsData) {
         if (nameOfTheStudents.size() != studentsData.size()) {
             throw new IllegalArgumentException("Количество имён студентов не совпадает " +
@@ -64,8 +70,10 @@ public class BookFIT {
         if (!creditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        return !creditBook.get(name).getDiplomaMarks().containsValue("Три")
-                && !creditBook.get(name).getDiplomaMarks().containsValue("Пересдача");
+        return !creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
+                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
+                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача");
+
     }
 
     public boolean checkRedDiploma(String name) {
@@ -74,7 +82,7 @@ public class BookFIT {
         }
         return !creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
                 && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
-                && creditBook.get(name).getDiplomaMarkForSubject("Квалификационная работа")
+                && creditBook.get(name).getDiplomaMarkForSubject("Квалификационная_работа")
                 .equals("Отлично")
                 && !(checkDiploma(name, "Приложение к диплому") < 75);
     }
@@ -97,6 +105,8 @@ public class BookFIT {
                 case "Удовлетворительно" -> averageMark += 3;
                 case "Хорошо" -> averageMark += 4;
                 case "Отлично" -> averageMark += 5;
+                default -> throw new
+                        IllegalArgumentException("В зачётной книжке написана ерунда");
             }
         }
         return averageMark / currentCreditBook.size();
@@ -131,13 +141,12 @@ public class BookFIT {
     }
 
     private double checkDiploma(String name, String interestedBook) {
-        Map<String, String> currentDiplomaMarks = null;
-        switch (interestedBook) {
-            case "Зачётная книжка" -> currentDiplomaMarks = creditBook.get(name)
+        Map<String, String> currentDiplomaMarks = switch (interestedBook) {
+            case "Зачётная книжка" -> creditBook.get(name)
                     .getDiplomaMarks();
-            case "Приложение к диплому" ->
-                    currentDiplomaMarks = creditBook.get(name).getCreditBookMarks();
-        }
+            case "Приложение к диплому" -> creditBook.get(name).getCreditBookMarks();
+            default -> throw new IllegalArgumentException("Неверные входные данные");
+        };
         if (currentDiplomaMarks == null || currentDiplomaMarks.size() == 0) {
             throw new IllegalArgumentException("Нету оценок в данной книге");
         }
@@ -150,4 +159,15 @@ public class BookFIT {
         return (bestMarkPercent / currentDiplomaMarks.size()) * 100;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BookFit bookFit)) return false;
+        return Objects.equals(creditBook, bookFit.creditBook);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(creditBook);
+    }
 }
