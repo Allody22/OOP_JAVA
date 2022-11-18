@@ -1,6 +1,5 @@
 package ru.nsu.mbogdanov2;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -156,7 +155,7 @@ public class BookFit {
      * @param name name of the student
      * @return string average mark value
      */
-    public String getAverageMark(String name) {
+    public double getAverageMark(String name) {
         var currentCreditBook = electronicCreditBook.get(name).getCreditBookMarks();
         if (currentCreditBook.size() == 0) {
             throw new IllegalArgumentException("Зачетная книжка пустая");
@@ -171,11 +170,11 @@ public class BookFit {
                         IllegalArgumentException("В зачётной книжке написана ерунда");
             }
         }
-        DecimalFormat decimalFormat = new DecimalFormat("#.###");
-        return decimalFormat.format(averageMark / currentCreditBook.size());
+        return (Math.floor((averageMark / currentCreditBook.size()) * 1000)) / 1000;
     }
 
-    /** Method for printing all information about student.
+    /**
+     * Method for printing all information about student.
      * It may be useless and I can easily delete this
      *
      * @param name student name
@@ -208,10 +207,11 @@ public class BookFit {
         System.out.println("Это вся информация о студенте");
     }
 
-    /** Function to help us to count percentage of the best mark to all.
+    /**
+     * Function to help us to count percentage of the best mark to all.
      * It is needed for red diploma and high scholarship checks
      *
-     * @param name name of the student
+     * @param name           name of the student
      * @param interestedBook credit or diploma book
      * @return percentage ratio of the best mark to all
      */
@@ -234,7 +234,8 @@ public class BookFit {
         return (bestMarkPercent / currentDiplomaMarks.size()) * 100;
     }
 
-    /** Overriding of equals method to compare different electronic books.
+    /**
+     * Overriding of equals method to compare different electronic books.
      *
      * @param o object
      * @return true if our objects are equal
@@ -246,7 +247,8 @@ public class BookFit {
         return Objects.equals(electronicCreditBook, bookFit.electronicCreditBook);
     }
 
-    /** Overriding of hash code function to help us to compare different books.
+    /**
+     * Overriding of hash code function to help us to compare different books.
      *
      * @return hash code of the objects
      */

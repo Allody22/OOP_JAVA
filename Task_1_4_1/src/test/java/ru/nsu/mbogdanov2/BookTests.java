@@ -194,7 +194,7 @@ public class BookTests {
             for (int i = 0; i < 6; i++) {
                 actualCreditBook.addCreditBookSubjectAndMark("Богданов Михаил Сергеевич", sc.next(), sc.next());
             }
-            String expectedMark = "4,167";
+            double expectedMark = 4.166;
             Assertions.assertEquals(expectedMark, actualCreditBook.getAverageMark("Богданов Михаил Сергеевич"));
         }
     }
