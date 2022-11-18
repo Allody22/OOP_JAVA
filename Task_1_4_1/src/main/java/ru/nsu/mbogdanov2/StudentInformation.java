@@ -9,38 +9,56 @@ import java.util.Objects;
  */
 public class StudentInformation {
     private Map<String, String> diplomaMarks = new HashMap<>(); //last marks in diploma
-    private Map<String, String> creditBookMarks = new HashMap<>(); //all marks in credit book
+    private final Map<String, String> creditBookMarks = new HashMap<>(); //all marks in credit book
 
+    /** Empty constructor for this class.
+     *
+     */
     public StudentInformation() {
 
     }
 
-    public StudentInformation(Map<String, String> diplomaMarks,
-                              Map<String, String> creditBookMarks) {
-        this.diplomaMarks = diplomaMarks;
-        this.creditBookMarks = creditBookMarks;
+    /** Getter for diploma and credit book.
+     *
+     * @return credit book and diploma
+     */
+    public StudentInformation getStudentInformation() {
+        return this;
     }
 
+    /** Getter for credit book.
+     *
+     * @return credit book with marks and subjects
+     */
     public Map<String, String> getCreditBookMarks() {
         return creditBookMarks;
     }
 
+    /** Getter for diploma.
+     *
+     * @return diploma with marks and subjects
+     */
     public Map<String, String> getDiplomaMarks() {
         return diplomaMarks;
     }
 
+    /** Setter of diploma.
+     *
+     * @param diplomaMarks diploma with its subjects and marks
+     */
     public void setDiplomaMarks(Map<String, String> diplomaMarks) {
         this.diplomaMarks = diplomaMarks;
     }
 
-    public void setCreditBookMarks(Map<String, String> creditBookMarks) {
-        this.creditBookMarks = creditBookMarks;
-    }
-
+    /** Setter for one diploma subject and mark.
+     *
+     * @param subject string name of the subject
+     * @param mark string mark
+     */
     public void addDiplomaSubjectAndMark(String subject, String mark) {
         if (!checkDiplomaCorrectnessOfInformation(mark)) {
-            throw new IllegalArgumentException("Такую оценку в " +
-                    "диплом ставить нельзя");
+            throw new IllegalArgumentException("Такую оценку в "
+                    + "диплом ставить нельзя");
         }
         diplomaMarks.put(subject, mark);
     }
@@ -54,8 +72,8 @@ public class StudentInformation {
 
     public void addCreditBookMarkAndSubject(String subject, String mark) {
         if (!checkCreditBookCorrectnessOfInformation(mark)) {
-            throw new IllegalArgumentException("Такую оценку в зачётную " +
-                    "книгу нельзя писать");
+            throw new IllegalArgumentException("Такую оценку в зачётную "
+                    + "книгу нельзя писать");
         }
         creditBookMarks.put(subject, mark);
     }
@@ -69,16 +87,16 @@ public class StudentInformation {
 
     public void deleteCreditBookMarkForSubject(String subject) {
         if (!creditBookMarks.containsKey(subject)) {
-            throw new IllegalArgumentException("Неправильно название предмета" +
-                    " зачетной книги для удаления");
+            throw new IllegalArgumentException("Неправильно название предмета"
+                    + " зачетной книги для удаления");
         }
         creditBookMarks.remove(subject);
     }
 
     public void deleteDiplomaMarkForSubject(String subject) {
         if (!diplomaMarks.containsKey(subject)) {
-            throw new IllegalArgumentException("Неправильно название " +
-                    "дипломного предмета для удаления");
+            throw new IllegalArgumentException("Неправильно название "
+                    + "дипломного предмета для удаления");
         }
         diplomaMarks.remove(subject);
     }
@@ -91,8 +109,8 @@ public class StudentInformation {
         if (!(o instanceof StudentInformation that)) {
             return false;
         }
-        return Objects.equals(diplomaMarks, that.diplomaMarks) &&
-                Objects.equals(creditBookMarks, that.creditBookMarks);
+        return Objects.equals(diplomaMarks, that.diplomaMarks)
+                && Objects.equals(creditBookMarks, that.creditBookMarks);
     }
 
     @Override

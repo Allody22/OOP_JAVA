@@ -1,105 +1,167 @@
 package ru.nsu.mbogdanov2;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/** Main class that realize FIT credit book.
+/**
+ * Main class that realize FIT credit book.
  * It has a lot of basic functions: add student, add marks,
  * check different information about student knowledge
- *
  */
 public class BookFit {
-    private Map<String, StudentInformation> creditBook = new HashMap<>();
+    private final Map<String, StudentInformation> electronicCreditBook = new HashMap<>();
 
     public BookFit() {
 
     }
 
+    /**
+     * Constructor for main class with one student name.
+     *
+     * @param nameOfTheStudent string name of the student
+     */
     public BookFit(String nameOfTheStudent) {
-        creditBook.put(nameOfTheStudent, new StudentInformation());
+        electronicCreditBook.put(nameOfTheStudent, new StudentInformation());
     }
 
-    public BookFit(ArrayList<String> namesOfTheStudents) {
-        for (String namesOfTheStudent : namesOfTheStudents) {
-            creditBook.put(namesOfTheStudent, new StudentInformation());
-        }
-    }
-
+    /**
+     * Constructor for electronic book with student and his information.
+     *
+     * @param nameOfTheStudent string name of the student
+     * @param studentData      student credit book and diploma marks
+     */
     public BookFit(String nameOfTheStudent, StudentInformation studentData) {
-        creditBook.put(nameOfTheStudent, studentData);
+        electronicCreditBook.put(nameOfTheStudent, studentData);
     }
 
-    public BookFit(ArrayList<String> nameOfTheStudents,
-                   ArrayList<StudentInformation> studentsData) {
-        if (nameOfTheStudents.size() != studentsData.size()) {
-            throw new IllegalArgumentException("Количество имён студентов не совпадает " +
-                    "с количеством информации о студентах");
+    /**
+     * Method to add new diploma and credit book for existing student.
+     *
+     * @param name               string name of the student
+     * @param studentInformation student credit book and his diploma marks
+     */
+    public void addStudentInformation(String name, StudentInformation studentInformation) {
+        if (!electronicCreditBook.containsKey(name)) {
+            throw new IllegalArgumentException("No student with this name");
         }
-        for (int i = 0; i < nameOfTheStudents.size(); i++) {
-            creditBook.put(nameOfTheStudents.get(i), studentsData.get(i));
-        }
+        electronicCreditBook.put(name, studentInformation);
     }
 
-    public Map<String, StudentInformation> getCreditBook() {
-        return creditBook;
+    /**
+     * Getter method for diploma and credit book.
+     *
+     * @param name string name of the student
+     * @return diploma and credit book of the student
+     */
+    public StudentInformation getStudentInformation(String name) {
+        return electronicCreditBook.get(name).getStudentInformation();
     }
 
-    public void setCreditBook(Map<String, StudentInformation> creditBook) {
-        this.creditBook = creditBook;
-    }
-
+    /**
+     * Adding of new student without credit book and diploma.
+     *
+     * @param name string name of the student
+     */
     public void addStudent(String name) {
-        creditBook.put(name, new StudentInformation());
+        electronicCreditBook.put(name, new StudentInformation());
     }
 
+    /**
+     * Adding of new diploma subject with its mark
+     *
+     * @param name    string name of the student
+     * @param subject string name of the subject
+     * @param mark    string mark
+     */
     public void addDiplomaSubjectAndMark(String name, String subject, String mark) {
-        creditBook.get(name).addDiplomaSubjectAndMark(subject, mark);
+        electronicCreditBook.get(name).addDiplomaSubjectAndMark(subject, mark);
     }
 
+    /**
+     * Adding of new credit book subject with its mark
+     *
+     * @param name    string name of the student
+     * @param subject string name of the subject
+     * @param mark    string mark
+     */
     public void addCreditBookSubjectAndMark(String name, String subject, String mark) {
-        creditBook.get(name).addCreditBookMarkAndSubject(subject, mark);
+        electronicCreditBook.get(name).addCreditBookMarkAndSubject(subject, mark);
     }
 
-    public boolean containsStudent(String name) {
-        return creditBook.containsKey(name);
+    /**
+     * Deleting of credit book subject and mark.
+     * I don't if this possible
+     *
+     * @param name    string name of the student
+     * @param subject string name of the subject
+     */
+    public void deleteCreditBookSubjectAndMark(String name, String subject) {
+        electronicCreditBook.get(name).deleteCreditBookMarkForSubject(subject);
     }
 
+    /**
+     * Checking of students scholarship.
+     * If student doesn't have bad marks in his credit book
+     * Then he has scholarship
+     *
+     * @param name name of the student
+     * @return true if student has scholarship or false
+     */
     public boolean checkScholarship(String name) {
-        if (!creditBook.containsKey(name)) {
+        if (!electronicCreditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        return !creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
-                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
-                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача");
-
+        return !electronicCreditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно");
     }
 
+    /**
+     * Checking of students red diploma.
+     * If student has only Хорошо or Отлично marks and Отлично mark for Квалификационную работу
+     * Then he has red diploma
+     *
+     * @param name name of the student
+     * @return true if student has red diploma or false
+     */
     public boolean checkRedDiploma(String name) {
-        if (!creditBook.containsKey(name)) {
+        if (!electronicCreditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        return !creditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
-                && !creditBook.get(name).getCreditBookMarks().containsValue("Пересдача")
-                && creditBook.get(name).getDiplomaMarkForSubject("Квалификационная_работа")
+        return !electronicCreditBook.get(name).getCreditBookMarks().containsValue("Удовлетворительно")
+                && electronicCreditBook.get(name).getDiplomaMarkForSubject("Квалификационная_работа")
                 .equals("Отлично")
-                && !(checkDiploma(name, "Приложение к диплому") < 75);
+                && !(checkPercentage(name, "Приложение к диплому") < 75);
     }
 
+    /**
+     * Checking of high scholarship.
+     * If student has only Отлично marks in his credit book
+     * Then he has high scholarship
+     *
+     * @param name string student name
+     * @return true if student has high scholarship or false in another way
+     */
     public boolean checkHighScholarship(String name) {
-        if (!creditBook.containsKey(name)) {
+        if (!electronicCreditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
-        return checkDiploma(name, "Зачётная книжка") == 100;
+        return checkPercentage(name, "Зачётная книжка") == 100;
     }
 
-    public int getAverageMark(String name) {
-        var currentCreditBook = creditBook.get(name).getCreditBookMarks();
+    /**
+     * Getter of students average mark.
+     * This value has 3 numbers after dot name by decimal format class
+     *
+     * @param name name of the student
+     * @return string average mark value
+     */
+    public String getAverageMark(String name) {
+        var currentCreditBook = electronicCreditBook.get(name).getCreditBookMarks();
         if (currentCreditBook.size() == 0) {
             throw new IllegalArgumentException("Зачетная книжка пустая");
         }
-        int averageMark = 0;
+        double averageMark = 0;
         for (var currentMark : currentCreditBook.entrySet()) {
             switch (currentMark.getValue()) {
                 case "Удовлетворительно" -> averageMark += 3;
@@ -109,22 +171,28 @@ public class BookFit {
                         IllegalArgumentException("В зачётной книжке написана ерунда");
             }
         }
-        return averageMark / currentCreditBook.size();
+        DecimalFormat decimalFormat = new DecimalFormat("#.###");
+        return decimalFormat.format(averageMark / currentCreditBook.size());
     }
 
+    /** Method for printing all information about student.
+     * It may be useless and I can easily delete this
+     *
+     * @param name student name
+     */
     public void printFullStudentInformation(String name) {
-        if (!creditBook.containsKey(name)) {
+        if (!electronicCreditBook.containsKey(name)) {
             throw new IllegalArgumentException("No student with this name");
         }
         System.out.println("ФИО СТУДЕНТА:" + name);
         System.out.println("----------------------------------");
         System.out.println("Оценки в зачетной книжке студента:");
-        for (var creditBookMarks : creditBook.get(name).getCreditBookMarks().entrySet()) {
+        for (var creditBookMarks : electronicCreditBook.get(name).getCreditBookMarks().entrySet()) {
             System.out.println(creditBookMarks.getKey() + " - " + creditBookMarks.getValue());
         }
         System.out.println("----------------------------------");
         System.out.println("Оценки в дипломе студента:");
-        for (var creditBookMarks : creditBook.get(name).getDiplomaMarks().entrySet()) {
+        for (var creditBookMarks : electronicCreditBook.get(name).getDiplomaMarks().entrySet()) {
             System.out.println(creditBookMarks.getKey() + " - " + creditBookMarks.getValue());
         }
         System.out.println("----------------------------------");
@@ -140,11 +208,18 @@ public class BookFit {
         System.out.println("Это вся информация о студенте");
     }
 
-    private double checkDiploma(String name, String interestedBook) {
+    /** Function to help us to count percentage of the best mark to all.
+     * It is needed for red diploma and high scholarship checks
+     *
+     * @param name name of the student
+     * @param interestedBook credit or diploma book
+     * @return percentage ratio of the best mark to all
+     */
+    private double checkPercentage(String name, String interestedBook) {
         Map<String, String> currentDiplomaMarks = switch (interestedBook) {
-            case "Зачётная книжка" -> creditBook.get(name)
-                    .getDiplomaMarks();
-            case "Приложение к диплому" -> creditBook.get(name).getCreditBookMarks();
+            case "Зачётная книжка" -> electronicCreditBook.get(name)
+                    .getCreditBookMarks();
+            case "Приложение к диплому" -> electronicCreditBook.get(name).getDiplomaMarks();
             default -> throw new IllegalArgumentException("Неверные входные данные");
         };
         if (currentDiplomaMarks == null || currentDiplomaMarks.size() == 0) {
@@ -159,15 +234,24 @@ public class BookFit {
         return (bestMarkPercent / currentDiplomaMarks.size()) * 100;
     }
 
+    /** Overriding of equals method to compare different electronic books.
+     *
+     * @param o object
+     * @return true if our objects are equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof BookFit bookFit)) return false;
-        return Objects.equals(creditBook, bookFit.creditBook);
+        return Objects.equals(electronicCreditBook, bookFit.electronicCreditBook);
     }
 
+    /** Overriding of hash code function to help us to compare different books.
+     *
+     * @return hash code of the objects
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(creditBook);
+        return Objects.hash(electronicCreditBook);
     }
 }
