@@ -28,13 +28,15 @@ class ElectronicStudentBookTest {
         var studentInfo = new StudentDataForOneSubject("Отлично", "Физика", 4);
         IllegalArgumentException exceptionNewStudentInfo =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addStudentInfoAboutOneSubject("Вадим Хлебников", studentInfo));
+                        () -> newBook.addStudentInfoAboutOneSubject("Вадим Хлебников",
+                                studentInfo));
         Assertions.assertEquals("Такого студента нет", exceptionNewStudentInfo.getMessage());
 
         var studentInfo2 = new StudentDataForOneSubject("ОченьЖаль", "Физика", 4);
         IllegalArgumentException exceptionInvalidMark =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил", studentInfo2));
+                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
+                                studentInfo2));
         Assertions.assertEquals("Такой оценки не бывает", exceptionInvalidMark.getMessage());
 
         var exceptionList = new ArrayList<StudentDataForOneSubject>();
@@ -43,13 +45,16 @@ class ElectronicStudentBookTest {
         exceptionList.add(studentInfo3);
         IllegalArgumentException exceptionInvalidStudentName =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addInformationAboutStudent("Игорь Журавский", exceptionList));
+                        () -> newBook.addInformationAboutStudent("Игорь Журавский",
+                                exceptionList));
         Assertions.assertEquals("Такого студента нет", exceptionInvalidStudentName.getMessage());
         exceptionList.add(studentInfo2);
         IllegalArgumentException exceptionInvalidMarkForList =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил", studentInfo2));
-        Assertions.assertEquals("Такой оценки не бывает", exceptionInvalidMarkForList.getMessage());
+                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
+                                studentInfo2));
+        Assertions.assertEquals("Такой оценки не бывает",
+                exceptionInvalidMarkForList.getMessage());
 
         IllegalArgumentException exceptionCheckScholarship =
                 assertThrows(IllegalArgumentException.class,

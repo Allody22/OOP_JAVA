@@ -37,7 +37,8 @@ public class ElectronicStudentBook {
      * @param name           name of the student
      * @param oneSubjectInfo information about one passed subject exam
      */
-    public void addStudentInfoAboutOneSubject(String name, StudentDataForOneSubject oneSubjectInfo) {
+    public void addStudentInfoAboutOneSubject(String name,
+                                              StudentDataForOneSubject oneSubjectInfo) {
         checkCorrectnessOfMark(oneSubjectInfo.mark());
 
         if (!electronicBook.containsKey(name)) {
@@ -53,7 +54,8 @@ public class ElectronicStudentBook {
      * @param name        name of the student
      * @param information list with student passed exams
      */
-    public void addInformationAboutStudent(String name, ArrayList<StudentDataForOneSubject> information) {
+    public void addInformationAboutStudent(String name,
+                                           ArrayList<StudentDataForOneSubject> information) {
         if (!electronicBook.containsKey(name)) {
             throw new IllegalArgumentException("Такого студента нет");
         }
@@ -94,7 +96,8 @@ public class ElectronicStudentBook {
         }
         for (var studentData : getStudentInfo(name)) {
             if (studentData.semester() == maxSemester
-                    && !(studentData.mark().equals("Отлично") || studentData.mark().equals("Хорошо"))) {
+                    && !(studentData.mark().equals("Отлично")
+                    || studentData.mark().equals("Хорошо"))) {
                 return false;
             }
         }
