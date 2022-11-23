@@ -2,20 +2,20 @@ package ru.nsu.mbogdanov2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/**Test class for testing base student electronic book options.
- *
+/**
+ * Test class for testing base student electronic book options.
  */
 class ElectronicStudentBookTest {
-    /**A lot of different exceptions.
+    /**
+     * A lot of different exceptions.
      * There are mostly "no student" exception and some "invalid mark" exceptions.
-     *
      */
     @Test
     void exceptionsTest() {
@@ -25,34 +25,32 @@ class ElectronicStudentBookTest {
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.checkRedDiploma("Артём Благинин"));
         Assertions.assertEquals("Такого студента нет", exceptionRedDiploma.getMessage());
-        var studentInfo = new StudentDataForOneSubject("Отлично", "Физика", 4);
+        var studentInfo = new StudentDataForOneSubject(Mark.BEST, "Физика", 4);
         IllegalArgumentException exceptionNewStudentInfo =
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.addStudentInfoAboutOneSubject("Вадим Хлебников",
                                 studentInfo));
         Assertions.assertEquals("Такого студента нет", exceptionNewStudentInfo.getMessage());
 
-        var studentInfo2 = new StudentDataForOneSubject("ОченьЖаль", "Физика", 4);
         IllegalArgumentException exceptionInvalidMark =
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
-                                studentInfo2));
+                                new StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
         Assertions.assertEquals("Такой оценки не бывает", exceptionInvalidMark.getMessage());
 
-        var exceptionList = new ArrayList<StudentDataForOneSubject>();
-        exceptionList.add(studentInfo);
-        var studentInfo3 = new StudentDataForOneSubject("Отлично", "Матан", 4);
-        exceptionList.add(studentInfo3);
+        Set<StudentDataForOneSubject> exceptionSet = new HashSet<>();
+        exceptionSet.add(studentInfo);
+        var studentInfo3 = new StudentDataForOneSubject(Mark.BEST, "Матан", 4);
+        exceptionSet.add(studentInfo3);
         IllegalArgumentException exceptionInvalidStudentName =
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.addInformationAboutStudent("Игорь Журавский",
-                                exceptionList));
+                                exceptionSet));
         Assertions.assertEquals("Такого студента нет", exceptionInvalidStudentName.getMessage());
-        exceptionList.add(studentInfo2);
         IllegalArgumentException exceptionInvalidMarkForList =
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
-                                studentInfo2));
+                                new StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
         Assertions.assertEquals("Такой оценки не бывает",
                 exceptionInvalidMarkForList.getMessage());
 
@@ -64,9 +62,16 @@ class ElectronicStudentBookTest {
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.checkHighScholarShip("Шадрина Настя"));
         Assertions.assertEquals("Такого студента нет", exceptionCheckHighScholarship.getMessage());
+
+        IllegalArgumentException IllegalNumberOfSemester =
+                assertThrows(IllegalArgumentException.class,
+                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
+                        new StudentDataForOneSubject(Mark.BEST,"Физика",128)));
+        Assertions.assertEquals("Нереальный номер семестра", IllegalNumberOfSemester.getMessage());
     }
 
-    /** We add create student that has "Удовлетворительно" mark from the last exam.
+    /**
+     * We add create student that has "Удовлетворительно" mark from the last exam.
      * Our student doesn't have scholarship, then we add new subject with the max semester number.
      * Student has only this one mark from the max semester, so he has scholarship now
      *
@@ -75,19 +80,15 @@ class ElectronicStudentBookTest {
     @Test
     void checkScholarShip() throws IOException {
         try (var file = getClass().getClassLoader()
-                .getResourceAsStream("scholarship.txt")) {
-            if (file == null) {
-                throw new FileNotFoundException("No file with this name");
-            }
-            Scanner sc = new Scanner(file);
+                .getResourceAsStream("scholarship.txt"); Scanner sc = new Scanner(file)) {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 6; i++) {
-                var currentInfo = new StudentDataForOneSubject(sc.next(), sc.next(), sc.nextInt());
+                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             Assertions.assertFalse(actualBook.checkScholarShip("Богданов Михаил"));
-            var currentInfo = new StudentDataForOneSubject("Отлично", "Спасение Стипендии", 8);
+            var currentInfo = new StudentDataForOneSubject(Mark.BEST, "Спасение Стипендии", 8);
             actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             Assertions.assertTrue(actualBook.checkScholarShip("Богданов Михаил"));
         }
@@ -103,20 +104,16 @@ class ElectronicStudentBookTest {
     @Test
     void checkHighScholarShip() throws IOException {
         try (var file = getClass().getClassLoader()
-                .getResourceAsStream("high_scholarship.txt")) {
-            if (file == null) {
-                throw new FileNotFoundException("No file with this name");
-            }
-            Scanner sc = new Scanner(file);
+                .getResourceAsStream("high_scholarship.txt"); Scanner sc = new Scanner(file)) {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Шадрина Настя");
             for (int i = 0; i < 6; i++) {
-                var currentInfo = new StudentDataForOneSubject(sc.next(), sc.next(), sc.nextInt());
-                actualBook.addStudentInfoAboutOneSubject("Шадрина Настя", currentInfo);
+                actualBook.addStudentInfoAboutOneSubject("Шадрина Настя",
+                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt()));
             }
             Assertions.assertTrue(actualBook.checkHighScholarShip("Шадрина Настя"));
-            var currentInfo = new StudentDataForOneSubject("Хорошо", "Жаль", 8);
-            actualBook.addStudentInfoAboutOneSubject("Шадрина Настя", currentInfo);
+            actualBook.addStudentInfoAboutOneSubject("Шадрина Настя",
+                    new StudentDataForOneSubject(Mark.OK, "Жаль", 8));
             Assertions.assertFalse(actualBook.checkHighScholarShip("Шадрина Настя"));
         }
     }
@@ -130,15 +127,12 @@ class ElectronicStudentBookTest {
     @Test
     void getAverageMark() throws IOException {
         try (var file = getClass().getClassLoader()
-                .getResourceAsStream("scholarship.txt")) {
-            if (file == null) {
-                throw new FileNotFoundException("No file with this name");
-            }
-            Scanner sc = new Scanner(file);
+                .getResourceAsStream("scholarship.txt"); Scanner sc = new Scanner(file)) {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 6; i++) {
-                var currentInfo = new StudentDataForOneSubject(sc.next(), sc.next(), sc.nextInt());
+                var currentInfo =
+                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             double expectedMark = 4.166;
@@ -155,15 +149,11 @@ class ElectronicStudentBookTest {
     @Test
     void checkRedDiploma() throws IOException {
         try (var file = getClass().getClassLoader()
-                .getResourceAsStream("red_diploma.txt")) {
-            if (file == null) {
-                throw new FileNotFoundException("No file with this name");
-            }
-            Scanner sc = new Scanner(file);
+                .getResourceAsStream("red_diploma.txt"); Scanner sc = new Scanner(file)) {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 8; i++) {
-                var currentInfo = new StudentDataForOneSubject(sc.next(), sc.next(), sc.nextInt());
+                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             Assertions.assertTrue(actualBook.checkRedDiploma("Богданов Михаил"));
@@ -173,29 +163,25 @@ class ElectronicStudentBookTest {
     @Test
     void testEquals() throws IOException {
         try (var file = getClass().getClassLoader()
-                .getResourceAsStream("equals_credit_books.txt")) {
-            if (file == null) {
-                throw new FileNotFoundException("No file with this name");
-            }
-            Scanner sc = new Scanner(file);
+                .getResourceAsStream("equals_credit_books.txt"); Scanner sc = new Scanner(file)) {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 4; i++) {
-                var currentInfo = new StudentDataForOneSubject(sc.next(), sc.next(), sc.nextInt());
+                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
-            var listOfStudentData = new ArrayList<StudentDataForOneSubject>();
-            var newInfo4 = new StudentDataForOneSubject("Отлично", "Музыка", 6);
-            listOfStudentData.add(newInfo4);
-            var newInfo = new StudentDataForOneSubject("Отлично", "История", 1);
-            listOfStudentData.add(newInfo);
-            var newInfo3 = new StudentDataForOneSubject("Хорошо", "Физика", 2);
-            listOfStudentData.add(newInfo3);
-            var newInfo2 = new StudentDataForOneSubject("Удовлетворительно", "ООП", 4);
-            listOfStudentData.add(newInfo2);
+            Set<StudentDataForOneSubject> setOfStudentData = new HashSet<>();
+            var newInfo4 = new StudentDataForOneSubject(Mark.BEST, "Музыка", 6);
+            setOfStudentData.add(newInfo4);
+            var newInfo = new StudentDataForOneSubject(Mark.BEST, "История", 1);
+            setOfStudentData.add(newInfo);
+            var newInfo3 = new StudentDataForOneSubject(Mark.GOOD, "Физика", 2);
+            setOfStudentData.add(newInfo3);
+            var newInfo2 = new StudentDataForOneSubject(Mark.NICE, "ООП", 4);
+            setOfStudentData.add(newInfo2);
             var expectedBook = new ElectronicStudentBook();
             expectedBook.addStudent("Богданов Михаил");
-            expectedBook.addInformationAboutStudent("Богданов Михаил", listOfStudentData);
+            expectedBook.addInformationAboutStudent("Богданов Михаил", setOfStudentData);
             Assertions.assertEquals(actualBook, expectedBook);
 
             actualBook.addStudent("Bogdanov Mikhail");

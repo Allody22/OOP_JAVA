@@ -1,10 +1,10 @@
 package ru.nsu.mbogdanov2;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Main class that realize FIT electronic credit book.
@@ -12,7 +12,7 @@ import java.util.Objects;
  * check different information about student knowledge
  */
 public class ElectronicStudentBook {
-    public Map<String, List<StudentDataForOneSubject>> electronicBook = new HashMap<>();
+    public Map<String, Set<StudentDataForOneSubject>> electronicBook = new HashMap<>();
 
     /**
      * Constructor to create this electronic book.
@@ -27,7 +27,7 @@ public class ElectronicStudentBook {
      * @param name name of the student
      */
     public void addStudent(String name) {
-        this.electronicBook.put(name, new ArrayList<>());
+        this.electronicBook.put(name, new HashSet<>());
     }
 
     /**
@@ -39,12 +39,11 @@ public class ElectronicStudentBook {
      */
     public void addStudentInfoAboutOneSubject(String name,
                                               StudentDataForOneSubject oneSubjectInfo) {
-        checkCorrectnessOfMark(oneSubjectInfo.mark());
-
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
+        checkCorrectnessOfData(name);
+        checkCorrectnessOfSemester(oneSubjectInfo.semester());
+        if (!electronicBook.get(name).add(oneSubjectInfo)) {
+            throw new IllegalArgumentException("Уже есть такая оценка у студента");
         }
-        electronicBook.get(name).add(oneSubjectInfo);
     }
 
     /**
@@ -55,12 +54,10 @@ public class ElectronicStudentBook {
      * @param information list with student passed exams
      */
     public void addInformationAboutStudent(String name,
-                                           ArrayList<StudentDataForOneSubject> information) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+                                           Set<StudentDataForOneSubject> information) {
+        checkCorrectnessOfData(name);
         for (var studentData : information) {
-            checkCorrectnessOfMark(studentData.mark());
+            checkCorrectnessOfSemester(studentData.semester());
             electronicBook.get(name).add(studentData);
         }
     }
@@ -71,10 +68,8 @@ public class ElectronicStudentBook {
      * @param name name of the student
      * @return list of student passed exam
      */
-    public List<StudentDataForOneSubject> getStudentInfo(String name) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+    public Set<StudentDataForOneSubject> getStudentInfo(String name) {
+        checkCorrectnessOfData(name);
         return electronicBook.get(name);
     }
 
@@ -85,9 +80,7 @@ public class ElectronicStudentBook {
      * @return true if student has scholarship
      */
     public boolean checkScholarShip(String name) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+        checkCorrectnessOfData(name);
         int maxSemester = 0;
         for (var studentData : getStudentInfo(name)) {
             if (studentData.semester() > maxSemester) {
@@ -96,8 +89,8 @@ public class ElectronicStudentBook {
         }
         for (var studentData : getStudentInfo(name)) {
             if (studentData.semester() == maxSemester
-                    && !(studentData.mark().equals("Отлично")
-                    || studentData.mark().equals("Хорошо"))) {
+                    && !(studentData.mark().getMark().equals("Отлично")
+                    || studentData.mark().getMark().equals("Хорошо"))) {
                 return false;
             }
         }
@@ -113,9 +106,7 @@ public class ElectronicStudentBook {
      * @return true if student has scholarship
      */
     public boolean checkHighScholarShip(String name) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+        checkCorrectnessOfData(name);
         int maxSemester = 0;
         for (var studentData : getStudentInfo(name)) {
             if (studentData.semester() > maxSemester) {
@@ -123,7 +114,7 @@ public class ElectronicStudentBook {
             }
         }
         for (var studentData : getStudentInfo(name)) {
-            if (studentData.semester() == maxSemester && !studentData.mark().equals("Отлично")) {
+            if (studentData.semester() == maxSemester && !studentData.mark().getMark().equals("Отлично")) {
                 return false;
             }
         }
@@ -137,16 +128,14 @@ public class ElectronicStudentBook {
      * @return average mark itself
      */
     public double getAverageMark(String name) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+        checkCorrectnessOfData(name);
         if (electronicBook.get(name).size() == 0) {
             throw new IllegalArgumentException("У этого студента пока нет оценок");
         }
         double averageMark = 0;
         int creditsWithoutMarks = 0;
         for (var currentMarks : getStudentInfo(name)) {
-            switch (currentMarks.mark()) {
+            switch (currentMarks.mark().getMark()) {
                 case "Удовлетворительно" -> averageMark += 3;
                 case "Хорошо" -> averageMark += 4;
                 case "Отлично" -> averageMark += 5;
@@ -158,7 +147,8 @@ public class ElectronicStudentBook {
         if (creditsWithoutMarks == getStudentInfo(name).size()) {
             throw new IllegalArgumentException("У этого студента нету оценок, только зачёты");
         }
-        return (Math.floor((averageMark / (getStudentInfo(name).size() - creditsWithoutMarks)) * 1000)) / 1000;
+        return (Math.floor((averageMark
+                / (getStudentInfo(name).size() - creditsWithoutMarks)) * 1000)) / 1000;
     }
 
     /**
@@ -168,9 +158,7 @@ public class ElectronicStudentBook {
      * @return true if student has scholarship
      */
     public boolean checkRedDiploma(String name) {
-        if (!electronicBook.containsKey(name)) {
-            throw new IllegalArgumentException("Такого студента нет");
-        }
+        checkCorrectnessOfData(name);
         if (electronicBook.get(name).size() == 0) {
             throw new IllegalArgumentException("У этого студента пока нет оценок");
         }
@@ -181,7 +169,7 @@ public class ElectronicStudentBook {
         for (var studentData : getStudentInfo(name)) {
             if (studentData.subject().equals("Квалификационная_работа")) {
                 workFlag++;
-                if (!studentData.mark().equals("Отлично")) {
+                if (!studentData.mark().getMark().equals("Отлично")) {
                     return false;
                 }
             }
@@ -199,10 +187,10 @@ public class ElectronicStudentBook {
         double bestMarkPercent = 0;
         for (var mark : electronicBook.get(name)) {
             if (checkIfMarkLast(mark, name)) {
-                if (mark.mark().equals("Удовлетворительно")) {
+                if (mark.mark().getMark().equals("Удовлетворительно")) {
                     return false;
                 }
-                if (mark.mark().equals("Отлично") && checkIfMarkLast(mark, name)) {
+                if (mark.mark().getMark().equals("Отлично") && checkIfMarkLast(mark, name)) {
                     bestMarkPercent++;
                 }
             }
@@ -229,14 +217,25 @@ public class ElectronicStudentBook {
         return true;
     }
 
-    /**Checking correctness of the subject mark.
+    /**
+     * Checking of the fact that student is in the database.
      *
-     * @param subjectName name of the subject
+     * @param name name of the student
      */
-    private static void checkCorrectnessOfMark(String subjectName) {
-        if (!(subjectName.equals("Отлично") || subjectName.equals("Удовлетворительно")
-                || subjectName.equals("Хорошо") || subjectName.equals("Зачёт"))) {
-            throw new IllegalArgumentException("Такой оценки не бывает");
+    private void checkCorrectnessOfData(String name) {
+        if (!electronicBook.containsKey(name)) {
+            throw new IllegalArgumentException("Такого студента нет");
+        }
+    }
+
+    /**
+     * Checking correctness of semester range.
+     *
+     * @param number number of semester
+     */
+    static void checkCorrectnessOfSemester(int number) {
+        if (number <= 0 || number >= 60) {
+            throw new IllegalArgumentException("Нереальный номер семестра");
         }
     }
 
