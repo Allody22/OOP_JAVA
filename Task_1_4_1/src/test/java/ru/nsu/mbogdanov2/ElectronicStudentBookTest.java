@@ -34,8 +34,8 @@ class ElectronicStudentBookTest {
 
         IllegalArgumentException exceptionInvalidMark =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
-                                new StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
+                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил", new
+                                StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
         Assertions.assertEquals("Такой оценки не бывает", exceptionInvalidMark.getMessage());
 
         Set<StudentDataForOneSubject> exceptionSet = new HashSet<>();
@@ -49,8 +49,8 @@ class ElectronicStudentBookTest {
         Assertions.assertEquals("Такого студента нет", exceptionInvalidStudentName.getMessage());
         IllegalArgumentException exceptionInvalidMarkForList =
                 assertThrows(IllegalArgumentException.class,
-                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
-                                new StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
+                        () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил", new
+                                StudentDataForOneSubject(Mark.rusValuesOf("What"), "Физика", 4)));
         Assertions.assertEquals("Такой оценки не бывает",
                 exceptionInvalidMarkForList.getMessage());
 
@@ -63,11 +63,11 @@ class ElectronicStudentBookTest {
                         () -> newBook.checkHighScholarShip("Шадрина Настя"));
         Assertions.assertEquals("Такого студента нет", exceptionCheckHighScholarship.getMessage());
 
-        IllegalArgumentException IllegalNumberOfSemester =
+        IllegalArgumentException illegalNumberOfSemester =
                 assertThrows(IllegalArgumentException.class,
                         () -> newBook.addStudentInfoAboutOneSubject("Богданов Михаил",
-                        new StudentDataForOneSubject(Mark.BEST,"Физика",128)));
-        Assertions.assertEquals("Нереальный номер семестра", IllegalNumberOfSemester.getMessage());
+                                new StudentDataForOneSubject(Mark.BEST, "Физика", 128)));
+        Assertions.assertEquals("Нереальный номер семестра", illegalNumberOfSemester.getMessage());
     }
 
     /**
@@ -84,7 +84,8 @@ class ElectronicStudentBookTest {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 6; i++) {
-                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
+                var currentInfo =
+                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             Assertions.assertFalse(actualBook.checkScholarShip("Богданов Михаил"));
@@ -132,7 +133,8 @@ class ElectronicStudentBookTest {
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 6; i++) {
                 var currentInfo =
-                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
+                        new
+                                StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             double expectedMark = 4.166;
@@ -153,7 +155,8 @@ class ElectronicStudentBookTest {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 8; i++) {
-                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
+                var currentInfo =
+                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             Assertions.assertTrue(actualBook.checkRedDiploma("Богданов Михаил"));
@@ -167,7 +170,8 @@ class ElectronicStudentBookTest {
             var actualBook = new ElectronicStudentBook();
             actualBook.addStudent("Богданов Михаил");
             for (int i = 0; i < 4; i++) {
-                var currentInfo = new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
+                var currentInfo =
+                        new StudentDataForOneSubject(Mark.rusValuesOf(sc.next()), sc.next(), sc.nextInt());
                 actualBook.addStudentInfoAboutOneSubject("Богданов Михаил", currentInfo);
             }
             Set<StudentDataForOneSubject> setOfStudentData = new HashSet<>();

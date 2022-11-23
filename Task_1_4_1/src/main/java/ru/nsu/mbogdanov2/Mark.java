@@ -20,6 +20,11 @@ public enum Mark {
         return mark;
     }
 
+    /** My own realization of valuesOf method for russian letters.
+     *
+     * @param mark string mark value
+     * @return enum mark analog for the current string mark or exception
+     */
     public static Mark rusValuesOf(String mark) {
         switch (mark) {
             case "Удовлетворительно" -> {

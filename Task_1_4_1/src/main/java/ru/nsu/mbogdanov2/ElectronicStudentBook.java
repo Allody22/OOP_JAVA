@@ -114,7 +114,8 @@ public class ElectronicStudentBook {
             }
         }
         for (var studentData : getStudentInfo(name)) {
-            if (studentData.semester() == maxSemester && !studentData.mark().getMark().equals("Отлично")) {
+            if (studentData.semester() == maxSemester
+                    && !studentData.mark().getMark().equals("Отлично")) {
                 return false;
             }
         }
