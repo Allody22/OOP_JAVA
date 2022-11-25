@@ -1,7 +1,9 @@
 package ru.nsu.mbogdanov2;
 
-/** Enum class for mark iteration.
- *
+import java.util.Arrays;
+
+/**
+ * Enum class for mark iteration.
  */
 
 public enum Mark {
@@ -20,27 +22,16 @@ public enum Mark {
         return mark;
     }
 
-    /** My own realization of valuesOf method for russian letters.
+    /**
+     * My own realization of valuesOf method for russian letters.
      *
      * @param mark string mark value
      * @return enum mark analog for the current string mark or exception
      */
     public static Mark rusValuesOf(String mark) {
-        switch (mark) {
-            case "Удовлетворительно" -> {
-                return NICE;
-            }
-            case "Хорошо" -> {
-                return GOOD;
-            }
-            case "Отлично" -> {
-                return BEST;
-            }
-            case "Зачёт" -> {
-                return OK;
-            }
-            default -> throw new
-                    IllegalArgumentException("Такой оценки не бывает");
-        }
+        return Arrays.stream(values())
+                .filter(value -> value.getMark().equals(mark))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("Такой оценки не бывает"));
     }
 }
