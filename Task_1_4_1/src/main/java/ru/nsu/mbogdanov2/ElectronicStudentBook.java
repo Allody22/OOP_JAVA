@@ -15,13 +15,6 @@ public class ElectronicStudentBook {
     public Map<String, Set<StudentDataForOneSubject>> electronicBook = new HashMap<>();
 
     /**
-     * Constructor to create this electronic book.
-     */
-    public ElectronicStudentBook() {
-
-    }
-
-    /**
      * Method to add new student without any information.
      *
      * @param name name of the student
