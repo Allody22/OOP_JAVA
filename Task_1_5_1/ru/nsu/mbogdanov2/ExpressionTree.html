@@ -132,14 +132,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ExpressionTree</span>
 extends java.lang.Object</pre>
-<div class="block">I decided to use expression tree in order to calculate prefix expression
+<div class="block">I decided to use expression tree in order to calculate prefix expression.
  How it looks like:
-  + 1 2  is      +      is 3
-              1    2
+ + 1 2  is      +      is 3
+ 1    2
  Another example of prefix expression in expression tree
  + * 1 3 * 22 4  is       +        equals 91
-                      *       *
-                   1    3   22   4</div>
+ *       *
+ 1    3   22   4</div>
 </li>
 </ul>
 </div>
@@ -185,7 +185,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculation()">calculation</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Private recursive method to count the result of expression</div>
+<div class="block">Private recursive method to count the result of expression.</div>
 </td>
 </tr>
 </table>
@@ -237,11 +237,14 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>calculation</h4>
-<pre class="methodSignature">public&nbsp;double&nbsp;calculation()</pre>
-<div class="block">Private recursive method to count the result of expression</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;calculation()
+                   throws java.lang.IllegalArgumentException</pre>
+<div class="block">Private recursive method to count the result of expression.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value of the expression tree.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalArgumentException</code></dd>
 </dl>
 </li>
 </ul>
