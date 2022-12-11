@@ -3,6 +3,16 @@ package ru.nsu.mbogdanov2;
 import java.util.Scanner;
 
 
+/**
+ * I decided to use expression tree in order to calculate prefix expression
+ * How it looks like:
+ *  + 1 2  is      +      is 3
+ *              1    2
+ * Another example of prefix expression in expression tree
+ * + * 1 3 * 22 4  is       +        equals 91
+ *                      *       *
+ *                   1    3   22   4
+ */
 public class ExpressionTree {
 
     TreeNode root;
@@ -52,6 +62,15 @@ public class ExpressionTree {
         return root == null ? 0.0 : calculation(root);
     }
 
+    /**
+     * My system of calculating:
+     * log 1 3 = log(1) at the base of 3 = 0
+     * sqrt 1 3 = sqrt 1 the power of the 3 = 1
+     * This function goes down the tree and calculate all parts of the expression
+     *
+     * @param node current operation or number
+     * @return result of the expression on the level of tree
+     */
     private double calculation(TreeNode node) {
         double result = 0;
         if (node.valueCheck) {
@@ -71,7 +90,7 @@ public class ExpressionTree {
                     result = left - right;
                     break;
 
-                case "log": // Логирфм (левого) по основанию правого
+                case "log": //
                     double logResult = Math.log(right) / Math.log(left);
                     if (checkInaccuracy(logResult)) {
                         result = Math.round(logResult);

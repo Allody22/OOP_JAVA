@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    //id 'org.springframework.boot' version '3.0.0'
+    id 'jacoco'
 }
 
 group 'org.example'
@@ -25,4 +25,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
