@@ -143,7 +143,7 @@ public class ExpressionTree {
     }
 
     /**
-     * private class of the tree node.
+     * Private class of the tree node.
      * It helps to store information more compact and readable
      */
     private static class TreeNode {
@@ -165,7 +165,7 @@ public class ExpressionTree {
     }
 
     /**
-     * There are some problems with rounding of numbers in computers
+     * There are some problems with rounding of numbers in computers.
      * So this method finds the real result of the calculating
      *
      * @param number double number

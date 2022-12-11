@@ -7,6 +7,10 @@ import java.util.Scanner;
  * It works until the user writes Q
  */
 public class Main {
+    /**
+     * Static main method for good jar file functionality.
+     *
+     */
     public static void main(String[] args) throws IllegalArgumentException {
         System.out.print("Always press enter to continue\n");
         System.out.print("If you want to close calculator, then write <Q>");

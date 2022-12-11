@@ -1,13 +1,11 @@
 package ru.nsu.mbogdanov2;
 
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import java.util.Scanner;
 
 /**
  * Test class that checks that my arithmetics is good.
@@ -62,6 +60,7 @@ public class CalculatorTests {
         var calc = new ExpressionTree(new Scanner("hello 100 0"));
         IllegalArgumentException exceptionEmptyPattern = assertThrows(
                 IllegalArgumentException.class, calc::calculation);
-        Assertions.assertEquals("Something wrong with this expression", exceptionEmptyPattern.getMessage());
+        Assertions.assertEquals("Something wrong with this expression", exceptionEmptyPattern
+                .getMessage());
     }
 }
