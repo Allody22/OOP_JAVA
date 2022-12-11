@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 
 /**
- * I decided to use expression tree in order to calculate prefix expression
+ * I decided to use expression tree in order to calculate prefix expression.
  * How it looks like:
- *  + 1 2  is      +      is 3
- *              1    2
+ * + 1 2  is      +      is 3
+ * 1    2
  * Another example of prefix expression in expression tree
  * + * 1 3 * 22 4  is       +        equals 91
- *                      *       *
- *                   1    3   22   4
+ * *       *
+ * 1    3   22   4
  */
 public class ExpressionTree {
 
@@ -22,7 +22,7 @@ public class ExpressionTree {
     }
 
     /**
-     * We parse input string and separate numbers from operations
+     * We parse input string and separate numbers from operations.
      * We need another case for sin and cos operation
      *
      * @param input string with expression
@@ -54,16 +54,16 @@ public class ExpressionTree {
     }
 
     /**
-     * Private recursive method to count the result of expression
+     * Private recursive method to count the result of expression.
      *
      * @return the value of the expression tree.
      */
-    public double calculation() {
+    public double calculation() throws IllegalArgumentException {
         return root == null ? 0.0 : calculation(root);
     }
 
     /**
-     * My system of calculating:
+     * My system of calculating.
      * log 1 3 = log(1) at the base of 3 = 0
      * sqrt 1 3 = sqrt 1 the power of the 3 = 1
      * This function goes down the tree and calculate all parts of the expression
@@ -71,12 +71,13 @@ public class ExpressionTree {
      * @param node current operation or number
      * @return result of the expression on the level of tree
      */
-    private double calculation(TreeNode node) {
-        double result = 0;
+    private double calculation(TreeNode node) throws IllegalArgumentException {
+        double result;
         if (node.valueCheck) {
             result = node.value;
         } else {
-            double left, right = 0;
+            double left;
+            double right = 0;
             String operator = node.operation;
             if (node.singleOperation) {
                 left = calculation(node.left);
@@ -90,8 +91,8 @@ public class ExpressionTree {
                     result = left - right;
                     break;
 
-                case "log": //
-                    double logResult = Math.log(right) / Math.log(left);
+                case "log":
+                    double logResult = Math.log(left) / Math.log(right);
                     if (checkInaccuracy(logResult)) {
                         result = Math.round(logResult);
                         break;
@@ -99,7 +100,7 @@ public class ExpressionTree {
                     result = logResult;
                     break;
 
-                case "sqrt": // корень левого в степени правого
+                case "sqrt":
                     double number = Math.pow(left, 1 / right);
                     if (checkInaccuracy(number)) {
                         result = Math.round(Math.pow(left, 1 / right));
@@ -116,7 +117,14 @@ public class ExpressionTree {
                     result = Math.sin(left);
                     break;
 
+                case "cos":
+                    result = Math.cos(left);
+                    break;
+
                 case "/":
+                    if (right == 0) {
+                        throw new IllegalArgumentException("You can't divide by zero");
+                    }
                     result = left / right;
                     break;
 
@@ -128,16 +136,15 @@ public class ExpressionTree {
                     result = Math.pow(left, right);
                     break;
                 default:
-                    System.out.println("Такая операция пока не доступна");
+                    throw new IllegalArgumentException("Something wrong with this expression");
             }
         }
         return result;
     }
 
     /**
-     * private class of the tree node
+     * private class of the tree node.
      * It helps to store information more compact and readable
-     *
      */
     private static class TreeNode {
         private final boolean valueCheck;
@@ -147,17 +154,13 @@ public class ExpressionTree {
         private TreeNode left;
         private TreeNode right;
 
-        private TreeNode(boolean valueCheck, boolean singleOperation, String operation, double value) {
-            this.valueCheck = valueCheck;
+        private TreeNode(boolean valCheck, boolean singleOperation, String op, double value) {
+            this.valueCheck = valCheck;
             this.singleOperation = singleOperation;
-            this.operation = operation;
+            this.operation = op;
             this.value = value;
             this.left = null;
             this.right = null;
-        }
-
-        public String toString() {
-            return valueCheck ? Double.toString(value) : Character.toString(Integer.parseInt(operation));
         }
     }
 
@@ -169,6 +172,6 @@ public class ExpressionTree {
      * @return real result
      */
     private static boolean checkInaccuracy(double number) {
-        return (Math.round(number) - number) < 0.00000000000001;
+        return (Math.ceil(number) - number) <= 0.00000000000001;
     }
 }
