@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.print("Press enter to continue\n");
-		System.out.print("If you want to close calculator, then write <Q>\n");
+		System.out.print("If you want to close calculator, then write <Q>");
 		Scanner sc = new Scanner(System.in);
 		while (!sc.nextLine().equals("Q")) {
 			System.out.print("Enter your prefix expression: ");

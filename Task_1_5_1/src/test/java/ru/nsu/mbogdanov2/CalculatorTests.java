@@ -10,7 +10,7 @@ public class CalculatorTests {
     @Test
     public void AdditionTest() {
         Calculator myCalculator = new Calculator();
-        Number result = myCalculator.calculate("+ 1 + 2 + 3 + 4 5");
+        Number result = myCalculator.calculate("+ 10 + 1 4");
         Assertions.assertEquals(result,15.0);
     }
     @Test

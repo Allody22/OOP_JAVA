@@ -5,26 +5,6 @@ import java.util.Scanner;
 
 public class ExpressionTree {
 
-    private static class TreeNode {
-        private final boolean valueCheck; //пока что я храню и операции и числа в одних вершинах, поэтому такая проверка
-        private final String operation;
-        private double value;
-        private TreeNode left;
-        private TreeNode right;
-
-        private TreeNode(boolean valueCheck, String operation, double value) {
-            this.valueCheck = valueCheck;
-            this.operation = operation;
-            this.value = value;
-            this.left = null;
-            this.right = null;
-        }
-
-        public String toString() {
-            return valueCheck ? Double.toString(value) : Character.toString(Integer.parseInt(operation));
-        }
-    }
-
     TreeNode root;
 
     public ExpressionTree(Scanner input) {
@@ -33,7 +13,10 @@ public class ExpressionTree {
 
     /**
      * We parse input string and separate numbers from operations
+     * We need another case for sin and cos operation
      *
+     * @param input string with expression
+     * @return node of the tree
      */
     private TreeNode build(Scanner input) {
         boolean valueCheck;
@@ -44,12 +27,18 @@ public class ExpressionTree {
         valueCheck = input.hasNextDouble();
         if (valueCheck) {
             value = input.nextDouble();
-            node = new TreeNode(true, "\0", value);
+            node = new TreeNode(true, false, "\0", value);
         } else {
             token = input.next();
-            node = new TreeNode(false, token, 0.0);
-            node.left = build(input);
-            node.right = build(input);
+            if (token.equals("cos") || token.equals("sin")) {
+                node = new TreeNode(false, true, token, 0.0);
+                node.left = build(input);
+
+            } else {
+                node = new TreeNode(false, false, token, 0.0);
+                node.left = build(input);
+                node.right = build(input);
+            }
         }
         return node;
     }
@@ -59,19 +48,23 @@ public class ExpressionTree {
      *
      * @return the value of the expression tree.
      */
-    public double evaluate() {
-        return root == null ? 0.0 : evaluate(root);
+    public double calculation() {
+        return root == null ? 0.0 : calculation(root);
     }
 
-    private double evaluate(TreeNode node) {
+    private double calculation(TreeNode node) {
         double result = 0;
         if (node.valueCheck) {
             result = node.value;
         } else {
-            double left, right;
+            double left, right = 0;
             String operator = node.operation;
-            left = evaluate(node.left);
-            right = evaluate(node.right);
+            if (node.singleOperation) {
+                left = calculation(node.left);
+            } else {
+                left = calculation(node.left);
+                right = calculation(node.right);
+            }
 
             switch (operator) {
                 case "-":
@@ -122,6 +115,40 @@ public class ExpressionTree {
         return result;
     }
 
+    /**
+     * private class of the tree node
+     * It helps to store information more compact and readable
+     *
+     */
+    private static class TreeNode {
+        private final boolean valueCheck;
+        private final String operation;
+        private final boolean singleOperation;
+        private final double value;
+        private TreeNode left;
+        private TreeNode right;
+
+        private TreeNode(boolean valueCheck, boolean singleOperation, String operation, double value) {
+            this.valueCheck = valueCheck;
+            this.singleOperation = singleOperation;
+            this.operation = operation;
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+
+        public String toString() {
+            return valueCheck ? Double.toString(value) : Character.toString(Integer.parseInt(operation));
+        }
+    }
+
+    /**
+     * There are some problems with rounding of numbers in computers
+     * So this method finds the real result of the calculating
+     *
+     * @param number double number
+     * @return real result
+     */
     private static boolean checkInaccuracy(double number) {
         return (Math.round(number) - number) < 0.00000000000001;
     }

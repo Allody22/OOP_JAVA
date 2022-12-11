@@ -11,7 +11,7 @@ public class Calculator {
 
             calc = new ExpressionTree(new Scanner(expression));
 
-            result = calc.evaluate();
+            result = calc.calculation();
         }
         return result;
     }
