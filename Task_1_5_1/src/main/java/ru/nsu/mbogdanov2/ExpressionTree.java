@@ -77,15 +77,16 @@ public class ExpressionTree {
                 case "-":
                     result = left - right;
                     break;
-                case "log":
+
+                case "log": // Логирфм (левого) по основанию правого
                     double logResult = Math.log(right) / Math.log(left);
-                    // Логирфм (левого) по основанию правого
                     if (checkInaccuracy(logResult)) {
                         result = Math.round(logResult);
                         break;
                     }
                     result = logResult;
                     break;
+
                 case "sqrt": // корень левого в степени правого
                     double number = Math.pow(left, 1 / right);
                     if (checkInaccuracy(number)) {
@@ -94,20 +95,26 @@ public class ExpressionTree {
                     }
                     result = Math.pow(left, 1 / right);
                     break;
+
                 case "*":
                     result = left * right;
                     break;
+
                 case "sin":
                     result = Math.sin(left);
                     break;
+
                 case "/":
                     result = left / right;
                     break;
+
                 case "+":
                     result = left + right;
                     break;
+
                 case "pow":
                     result = Math.pow(left, right);
+                    break;
                 default:
                     System.out.println("Такая операция пока не доступна");
             }
