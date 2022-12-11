@@ -3,9 +3,10 @@ package ru.nsu.mbogdanov2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Scanner;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.util.Scanner;
 
 /**
  * Test class that checks that my arithmetics is good.
@@ -15,8 +16,8 @@ public class CalculatorTests {
     @Test
     public void additionTest() {
         var calc = new ExpressionTree(new Scanner("+ 10 + 1 4"));
-        double result = calc.calculation();
-        Assertions.assertEquals(result, 15.0);
+        double actual = calc.calculation();
+        Assertions.assertEquals(15.0, actual);
     }
 
     @Test
@@ -29,22 +30,22 @@ public class CalculatorTests {
     @Test
     public void powerTest() {
         var calc = new ExpressionTree(new Scanner("- pow 2 31 1"));
-        double result = calc.calculation();
-        Assertions.assertEquals(result, Integer.MAX_VALUE);
+        double actual = calc.calculation();
+        Assertions.assertEquals(Integer.MAX_VALUE, actual);
     }
 
     @Test
     public void logTest() {
         var calc = new ExpressionTree(new Scanner("log 1 10"));
-        double result = calc.calculation();
-        Assertions.assertEquals(result, 0);
+        double actual = calc.calculation();
+        Assertions.assertEquals(0, actual);
     }
 
     @Test
     public void cosAndSinTest() {
         var calc = new ExpressionTree(new Scanner("+ * cos 0 cos 0 * sin 0 sin 0"));
-        double result = calc.calculation();
-        Assertions.assertEquals(result, 1);
+        double actual = calc.calculation();
+        Assertions.assertEquals(1, actual);
     }
 
     @Test
@@ -62,5 +63,12 @@ public class CalculatorTests {
                 IllegalArgumentException.class, calc::calculation);
         Assertions.assertEquals("Something wrong with this expression", exceptionEmptyPattern
                 .getMessage());
+    }
+
+    @Test
+    public void ordinaryDivisionTest() {
+        var calc = new ExpressionTree(new Scanner("/ 10 4"));
+        double actual = calc.calculation();
+        Assertions.assertEquals(2.5, actual);
     }
 }
