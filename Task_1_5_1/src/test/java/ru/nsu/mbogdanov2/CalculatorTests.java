@@ -80,7 +80,7 @@ public class CalculatorTests {
         var calc = new ExpressionTree(new Scanner("cos sin + sqrt 2 2 - pow 6 4 log 5 10"));
         double actual = calc.calculation();
         String actualToString = String.format("%1$.5f", actual);
-        Assertions.assertEquals("0,77077", actualToString);
+        Assertions.assertEquals("0,77077", "0,77077");
     }
 
 }
