@@ -89,56 +89,35 @@ public class ExpressionTree {
             }
 
             switch (operator) {
-                case "-":
-                    result = left - right;
-                    break;
-
-                case "log":
+                case "-" -> result = left - right;
+                case "log" -> {
                     double logResult = Math.log(left) / Math.log(right);
                     if (checkInaccuracy(logResult)) {
                         result = Math.round(logResult);
                         break;
                     }
                     result = logResult;
-                    break;
-
-                case "sqrt":
+                }
+                case "sqrt" -> {
                     double number = Math.pow(left, 1 / right);
                     if (checkInaccuracy(number)) {
                         result = Math.round(Math.pow(left, 1 / right));
                         break;
                     }
                     result = Math.pow(left, 1 / right);
-                    break;
-
-                case "*":
-                    result = left * right;
-                    break;
-
-                case "sin":
-                    result = Math.sin(left);
-                    break;
-
-                case "cos":
-                    result = Math.cos(left);
-                    break;
-
-                case "/":
+                }
+                case "*" -> result = left * right;
+                case "sin" -> result = Math.sin(left);
+                case "cos" -> result = Math.cos(left);
+                case "/" -> {
                     if (right == 0) {
                         throw new IllegalArgumentException("You can't divide by zero");
                     }
                     result = left / right;
-                    break;
-
-                case "+":
-                    result = left + right;
-                    break;
-
-                case "pow":
-                    result = Math.pow(left, right);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Something wrong with this expression");
+                }
+                case "+" -> result = left + right;
+                case "pow" -> result = Math.pow(left, right);
+                default -> throw new IllegalArgumentException("Something wrong with this expression");
             }
         }
         return result;
@@ -178,9 +157,9 @@ public class ExpressionTree {
     }
 
     private static void checkRightInput(String token) {
-        if (!token.equals("cos") && !token.equals("sin") && !token.equals("log") && !token.equals("sqrt")
-                && !token.equals("+") && !token.equals("-") && !token.equals("/") && !token.equals("*")
-                && !token.equals("pow")) {
+        if (!token.equals("cos") && !token.equals("sin") && !token.equals("log")
+                && !token.equals("sqrt") && !token.equals("+") && !token.equals("-")
+                && !token.equals("/") && !token.equals("*") && !token.equals("pow")) {
             throw new IllegalArgumentException("Invalid operation");
         }
     }
