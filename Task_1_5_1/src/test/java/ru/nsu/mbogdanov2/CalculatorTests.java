@@ -3,7 +3,6 @@ package ru.nsu.mbogdanov2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Assertions;
@@ -74,13 +73,14 @@ public class CalculatorTests {
     }
 
     /**
-     * I have made hard expression and compared with first 5 symbols from the wolframAplpha result.
+     * I have made hard expression and compared with first 5 symbols from the wolframAlpha result.
      */
     @Test
     public void bigExpressionTest() {
         var calc = new ExpressionTree(new Scanner("cos sin + sqrt 2 2 - pow 6 4 log 5 10"));
         double actual = calc.calculation();
-        Assertions.assertEquals("0,77077", new DecimalFormat("#.#####").format(actual));
+        String actualToString = String.format("%1$.5f", actual);
+        Assertions.assertEquals("0,77077", actualToString);
     }
 
 }
