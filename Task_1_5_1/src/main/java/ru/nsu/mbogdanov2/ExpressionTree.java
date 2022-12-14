@@ -40,6 +40,7 @@ public class ExpressionTree {
             node = new TreeNode(true, false, "\0", value);
         } else {
             token = input.next();
+            checkRightInput(token);
             if (token.equals("cos") || token.equals("sin")) {
                 node = new TreeNode(false, true, token, 0.0);
                 node.left = build(input);
@@ -79,6 +80,7 @@ public class ExpressionTree {
             double left;
             double right = 0;
             String operator = node.operation;
+            checkRightInput(operator);
             if (node.singleOperation) {
                 left = calculation(node.left);
             } else {
@@ -173,5 +175,13 @@ public class ExpressionTree {
      */
     private static boolean checkInaccuracy(double number) {
         return (Math.ceil(number) - number) <= 0.00000000000001;
+    }
+
+    private static void checkRightInput(String token) {
+        if (!token.equals("cos") && !token.equals("sin") && !token.equals("log") && !token.equals("sqrt")
+                && !token.equals("+") && !token.equals("-") && !token.equals("/") && !token.equals("*")
+                && !token.equals("pow")) {
+            throw new IllegalArgumentException("Invalid operation");
+        }
     }
 }

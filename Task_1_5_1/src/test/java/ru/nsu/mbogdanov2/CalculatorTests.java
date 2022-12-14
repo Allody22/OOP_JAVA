@@ -57,10 +57,10 @@ public class CalculatorTests {
 
     @Test
     public void invalidExpressionTest() {
-        var calc = new ExpressionTree(new Scanner("hello 100 0"));
-        IllegalArgumentException exceptionEmptyPattern = assertThrows(
-                IllegalArgumentException.class, calc::calculation);
-        Assertions.assertEquals("Something wrong with this expression", exceptionEmptyPattern
+        Scanner sc = new Scanner("hello 100 0");
+        IllegalArgumentException exceptionIllegalArgument = assertThrows(
+                IllegalArgumentException.class,() -> new ExpressionTree(sc));
+        Assertions.assertEquals("Invalid operation", exceptionIllegalArgument
                 .getMessage());
     }
 
