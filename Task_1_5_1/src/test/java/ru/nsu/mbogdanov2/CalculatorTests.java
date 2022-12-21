@@ -4,7 +4,6 @@ package ru.nsu.mbogdanov2;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Scanner;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
