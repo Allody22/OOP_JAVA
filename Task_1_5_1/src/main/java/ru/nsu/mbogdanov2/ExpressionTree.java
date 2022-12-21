@@ -117,7 +117,8 @@ public class ExpressionTree {
                 }
                 case "+" -> result = left + right;
                 case "pow" -> result = Math.pow(left, right);
-                default -> throw new IllegalArgumentException("Something wrong with this expression");
+                default -> throw new IllegalArgumentException("Something wrong "
+                        + "with this expression");
             }
         }
         return result;
