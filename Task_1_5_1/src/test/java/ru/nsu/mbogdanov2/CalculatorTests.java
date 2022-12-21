@@ -4,6 +4,7 @@ package ru.nsu.mbogdanov2;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Scanner;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -78,7 +79,6 @@ public class CalculatorTests {
     public void bigExpressionTest() {
         var calc = new ExpressionTree(new Scanner("cos sin + sqrt 2 2 - pow 6 4 log 5 10"));
         double actual = calc.calculation();
-        Assertions.assertEquals(0.7707699501266829,actual );
+        Assertions.assertEquals(0.7707699501266829, actual);
     }
-
 }
