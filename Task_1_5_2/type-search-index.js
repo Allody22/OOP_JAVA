@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"mbogdanov2","l":"ArrayOfNotes"},{"p":"mbogdanov2","l":"Note"},{"p":"mbogdanov2","l":"NoteBook"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.mbogdanov2","l":"ArrayOfNotes"},{"p":"ru.nsu.mbogdanov2","l":"Note"},{"p":"ru.nsu.mbogdanov2","l":"NoteBook"}];updateSearchResults();
