@@ -2,7 +2,6 @@ package ru.nsu.mbogdanov2;
 
 
 import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,10 +1,8 @@
 package ru.nsu.mbogdanov2;
 
-import org.junit.jupiter.api.Assertions;
-
 import java.io.File;
 import java.text.ParseException;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
