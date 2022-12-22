@@ -20,6 +20,12 @@ public class ArrayOfNotes {
         size = 0;
     }
 
+    /**
+     * Simple method to remote note by name.
+     *
+     * @param title name of the note
+     * @throws IllegalAccessException if there are no such note
+     */
     public void removeNoteByTitle(String title) throws IllegalAccessException {
         for (var note : notes) {
             if (note.getTitle().equals(title)) {
@@ -46,11 +52,16 @@ public class ArrayOfNotes {
 
     @Override
     public String toString() {
-        return "ArrayOfNotes{" +
-                "note=" + notes +
-                '}';
+        return "ArrayOfNotes{"
+                + "note=" + notes
+                + '}';
     }
 
+    /**
+     * Method for more comfortable storing of notes.
+     *
+     * @return string representation of notes
+     */
     public String stringify() {
         String stringNotes = " ";
         for (int i = 0; i < this.size; i++) {
@@ -61,6 +72,12 @@ public class ArrayOfNotes {
         return stringNotes;
     }
 
+    /**
+     * We are trying to find note by title.
+     *
+     * @param title string name of the note
+     * @return false if there are no such note
+     */
     public boolean checkExistence(String title) {
         for (var note : notes) {
             if (note.getTitle().equals(title)) {

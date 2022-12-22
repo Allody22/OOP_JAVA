@@ -2,13 +2,17 @@ package ru.nsu.mbogdanov2;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.commons.cli.*;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.apache.commons.cli.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
-
+/**
+ * Notebook class that implements cmd options and serialization.
+ */
 public class NoteBook {
     public static File notes = new File("notes.json");
     private static final Options parserOptions = new Options();
@@ -32,7 +36,8 @@ public class NoteBook {
         }
         Gson gson = new Gson();
         try {
-            notesArray = gson.fromJson(new BufferedReader(new FileReader(notes)), ArrayOfNotes.class);
+            notesArray = gson
+                    .fromJson(new BufferedReader(new FileReader(notes)), ArrayOfNotes.class);
             if (notesArray == null) {
                 try (FileWriter writer = new FileWriter(notes)) {
                     writer.write("{}");
@@ -45,6 +50,12 @@ public class NoteBook {
         }
     }
 
+    /**
+     * Main works that allows user to work with notebook.
+     *
+     * @param args command line arguments
+     * @throws java.text.ParseException exception with parsing data
+     */
     public static void main(String[] args) throws java.text.ParseException {
         try {
             CommandLineParser parser = new DefaultParser();
@@ -100,7 +111,8 @@ public class NoteBook {
         }
     }
 
-    private static void showRecord(CommandLine cmd, int argsLength) throws java.text.ParseException, IllegalAccessException {
+    private static void showRecord(CommandLine cmd, int argsLength)
+            throws java.text.ParseException, IllegalAccessException {
         String[] arguments = new String[argsLength - 1];
         if (argsLength != 1) {
             arguments = cmd.getOptionValues("show");
@@ -116,7 +128,8 @@ public class NoteBook {
             for (int i = 0; i < notesArray.getSize(); i++) {
                 var currentNote = notesArray.getById(i);
                 if (currentNote.getTimeOfNote().after(firstDate)) {
-                    while (currentNote.getTimeOfNote().before(secondDate) && i < notesArray.getSize()) {
+                    while (currentNote.getTimeOfNote().before(secondDate)
+                            && i < notesArray.getSize()) {
                         notesInTime.addNote(currentNote);
                         i++;
                         if (i < notesArray.getSize()) {
@@ -133,7 +146,8 @@ public class NoteBook {
                     new ArrayList<>(Arrays.asList(arguments).subList(2, arguments.length));
             for (int i = 0; i < notesArray.getSize(); i++) {
                 var currentNote = notesArray.getById(i);
-                if (currentNote.getTimeOfNote().after(firstDate) && currentNote.getTimeOfNote().before(secondDate)) {
+                if (currentNote.getTimeOfNote().after(firstDate)
+                        && currentNote.getTimeOfNote().before(secondDate)) {
                     while (currentNote.getTimeOfNote().before(secondDate)) {
                         for (var oneKeyword : keywords) {
                             if (currentNote.getTitle().contains(oneKeyword)) {

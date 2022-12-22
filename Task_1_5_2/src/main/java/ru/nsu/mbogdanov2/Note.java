@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+/**
+ * Note class with every needed for note information.
+ */
 public class Note {
     @SerializedName("Title")
     private String title;
@@ -12,6 +15,12 @@ public class Note {
     @SerializedName("TimeOfOrder")
     private Date timeOfNote;
 
+    /**
+     * Note constructor that remembers the time of the note.
+     *
+     * @param title       string name of the note
+     * @param description string description of the note
+     */
     public Note(String title, String description) {
         this.title = title;
         this.description = description;
@@ -20,11 +29,11 @@ public class Note {
 
     @Override
     public String toString() {
-        return "Note {" +
-                "title = '" + title +
-                "', description = '" + description +
-                "', time of this note = '" + timeOfNote +
-                "' }";
+        return "Note {"
+                + "title = '" + title
+                + "', description = '" + description
+                + "', time of this note = '" + timeOfNote
+                + "' }";
     }
 
     public String getTitle() {
