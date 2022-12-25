@@ -1,7 +1,9 @@
 package ru.nsu.mbogdanov2;
 
 import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Note class with every needed for note information.
@@ -46,5 +48,18 @@ public class Note {
 
     public void setTimeOfNote() {
         timeOfNote = new Date();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Note note = (Note) o;
+        return Objects.equals(title, note.title) && Objects.equals(description, note.description) && Objects.equals(timeOfNote, note.timeOfNote);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, description, timeOfNote);
     }
 }
