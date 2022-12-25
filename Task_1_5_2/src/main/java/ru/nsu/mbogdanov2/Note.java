@@ -52,10 +52,15 @@ public class Note {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Note note = (Note) o;
-        return Objects.equals(title, note.title) && Objects.equals(description, note.description) && Objects.equals(timeOfNote, note.timeOfNote);
+        return Objects.equals(title, note.title) && Objects.equals(description, note.description)
+                && Objects.equals(timeOfNote, note.timeOfNote);
     }
 
     @Override
