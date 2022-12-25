@@ -1,7 +1,6 @@
 package ru.nsu.mbogdanov2;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Date;
 import java.util.Objects;
 
