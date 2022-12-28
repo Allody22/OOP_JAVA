@@ -2,7 +2,6 @@ package ru.nsu.mbogdanov2;
 
 
 import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +78,7 @@ public class ArrayOfNotes {
      * @return false if there are no such note
      */
     public boolean checkExistence(String title) {
-        return notes.stream().
-                anyMatch(s -> s.getTitle().equals(title));
+        return notes.stream()
+                .anyMatch(s -> s.getTitle().equals(title));
     }
 }
