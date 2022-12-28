@@ -16,12 +16,12 @@ public class NoteBookTests {
         if (notes.exists()) {
             notes.delete();
         }
-        NoteBook.main(new String[]{"-add", "Моя заметка 1", "Очень важная заметка 1"});
-        NoteBook.main(new String[]{"-add", "Моя заметка 2", "Очень важная заметка 2"});
+        NoteBook.main(new String[]{"-add", "Моя заметка 111", "Очень важная заметка 1"});
+        NoteBook.main(new String[]{"-add", "Моя заметка 222", "Очень важная заметка 2"});
         var notesField = NoteBook.class.getDeclaredField("notesArray");
         notesField.setAccessible(true);
         var arrayOfNotes = (ArrayOfNotes) notesField.get(notesField);
-        Assertions.assertTrue(arrayOfNotes.checkExistence("Моя заметка 1"));
+        Assertions.assertTrue(arrayOfNotes.checkExistence("Моя заметка 111"));
         Assertions.assertFalse(arrayOfNotes.checkExistence("Моя заметка 33"));
         notes.delete();
     }
@@ -30,7 +30,7 @@ public class NoteBookTests {
     void remoteNoteTest() throws ParseException, NoSuchFieldException, IllegalAccessException {
         File notes = new File("notes.json");
         if (notes.exists()) {
-            Assertions.assertTrue(notes.delete());
+            notes.delete();
         }
         NoteBook.main(new String[]{"-add", "Моя заметка 1", "Очень важная заметка 1"});
         NoteBook.main(new String[]{"-add", "Моя заметка 2", "Очень важная заметка 2"});
@@ -48,10 +48,10 @@ public class NoteBookTests {
             IllegalAccessException {
         File notes = new File("notes.json");
         if (notes.exists()) {
-            Assertions.assertTrue(notes.delete());
+            notes.delete();
         }
-        NoteBook.main(new String[]{"-add", "Моя заметка 1", "Очень важная заметка 1"});
-        NoteBook.main(new String[]{"-add", "Моя заметка 2", "Очень важная заметка 2"});
+        NoteBook.main(new String[]{"-add", "Моя заметка 11", "Очень важная заметка 1"});
+        NoteBook.main(new String[]{"-add", "Моя заметка 22", "Очень важная заметка 2"});
         var notesField = NoteBook.class.getDeclaredField("notesArray");
         notesField.setAccessible(true);
         NoteBook.main(new String[]{"-rm", "Нет такой заметки"});

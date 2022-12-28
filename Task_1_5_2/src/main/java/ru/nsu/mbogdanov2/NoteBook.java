@@ -27,7 +27,7 @@ public class NoteBook {
             try {
                 notes.createNewFile();
                 Gson gson = new Gson();
-                try (FileWriter writer = new FileWriter(notes)) {
+                try (Writer writer = new FileWriter(notes)) {
                     gson.toJson(notesArray, writer);
                 }
             } catch (IOException e) {
@@ -39,7 +39,7 @@ public class NoteBook {
             notesArray = gson
                     .fromJson(new BufferedReader(new FileReader(notes)), ArrayOfNotes.class);
             if (notesArray == null) {
-                try (FileWriter writer = new FileWriter(notes)) {
+                try (Writer writer = new FileWriter(notes)) {
                     writer.write("{}");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
