@@ -16,8 +16,9 @@ public class PrimeSearch {
             return false;
         }
         for (int i = 5; i * i <= number; i += 6) {
-            if (number % i == 0 || number % (i + 2) == 0)
+            if (number % i == 0 || number % (i + 2) == 0) {
                 return false;
+            }
         }
         return true;
     }

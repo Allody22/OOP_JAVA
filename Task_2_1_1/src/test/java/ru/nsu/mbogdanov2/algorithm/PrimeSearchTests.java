@@ -1,12 +1,12 @@
 package ru.nsu.mbogdanov2.algorithm;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearch;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for simple algorithm.

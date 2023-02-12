@@ -1,11 +1,11 @@
 package ru.nsu.mbogdanov2.algorithm;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearchWithStreams;
 
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for stream algorithm.

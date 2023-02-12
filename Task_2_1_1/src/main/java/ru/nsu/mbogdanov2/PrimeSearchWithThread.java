@@ -23,6 +23,7 @@ public class PrimeSearchWithThread extends PrimeSearch {
             throw new NullPointerException();
         }
         final int threadsNumber = Runtime.getRuntime().availableProcessors();
+
         List<Integer> numberList = Arrays.stream(array).boxed().toList();
         deque = new ArrayDeque<>(numberList);
 
