@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.mbogdanov2.CalculatorTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-12-17T09:51:50" hostname="LAPTOP-E3RAOUQ0" time="0.08">
+  <properties/>
+  <testcase name="divisionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.051"/>
+  <testcase name="cosAndSinTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.003"/>
+  <testcase name="ordinaryDivisionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.004"/>
+  <testcase name="additionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.004"/>
+  <testcase name="bigExpressionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.004"/>
+  <testcase name="logTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.002"/>
+  <testcase name="invalidExpressionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.003"/>
+  <testcase name="subtractionTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.002"/>
+  <testcase name="powerTest()" classname="ru.nsu.mbogdanov2.CalculatorTests" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
