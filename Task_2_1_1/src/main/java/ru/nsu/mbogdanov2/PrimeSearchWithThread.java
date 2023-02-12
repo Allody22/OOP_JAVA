@@ -2,6 +2,7 @@ package ru.nsu.mbogdanov2;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 /**
  * Thread algorithm.
@@ -24,8 +25,7 @@ public class PrimeSearchWithThread extends PrimeSearch {
         }
         final int threadsNumber = Runtime.getRuntime().availableProcessors();
 
-        List<Integer> numberList = Arrays.stream(array).boxed().toList();
-        deque = new ArrayDeque<>(numberList);
+        deque = Arrays.stream(array).boxed().collect(Collectors.toCollection(ArrayDeque::new));
 
         Callable<Boolean> task = () -> {
             Integer number;
