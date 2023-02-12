@@ -17,7 +17,8 @@ public class PrimeSearchWithThread extends PrimeSearch {
     }
 
     @Override
-    public boolean search(int[] array) throws NullPointerException, InterruptedException, ExecutionException {
+    public boolean search(int[] array) throws NullPointerException,
+            InterruptedException, ExecutionException {
         if (array == null) {
             throw new NullPointerException();
         }

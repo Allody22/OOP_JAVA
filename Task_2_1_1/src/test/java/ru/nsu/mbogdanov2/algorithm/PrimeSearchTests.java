@@ -1,11 +1,10 @@
 package ru.nsu.mbogdanov2.algorithm;
 
 
-import org.junit.jupiter.api.Test;
-import ru.nsu.mbogdanov2.PrimeSearch;
-
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
+import org.junit.jupiter.api.Test;
+import ru.nsu.mbogdanov2.PrimeSearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PrimeSearchTests {
 
     @Test
-    public void OneNumberTest() {
+    public void oneNumberTest() {
         assertTrue(new PrimeSearch().primeCheck(3));
     }
 

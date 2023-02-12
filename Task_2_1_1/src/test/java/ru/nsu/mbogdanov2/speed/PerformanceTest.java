@@ -1,18 +1,17 @@
 package ru.nsu.mbogdanov2.speed;
 
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.junit.jupiter.api.Test;
-import ru.nsu.mbogdanov2.PrimeSearch;
-import ru.nsu.mbogdanov2.PrimeSearchWithStreams;
-import ru.nsu.mbogdanov2.PrimeSearchWithThread;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.junit.jupiter.api.Test;
+import ru.nsu.mbogdanov2.PrimeSearch;
+import ru.nsu.mbogdanov2.PrimeSearchWithStreams;
+import ru.nsu.mbogdanov2.PrimeSearchWithThread;
 
 /**
  * We name a lot of arrays of different length.
@@ -29,7 +28,8 @@ public class PerformanceTest {
         return array;
     }
 
-    private long singleTest(PrimeSearch notPrimeSearch, int[] array) throws ExecutionException, InterruptedException {
+    private long singleTest(PrimeSearch notPrimeSearch, int[] array) throws ExecutionException,
+            InterruptedException {
         List<Long> results = new ArrayList<>();
         for (int i = 0; i < 3; ++i) {
             long time = System.nanoTime();

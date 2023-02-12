@@ -22,13 +22,15 @@ public class PrimeSearch {
         return true;
     }
 
-    public boolean search(int[] array) throws NullPointerException, InterruptedException, ExecutionException {
+    public boolean search(int[] array) throws NullPointerException,
+            InterruptedException, ExecutionException {
         if (array == null) {
             throw new NullPointerException();
         }
         for (int number : array) {
-            if (!primeCheck(number))
+            if (!primeCheck(number)) {
                 return true;
+            }
         }
         return false;
     }
