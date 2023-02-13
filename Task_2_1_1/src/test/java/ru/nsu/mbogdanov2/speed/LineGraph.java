@@ -27,7 +27,7 @@ public class LineGraph {
         if (file.exists()) {
             file.delete();
         }
-        ChartUtils.saveChartAsJPEG(file, chart, 1080, 1920);
+        ChartUtils.saveChartAsJPEG(file, chart, 700, 700);
     }
 
     private JFreeChart createChart(XYSeriesCollection dataset) {

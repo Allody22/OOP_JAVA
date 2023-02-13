@@ -7,7 +7,9 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearchWithThread;
 
-
+/**
+ * The same tests for algorithm with threads.
+ */
 public class PrimeSearchThreadTests {
     @Test
     public void search_throwsNullPointerException() {

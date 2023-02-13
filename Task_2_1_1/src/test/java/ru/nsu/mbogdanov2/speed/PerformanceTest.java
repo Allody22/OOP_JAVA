@@ -23,7 +23,7 @@ public class PerformanceTest {
             throw new IllegalArgumentException();
         }
         int[] array = new int[size];
-        Arrays.fill(array, 0, size - 1, 282589933);
+        Arrays.fill(array, 0, size - 1, 1073676287);
         array[size - 1] = 187263196;
         return array;
     }
