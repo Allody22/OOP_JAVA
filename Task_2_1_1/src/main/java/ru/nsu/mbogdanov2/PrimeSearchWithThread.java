@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  * Thread algorithm.
+ * Callable is better than runnable because it throws exceptions and returns the result.
  */
 public class PrimeSearchWithThread extends PrimeSearch {
     private Deque<Integer> deque;
@@ -24,7 +25,9 @@ public class PrimeSearchWithThread extends PrimeSearch {
 
     /**
      * We go through the array using threads in this algorithm.
-     * Firstly, we find how many
+     * Firstly, we find how many processors are available.
+     * Secondly, we create list of callable tasks for every number of processors.
+     * Then we just check the result and shutdown tasks.
      */
 
     @Override
