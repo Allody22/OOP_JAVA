@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  * Thread algorithm.
  * Callable is better than runnable because it throws exceptions and returns the result.
  */
-public class PrimeSearchWithThread extends PrimeSearch {
+public class PrimeSearchWithThread {
     private Deque<Integer> deque;
 
     /**
@@ -29,15 +29,14 @@ public class PrimeSearchWithThread extends PrimeSearch {
      * Secondly, we create list of callable tasks for every number of processors.
      * Then we just check the result and shutdown tasks.
      */
-
-    @Override
-    public boolean search(int[] array) throws NullPointerException,
+    public boolean search(int[] array, boolean flag, int threadsNumber) throws NullPointerException,
             InterruptedException, ExecutionException {
         if (array == null) {
             throw new NullPointerException();
         }
-        final int threadsNumber = Runtime.getRuntime().availableProcessors();
-
+        if (flag) {
+            threadsNumber = Runtime.getRuntime().availableProcessors();
+        }
         deque = Arrays.stream(array).boxed().collect(Collectors.toCollection(ArrayDeque::new));
 
         Callable<Boolean> task = () -> {
@@ -62,7 +61,23 @@ public class PrimeSearchWithThread extends PrimeSearch {
                 return true;
             }
         }
-        pool.shutdownNow();
+        pool.shutdown();
         return false;
+    }
+
+    private static boolean primeCheck(int number) {
+        if (number <= 1) {
+            return false;
+        } else if (number <= 3) {
+            return true;
+        } else if (number % 2 == 0 || number % 3 == 0) {
+            return false;
+        }
+        for (int i = 5; i * i <= number; i += 6) {
+            if (number % i == 0 || number % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

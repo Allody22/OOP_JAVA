@@ -15,10 +15,10 @@ import org.jfree.data.xy.XYSeriesCollection;
 /**
  * Class to create picture with performance.
  */
-public class LineGraph {
+public class ChartRepresentation {
     private final JFreeChart chart;
 
-    public LineGraph(XYSeriesCollection dataset) {
+    public ChartRepresentation(XYSeriesCollection dataset) {
         chart = createChart(dataset);
     }
 
@@ -27,7 +27,7 @@ public class LineGraph {
         if (file.exists()) {
             file.delete();
         }
-        ChartUtils.saveChartAsJPEG(file, chart, 700, 700);
+        ChartUtils.saveChartAsJPEG(file, chart, 1980, 1980);
     }
 
     private JFreeChart createChart(XYSeriesCollection dataset) {
