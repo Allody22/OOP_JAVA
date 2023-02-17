@@ -1,11 +1,13 @@
 package ru.nsu.mbogdanov2.algorithm;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
+
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearch;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**
@@ -24,7 +26,7 @@ public class PrimeSearchTests {
     }
 
     @Test
-    public void smallDataTestFalse() throws ExecutionException, InterruptedException {
+    public void smallDataTestFalse() {
         int size = 70;
         int[] array = new int[size];
         Arrays.fill(array, 0, size, 17);
@@ -32,7 +34,7 @@ public class PrimeSearchTests {
     }
 
     @Test
-    public void smallDataTestTrue() throws ExecutionException, InterruptedException {
+    public void smallDataTestTrue() {
         int size = 70;
         int[] array = new int[size];
         Arrays.fill(array, 0, size - 1, 13);
@@ -41,7 +43,7 @@ public class PrimeSearchTests {
     }
 
     @Test
-    public void largeDataTestFalse() throws ExecutionException, InterruptedException {
+    public void largeDataTestFalse() {
         int size = 100000;
         int[] array = new int[size];
         Arrays.fill(array, 0, size, 2624183);
@@ -49,7 +51,7 @@ public class PrimeSearchTests {
     }
 
     @Test
-    public void largeDataTestTrue() throws ExecutionException, InterruptedException {
+    public void largeDataTestTrue() {
         int size = 100000;
         int[] array = new int[size];
         Arrays.fill(array, 0, size - 1, 262419);

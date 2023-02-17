@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.junit.jupiter.api.Test;
@@ -28,8 +29,7 @@ public class PerformanceTest {
         return array;
     }
 
-    private long singleTest(PrimeSearch notPrimeSearch, int[] array) throws ExecutionException,
-            InterruptedException {
+    private long singleTest(PrimeSearch notPrimeSearch, int[] array) {
         List<Long> results = new ArrayList<>();
         for (int i = 0; i < 3; ++i) {
             long time = System.nanoTime();
@@ -40,7 +40,8 @@ public class PerformanceTest {
         return Collections.min(results);
     }
 
-    private long singleTestForThreads(PrimeSearchWithThread notPrimeSearch, int[] array, int threadsNumber) throws ExecutionException,
+    private long singleTestForThreads(PrimeSearchWithThread notPrimeSearch, int[] array,
+                                      int threadsNumber) throws ExecutionException,
             InterruptedException {
         List<Long> results = new ArrayList<>();
         for (int i = 0; i < 3; ++i) {
@@ -68,31 +69,31 @@ public class PerformanceTest {
         XYSeries series11 = new XYSeries("Prime Search with 40 threads");
         XYSeries series12 = new XYSeries("Prime Search with 100 threads");
 
-        for (int size = 10; size <= 1000000; size *= 10) {
+        for (int size = 10; size <= 100000; size *= 10) {
             int[] array = createArray(size);
             long time = singleTest(new PrimeSearch(), array);
             series1.add(size, time);
             time = singleTest(new PrimeSearchWithStreams(), array);
             series2.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,2);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 2);
             series3.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,4);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 4);
             series4.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,8);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 8);
             series5.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,15);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 15);
             series6.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,20);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 20);
             series7.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,25);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 25);
             series8.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,30);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 30);
             series9.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,35);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 35);
             series10.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,40);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 40);
             series11.add(size, time);
-            time = singleTestForThreads(new PrimeSearchWithThread(), array,100);
+            time = singleTestForThreads(new PrimeSearchWithThread(), array, 100);
             series12.add(size, time);
         }
 

@@ -1,12 +1,15 @@
 package ru.nsu.mbogdanov2.algorithm;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearchWithThread;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * The same tests for algorithm with threads.
@@ -14,7 +17,8 @@ import ru.nsu.mbogdanov2.PrimeSearchWithThread;
 public class PrimeSearchThreadTests {
     @Test
     public void search_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new PrimeSearchWithThread().search(null, true, 0));
+        assertThrows(NullPointerException.class, () -> new PrimeSearchWithThread()
+                .search(null, true, 0));
     }
 
     @Test

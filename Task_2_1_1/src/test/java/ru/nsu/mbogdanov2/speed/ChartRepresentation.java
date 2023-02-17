@@ -22,6 +22,9 @@ public class ChartRepresentation {
         chart = createChart(dataset);
     }
 
+    /**
+     * We just create image of performance tests.
+     */
     public void createFile() throws IOException {
         File file = new File("performanceTest.jpg");
         if (file.exists()) {
