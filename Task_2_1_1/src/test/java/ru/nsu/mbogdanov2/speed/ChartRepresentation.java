@@ -1,6 +1,6 @@
 package ru.nsu.mbogdanov2.speed;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import org.jfree.chart.ChartFactory;
