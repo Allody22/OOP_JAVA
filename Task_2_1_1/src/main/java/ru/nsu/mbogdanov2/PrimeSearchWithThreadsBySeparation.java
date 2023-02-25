@@ -32,7 +32,8 @@ public class PrimeSearchWithThreadsBySeparation {
         }
         MyThread[] threads = new MyThread[threadsNumber];
 
-        int leftPart, rightPart;
+        int leftPart;
+        int rightPart;
         for (int i = 0; i < threadsNumber; i++) {
             leftPart = listPart * i;
             if (i == threadsNumber - 1) {

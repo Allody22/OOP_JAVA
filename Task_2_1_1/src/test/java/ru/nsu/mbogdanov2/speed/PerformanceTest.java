@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.junit.jupiter.api.Test;
@@ -53,8 +52,8 @@ public class PerformanceTest {
         return Collections.min(results);
     }
 
-    private long singleTestForThreadsBySeparations(PrimeSearchWithThreadsBySeparation notPrimeSearch, int[] array,
-                                                   int threadsNumber) {
+    private long singleTestForThreadsBySeparations(PrimeSearchWithThreadsBySeparation notPrimeSearch,
+                                                   int[] array, int threadsNumber) {
         List<Long> results = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         Integer[] array2 = Arrays.stream(array).boxed().toArray(Integer[]::new);
@@ -92,11 +91,14 @@ public class PerformanceTest {
             series7.add(size, time);
             time = singleTestForThreads(new PrimeSearchWithThread(), array, 30);
             series8.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(), array, 8);
+            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+                    array, 8);
             series3.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(), array, 15);
+            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+                    array, 15);
             series4.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(), array, 30);
+            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+                    array, 30);
             series6.add(size, time);
         }
 

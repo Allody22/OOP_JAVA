@@ -37,7 +37,8 @@ public class PrimeSearchWithThread {
      * Secondly, we create list of callable tasks for every number of processors.
      * Then we just check the result and shutdown tasks.
      */
-    public boolean search(int[] array, boolean turnOnThreadsNumber, int threadsNumber) throws InterruptedException, ExecutionException {
+    public boolean search(int[] array, boolean turnOnThreadsNumber, int threadsNumber)
+            throws InterruptedException, ExecutionException {
         if (array == null) {
             throw new NullPointerException();
         }
@@ -72,6 +73,12 @@ public class PrimeSearchWithThread {
         return false;
     }
 
+    /**
+     * Realization of algorithm to check if the number is prime.
+     *
+     * @param number number that should be checked.
+     * @return false if the number is not prime.
+     */
     public static boolean primeCheck(int number) {
         if (number <= 1) {
             return false;
