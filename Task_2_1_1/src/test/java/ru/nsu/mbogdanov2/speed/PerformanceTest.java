@@ -52,7 +52,7 @@ public class PerformanceTest {
         return Collections.min(results);
     }
 
-    private long singleTestForThreadsBySeparations(PrimeSearchWithThreadsBySeparation notPrimeSearch,
+    private long testForThreadsBySeparations(PrimeSearchWithThreadsBySeparation notPrimeSearch,
                                                    int[] array, int threadsNumber) {
         List<Long> results = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
@@ -91,13 +91,13 @@ public class PerformanceTest {
             series7.add(size, time);
             time = singleTestForThreads(new PrimeSearchWithThread(), array, 30);
             series8.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+            time = testForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
                     array, 8);
             series3.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+            time = testForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
                     array, 15);
             series4.add(size, time);
-            time = singleTestForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
+            time = testForThreadsBySeparations(new PrimeSearchWithThreadsBySeparation(),
                     array, 30);
             series6.add(size, time);
         }
