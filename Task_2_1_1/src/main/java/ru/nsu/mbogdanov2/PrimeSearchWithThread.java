@@ -37,12 +37,11 @@ public class PrimeSearchWithThread {
      * Secondly, we create list of callable tasks for every number of processors.
      * Then we just check the result and shutdown tasks.
      */
-    public boolean search(int[] array, boolean flag, int threadsNumber) throws NullPointerException,
-            InterruptedException, ExecutionException {
+    public boolean search(int[] array, boolean turnOnThreadsNumber, int threadsNumber) throws InterruptedException, ExecutionException {
         if (array == null) {
             throw new NullPointerException();
         }
-        if (flag) {
+        if (turnOnThreadsNumber) {
             threadsNumber = Runtime.getRuntime().availableProcessors();
         }
         deque = Arrays.stream(array).boxed().collect(Collectors.toCollection(ArrayDeque::new));
@@ -73,7 +72,7 @@ public class PrimeSearchWithThread {
         return false;
     }
 
-    private static boolean primeCheck(int number) {
+    public static boolean primeCheck(int number) {
         if (number <= 1) {
             return false;
         } else if (number <= 3) {

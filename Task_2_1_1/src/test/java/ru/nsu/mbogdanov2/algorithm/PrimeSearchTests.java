@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.PrimeSearch;
+import ru.nsu.mbogdanov2.PrimeSearchWithThread;
 
 
 /**
@@ -17,7 +18,7 @@ public class PrimeSearchTests {
 
     @Test
     public void oneNumberTest() {
-        assertTrue(new PrimeSearch().primeCheck(3));
+        assertTrue(PrimeSearchWithThread.primeCheck(3));
     }
 
     @Test
