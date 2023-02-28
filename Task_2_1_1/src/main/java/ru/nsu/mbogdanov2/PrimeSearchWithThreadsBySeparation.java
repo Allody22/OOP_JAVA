@@ -24,7 +24,7 @@ public class PrimeSearchWithThreadsBySeparation {
             threadsNumber = Runtime.getRuntime().availableProcessors();
         }
         int listPart;
-        if (primeList.size() >= threadsNumber) {
+        if (primeList.size() < threadsNumber) {
             listPart = 1;
             threadsNumber = primeList.size();
         } else {

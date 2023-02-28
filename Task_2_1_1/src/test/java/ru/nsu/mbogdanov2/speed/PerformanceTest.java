@@ -67,6 +67,7 @@ public class PerformanceTest {
         return Collections.min(results);
     }
 
+
     @Test
     public void performanceTest() throws ExecutionException, InterruptedException, IOException {
         XYSeriesCollection dataset = new XYSeriesCollection();
