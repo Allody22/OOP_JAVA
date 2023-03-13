@@ -3,7 +3,6 @@ package ru.nsu.mbogdanov2;
 import static ru.nsu.mbogdanov2.PrimeSearchWithThread.primeCheck;
 
 import java.util.Arrays;
-
 import org.jetbrains.annotations.NotNull;
 
 /**
