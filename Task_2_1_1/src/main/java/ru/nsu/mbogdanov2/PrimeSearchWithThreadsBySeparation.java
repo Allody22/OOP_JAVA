@@ -1,6 +1,5 @@
 package ru.nsu.mbogdanov2;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -18,17 +17,18 @@ public class PrimeSearchWithThreadsBySeparation {
      */
     public boolean search(int threadsNumber, boolean turnOnThreadsNumber, List<Integer> primeList) {
         if (primeList.isEmpty()) {
-            throw new NullPointerException();
+            throw new IllegalStateException();
         }
         if (turnOnThreadsNumber) {
             threadsNumber = Runtime.getRuntime().availableProcessors();
         }
         int listPart;
-        if (primeList.size() < threadsNumber) {
+        int listSize = primeList.size();
+        if (listSize < threadsNumber) {
             listPart = 1;
-            threadsNumber = primeList.size();
+            threadsNumber = listSize;
         } else {
-            listPart = primeList.size() / threadsNumber;
+            listPart = listSize / threadsNumber;
         }
         MyThread[] threads = new MyThread[threadsNumber];
 
@@ -37,7 +37,7 @@ public class PrimeSearchWithThreadsBySeparation {
         for (int i = 0; i < threadsNumber; i++) {
             leftPart = listPart * i;
             if (i == threadsNumber - 1) {
-                rightPart = primeList.size();
+                rightPart = listSize;
             } else {
                 rightPart = listPart * (i + 1);
             }
@@ -52,13 +52,13 @@ public class PrimeSearchWithThreadsBySeparation {
      * We check that all created threads must be finished.
      */
     public void checkThreads(MyThread[] threads) {
-        Arrays.stream(threads).forEach(myThread -> {
+        for (MyThread thread : threads) {
             try {
-                myThread.join();
+                thread.join();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        });
+        }
     }
 
     /**

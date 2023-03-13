@@ -1,5 +1,7 @@
 package ru.nsu.mbogdanov2;
 
+import org.jetbrains.annotations.NotNull;
+
 import static ru.nsu.mbogdanov2.PrimeSearchWithThread.primeCheck;
 
 /**
@@ -11,10 +13,7 @@ public class PrimeSearch {
      * We check every number of the input array.
      * Return true if there are at least one not prime number.
      */
-    public boolean search(int[] array) {
-        if (array == null) {
-            throw new NullPointerException();
-        }
+    public boolean search(int @NotNull [] array) {
         for (int number : array) {
             if (!primeCheck(number)) {
                 return true;

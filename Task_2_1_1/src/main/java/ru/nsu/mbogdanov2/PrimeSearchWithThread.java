@@ -1,5 +1,7 @@
 package ru.nsu.mbogdanov2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,11 +39,8 @@ public class PrimeSearchWithThread {
      * Secondly, we create list of callable tasks for every number of processors.
      * Then we just check the result and shutdown tasks.
      */
-    public boolean search(int[] array, boolean turnOnThreadsNumber, int threadsNumber)
+    public boolean search(int @NotNull [] array, boolean turnOnThreadsNumber, int threadsNumber)
             throws InterruptedException, ExecutionException {
-        if (array == null) {
-            throw new NullPointerException();
-        }
         if (turnOnThreadsNumber) {
             threadsNumber = Runtime.getRuntime().availableProcessors();
         }
