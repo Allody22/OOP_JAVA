@@ -1,0 +1,176 @@
+[Order with id: 6], [cooking]
+[Order with id: 4], [cooking]
+[Order with id: 5], [cooking]
+ [Order with id: 4], [in stock]
+[Order with id: 3], [cooking]
+ [Order with id: 6], [in stock]
+ [Order with id: 5], [in stock]
+[Order with id: 1], [cooking]
+[Order with id: 2], [cooking]
+ [Order with id: 1], [in stock]
+[Order with id: 0], [cooking]
+ [Order with id: 3], [in stock]
+ [Order with id: 0], [in stock]
+ [Order with id: 2], [in stock]
+ [Order with id: 0], [in stock]
+ [Order with id: 1], [in stock]
+ [Order with id: 2], [in stock]
+ [Order with id: 3], [in stock]
+ [Order with id: 4], [in stock]
+ [Order with id: 5], [in stock]
+ [Order with id: 6], [in stock]
+ [Order with id: 7], [in stock]
+[Order with id: 7], [cooking]
+ [Order with id: 7], [in stock]
+[Order with id: 6], [cooking]
+ [Order with id: 6], [in stock]
+[Order with id: 5], [cooking]
+ [Order with id: 5], [in stock]
+[Order with id: 4], [cooking]
+ [Order with id: 4], [in stock]
+[Order with id: 3], [cooking]
+ [Order with id: 3], [in stock]
+[Order with id: 2], [cooking]
+ [Order with id: 2], [in stock]
+[Order with id: 1], [cooking]
+ [Order with id: 1], [in stock]
+[Order with id: 0], [cooking]
+ [Order with id: 0], [in stock]
+[Order with id: 7], [cooking]
+[Order with id: 6], [cooking]
+[Order with id: 5], [cooking]
+[Order with id: 4], [cooking]
+[Order with id: 3], [cooking]
+[Order with id: 2], [cooking]
+[Order with id: 1], [cooking]
+[Order with id: 0], [cooking]
+"[Order with id: 6], [delivering]
+"[Order with id: 5], [delivering]
+"[Order with id: 4], [delivering]
+"[Order with id: 0], [delivering]
+"[Order with id: 3], [delivering]
+"[Order with id: 2], [delivering]
+"[Order with id: 1], [delivering]
+![Order with id: 6], [delivered]
+![Order with id: 5], [delivered]
+![Order with id: 4], [delivered]
+![Order with id: 3], [delivered]
+![Order with id: 2], [delivered]
+![Order with id: 1], [delivered]
+![Order with id: 0], [delivered]
+#[Order with id: 13], [delivering]
+#[Order with id: 12], [delivering]
+#[Order with id: 11], [delivering]
+"[Order with id: 13], [delivered]
+"[Order with id: 12], [delivered]
+"[Order with id: 11], [delivered]
+#[Order with id: 10], [delivering]
+"[Order with id: 9], [delivering]
+"[Order with id: 8], [delivering]
+"[Order with id: 10], [delivered]
+![Order with id: 9], [delivered]
+![Order with id: 8], [delivered]
+"[Order with id: 7], [delivering]
+"[Order with id: 6], [delivering]
+"[Order with id: 5], [delivering]
+![Order with id: 7], [delivered]
+![Order with id: 6], [delivered]
+![Order with id: 5], [delivered]
+"[Order with id: 4], [delivering]
+"[Order with id: 3], [delivering]
+"[Order with id: 2], [delivering]
+![Order with id: 4], [delivered]
+![Order with id: 3], [delivered]
+![Order with id: 2], [delivered]
+"[Order with id: 1], [delivering]
+"[Order with id: 0], [delivering]
+![Order with id: 1], [delivered]
+![Order with id: 0], [delivered]
+	"[Order with id: 3], [delivering]
+	"[Order with id: 2], [delivering]
+	"[Order with id: 1], [delivering]
+	![Order with id: 3], [delivered]
+	![Order with id: 2], [delivered]
+	![Order with id: 1], [delivered]
+	"[Order with id: 0], [delivering]
+	![Order with id: 0], [delivered]
+
+ [Order with id: 0], [in queue]
+
+ [Order with id: 1], [in queue]
+
+ [Order with id: 2], [in queue]
+
+ [Order with id: 3], [in queue]
+
+ [Order with id: 4], [in queue]
+
+ [Order with id: 5], [in queue]
+
+ [Order with id: 6], [in queue]
+
+ [Order with id: 7], [in queue]
+
+ [Order with id: 8], [in queue]
+
+ [Order with id: 9], [in queue]
+
+![Order with id: 10], [in queue]
+
+![Order with id: 11], [in queue]
+
+![Order with id: 12], [in queue]
+
+![Order with id: 13], [in queue]
+
+![Order with id: 14], [in queue]
+
+![Order with id: 15], [in queue]
+
+![Order with id: 16], [in queue]
+
+![Order with id: 17], [in queue]
+
+![Order with id: 18], [in queue]
+
+![Order with id: 19], [in queue]
+
+![Order with id: 20], [in queue]
+
+![Order with id: 21], [in queue]
+
+![Order with id: 22], [in queue]
+
+![Order with id: 23], [in queue]
+
+![Order with id: 24], [in queue]
+
+![Order with id: 25], [in queue]
+
+![Order with id: 26], [in queue]
+
+![Order with id: 27], [in queue]
+
+![Order with id: 28], [in queue]
+
+![Order with id: 29], [in queue]
+
+![Order with id: 30], [in queue]
+
+![Order with id: 31], [in queue]
+
+![Order with id: 32], [in queue]
+
+![Order with id: 33], [in queue]
+
+![Order with id: 34], [in queue]
+
+![Order with id: 35], [in queue]
+
+![Order with id: 36], [in queue]
+
+![Order with id: 37], [in queue]
+
+![Order with id: 38], [in queue]
+
+![Order with id: 39], [in queue]
