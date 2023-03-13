@@ -1,7 +1,5 @@
 package ru.nsu.mbogdanov2;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +11,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Thread algorithm.

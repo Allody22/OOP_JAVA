@@ -1,8 +1,8 @@
 package ru.nsu.mbogdanov2;
 
-import org.jetbrains.annotations.NotNull;
-
 import static ru.nsu.mbogdanov2.PrimeSearchWithThread.primeCheck;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Casual class without stream and thread.
