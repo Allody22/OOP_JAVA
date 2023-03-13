@@ -19,7 +19,7 @@ import ru.nsu.mbogdanov2.PrimeSearchWithThreadsBySeparation;
 public class PrimeSearchWithThreadsBySeparationTests {
     @Test
     public void search_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new PrimeSearchWithThreadsBySeparation()
+        assertThrows(IllegalStateException.class, () -> new PrimeSearchWithThreadsBySeparation()
                 .search(0, true, new ArrayList<>()));
     }
 

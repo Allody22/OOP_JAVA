@@ -18,17 +18,18 @@ public class PrimeSearchWithThreadsBySeparation {
      */
     public boolean search(int threadsNumber, boolean turnOnThreadsNumber, List<Integer> primeList) {
         if (primeList.isEmpty()) {
-            throw new NullPointerException();
+            throw new IllegalStateException();
         }
         if (turnOnThreadsNumber) {
             threadsNumber = Runtime.getRuntime().availableProcessors();
         }
         int listPart;
-        if (primeList.size() < threadsNumber) {
+        int size = primeList.size();
+        if (size < threadsNumber) {
             listPart = 1;
-            threadsNumber = primeList.size();
+            threadsNumber = size;
         } else {
-            listPart = primeList.size() / threadsNumber;
+            listPart = size / threadsNumber;
         }
         MyThread[] threads = new MyThread[threadsNumber];
 
@@ -37,7 +38,7 @@ public class PrimeSearchWithThreadsBySeparation {
         for (int i = 0; i < threadsNumber; i++) {
             leftPart = listPart * i;
             if (i == threadsNumber - 1) {
-                rightPart = primeList.size();
+                rightPart = size;
             } else {
                 rightPart = listPart * (i + 1);
             }
