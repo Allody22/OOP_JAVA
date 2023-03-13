@@ -1,11 +1,10 @@
 package ru.nsu.mbogdanov2;
 
+import java.util.Arrays;
 
 import org.jetbrains.annotations.NotNull;
 
 import static ru.nsu.mbogdanov2.PrimeSearchWithThread.primeCheck;
-
-import java.util.Arrays;
 
 
 /**
