@@ -35,7 +35,7 @@ public class Customer implements Producer<Order> {
     @Override
     public void produce(Order order) {
         Random random = new Random();
-        long orderingTime = random.nextLong(MAX_ORDERING_TIME);
+        long orderingTime = (long) (random.nextDouble() * MAX_ORDERING_TIME);
         try {
             Thread.sleep(orderingTime);
             order.setState(State.IN_QUEUE);

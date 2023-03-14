@@ -50,7 +50,7 @@ public class Courier extends Employee implements User<List<Order>> {
     @Override
     public List<Order> use() {
         Random random = new Random();
-        long deliveryTime = random.nextLong(MAX_DELIVERY_TIME);
+        long deliveryTime = (long) (random.nextDouble() * MAX_DELIVERY_TIME);
         try {
             orders = storage.get(bagCapacity);
             setOrdersState(DELIVERING);

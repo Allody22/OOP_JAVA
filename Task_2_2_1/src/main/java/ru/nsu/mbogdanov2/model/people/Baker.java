@@ -63,7 +63,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     @Override
     public void produce(Order order) {
         Random random = new Random();
-        long leadTime = random.nextLong(MAX_COOKING_TIME) / workingExperience;
+        long leadTime = (long) (random.nextDouble() *  MAX_COOKING_TIME) / workingExperience;
         try {
             Thread.sleep(leadTime);
             order.setState(IN_STOCK);
