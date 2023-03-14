@@ -18,7 +18,7 @@ import static ru.nsu.mbogdanov2.model.constant.State.IN_STOCK;
 public class Baker extends Employee implements User<Order>, Producer<Order> {
     private static final long MAX_COOKING_TIME = 5000;
     private final int workingExperience;
-    private final Random random = new Random();
+    //private final Random random = new Random();
     private final MyBlockingDequeue<Order> queue;
     private final MyBlockingDequeue<Order> storage;
 
@@ -62,6 +62,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
      */
     @Override
     public void produce(Order order) {
+        Random random = new Random();
         long leadTime = random.nextLong(MAX_COOKING_TIME) / workingExperience;
         try {
             Thread.sleep(leadTime);

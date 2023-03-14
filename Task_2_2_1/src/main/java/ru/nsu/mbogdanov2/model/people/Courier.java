@@ -20,7 +20,7 @@ public class Courier extends Employee implements User<List<Order>> {
     private final int bagCapacity;
     private List<Order> orders;
     private final MyBlockingDequeue<Order> storage;
-    private final Random random = new Random();
+    //private final Random random = new Random();
 
     /**
      * Creates an instance of the class Courier.
@@ -49,6 +49,7 @@ public class Courier extends Employee implements User<List<Order>> {
      */
     @Override
     public List<Order> use() {
+        Random random = new Random();
         long deliveryTime = random.nextLong(MAX_DELIVERY_TIME);
         try {
             orders = storage.get(bagCapacity);
