@@ -20,7 +20,7 @@ public class Courier extends Employee implements User<List<Order>> {
     private final int bagCapacity;
     private List<Order> orders;
     private final MyBlockingDequeue<Order> storage;
-    private final Random random;
+    private final Random random = new Random();
 
     /**
      * Creates an instance of the class Courier.
@@ -33,7 +33,7 @@ public class Courier extends Employee implements User<List<Order>> {
         super(id);
         this.bagCapacity = bagCapacity;
         this.storage = storage;
-        this.random = new Random();
+        //this.random = new Random();
     }
 
     private void setOrdersState(State state) {
