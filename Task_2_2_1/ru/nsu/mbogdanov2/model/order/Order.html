@@ -133,7 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Order</span>
 extends java.lang.Object</pre>
-<div class="block">The order class with order id and state of the order.</div>
+<div class="block">Represents an order in a system with an id and a state.</div>
 </li>
 </ul>
 </div>
@@ -155,7 +155,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Order</a></span>&#8203;(int&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a new Order object with the given id.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,22 +180,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getId()">getId</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the id of the order.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../constant/State.html" title="enum in ru.nsu.mbogdanov2.model.constant">State</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getState()">getState</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the current state of the order.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setState(ru.nsu.mbogdanov2.model.constant.State)">setState</a></span>&#8203;(<a href="../constant/State.html" title="enum in ru.nsu.mbogdanov2.model.constant">State</a>&nbsp;state)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the state of the order to the given state.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns a string representation of the order including its id and state.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -226,6 +236,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Order</h4>
 <pre>public&nbsp;Order&#8203;(int&nbsp;id)</pre>
+<div class="block">Creates a new Order object with the given id.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - the unique identifier of the order.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -245,6 +260,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getId</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getId()</pre>
+<div class="block">Returns the id of the order.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the id of the order.</dd>
+</dl>
 </li>
 </ul>
 <a id="getState()">
@@ -254,6 +274,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getState</h4>
 <pre class="methodSignature">public&nbsp;<a href="../constant/State.html" title="enum in ru.nsu.mbogdanov2.model.constant">State</a>&nbsp;getState()</pre>
+<div class="block">Returns the current state of the order.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current state of the order.</dd>
+</dl>
 </li>
 </ul>
 <a id="setState(ru.nsu.mbogdanov2.model.constant.State)">
@@ -263,6 +288,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setState</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setState&#8203;(<a href="../constant/State.html" title="enum in ru.nsu.mbogdanov2.model.constant">State</a>&nbsp;state)</pre>
+<div class="block">Sets the state of the order to the given state.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>state</code> - the new state of the order.</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
@@ -272,9 +302,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">Returns a string representation of the order including its id and state.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a string representation of the order.</dd>
 </dl>
 </li>
 </ul>
