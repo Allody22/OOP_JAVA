@@ -3,11 +3,11 @@ package ru.nsu.mbogdanov2.json;
 /**
  * Class for storing a json pizzeria object with all needed fields.
  */
-public class PizzeriaJSON {
-    private int queueSize;
-    private int storageSize;
-    private BakerJSON[] bakers;
-    private CourierJSON[] couriers;
+public class PizzeriaJson {
+    public int queueSize;
+    public int storageSize;
+    public BakerJson[] bakers;
+    public CourierJson[] couriers;
 
     public int queueSize() {
         return queueSize;
@@ -17,11 +17,11 @@ public class PizzeriaJSON {
         return storageSize;
     }
 
-    public BakerJSON[] bakers() {
+    public BakerJson[] bakers() {
         return bakers;
     }
 
-    public CourierJSON[] couriers() {
+    public CourierJson[] couriers() {
         return couriers;
     }
 }

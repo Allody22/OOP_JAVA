@@ -94,4 +94,8 @@ public class MyBlockingDequeue<T> {
         dequeue.push(object);
         notifyAll();
     }
+
+    public boolean contains(@NotNull T object) {
+        return dequeue.contains(object);
+    }
 }

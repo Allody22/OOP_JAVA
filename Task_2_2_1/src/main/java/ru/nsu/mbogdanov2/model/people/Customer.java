@@ -13,7 +13,6 @@ import java.util.Random;
  */
 public class Customer implements Producer<Order> {
     private static final long MAX_ORDERING_TIME = 100;
-    //private final Random random = new Random();
     private final MyBlockingDequeue<Order> queue;
 
     /**
@@ -22,7 +21,6 @@ public class Customer implements Producer<Order> {
      * @param queue - shared order queue.
      */
     public Customer(MyBlockingDequeue<Order> queue) {
-        //this.random = new Random();
         this.queue = queue;
     }
 

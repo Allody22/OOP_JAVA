@@ -20,7 +20,6 @@ public class Courier extends Employee implements User<List<Order>> {
     private final int bagCapacity;
     private List<Order> orders;
     private final MyBlockingDequeue<Order> storage;
-    //private final Random random = new Random();
 
     /**
      * Creates an instance of the class Courier.

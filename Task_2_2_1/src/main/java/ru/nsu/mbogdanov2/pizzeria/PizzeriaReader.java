@@ -1,11 +1,11 @@
 package ru.nsu.mbogdanov2.pizzeria;
 
+import ru.nsu.mbogdanov2.json.BakerJson;
 import ru.nsu.mbogdanov2.model.people.Customers;
 import ru.nsu.mbogdanov2.model.people.Baker;
 import ru.nsu.mbogdanov2.model.people.Courier;
-import ru.nsu.mbogdanov2.json.BakerJSON;
-import ru.nsu.mbogdanov2.json.CourierJSON;
-import ru.nsu.mbogdanov2.json.PizzeriaJSON;
+import ru.nsu.mbogdanov2.json.CourierJson;
+import ru.nsu.mbogdanov2.json.PizzeriaJson;
 import ru.nsu.mbogdanov2.model.order.Order;
 
 import java.util.ArrayList;
@@ -27,17 +27,17 @@ public class PizzeriaReader implements Runnable {
     private final MyBlockingDequeue<Order> queue;
     private final MyBlockingDequeue<Order> storage;
 
-    private void setBakers(BakerJSON[] bakers) {
-        Stream<BakerJSON> bakerJSONStream = Arrays.stream(bakers);
+    private void setBakers(BakerJson[] bakers) {
+        Stream<BakerJson> bakerJSONStream = Arrays.stream(bakers);
         this.bakers = bakerJSONStream
                 .map(bakerJSON -> new Baker(bakerJSON.id(), bakerJSON.workingExperience(), this.queue, this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private void setCouriers(CourierJSON[] couriers) {
-        Stream<CourierJSON> courierJSONStream = Arrays.stream(couriers);
+    private void setCouriers(CourierJson[] couriers) {
+        Stream<CourierJson> courierJSONStream = Arrays.stream(couriers);
         this.couriers = courierJSONStream
-                .map(courierJSON -> new Courier(courierJSON.id(), courierJSON.bagCapacity(), this.storage))
+                .map(courierJson -> new Courier(courierJson.id(), courierJson.bagCapacity(), this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -46,7 +46,7 @@ public class PizzeriaReader implements Runnable {
      *
      * @param settings - pizzeria configuration.
      */
-    public PizzeriaReader(PizzeriaJSON settings) {
+    public PizzeriaReader(PizzeriaJson settings) {
         this.runPizzeria = false;
         this.queue = new MyBlockingDequeue<>(settings.queueSize());
         this.storage = new MyBlockingDequeue<>(settings.storageSize());
