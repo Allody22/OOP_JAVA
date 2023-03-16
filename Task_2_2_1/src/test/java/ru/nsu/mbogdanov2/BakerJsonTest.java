@@ -5,6 +5,9 @@ import ru.nsu.mbogdanov2.json.BakerJson;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Class with tests for Baker entity.
+ */
 public class BakerJsonTest {
 
     @Test

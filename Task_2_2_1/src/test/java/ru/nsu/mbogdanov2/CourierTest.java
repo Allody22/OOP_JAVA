@@ -12,6 +12,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests for courier entity.
+ */
 class CourierTest {
 
     private static final int DEFAULT_CAPACITY = 5;

@@ -64,10 +64,12 @@ public class MyBlockingDequeue<T> {
      *
      * @param amount - amount of objects.
      * @return - objects from dequeue.
-     * @throws IllegalArgumentException if the amount argument is not positive or exceeds the maximum dequeue size.
+     * @throws IllegalArgumentException if the amount argument
+     * is not positive or exceeds the maximum dequeue size.
      * @throws InterruptedException     in case of an exception.
      */
-    public synchronized List<T> get(int amount) throws IllegalArgumentException, InterruptedException {
+    public synchronized List<T> get(int amount)
+            throws IllegalArgumentException, InterruptedException {
         if (amount < 1 || amount > size) {
             throw new IllegalArgumentException();
         }
@@ -82,7 +84,7 @@ public class MyBlockingDequeue<T> {
     }
 
     /**
-     * Puts one object in a dequeue
+     * Puts one object in a dequeue.
      *
      * @param object - the object to be added to the dequeue.
      * @throws InterruptedException in case of an exception.

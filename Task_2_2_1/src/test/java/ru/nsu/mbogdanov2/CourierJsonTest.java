@@ -5,6 +5,9 @@ import ru.nsu.mbogdanov2.json.CourierJson;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests for Courier json class.
+ */
 public class CourierJsonTest {
 
     @Test

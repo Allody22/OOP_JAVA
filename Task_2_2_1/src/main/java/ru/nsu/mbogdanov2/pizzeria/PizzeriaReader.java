@@ -28,16 +28,18 @@ public class PizzeriaReader implements Runnable {
     private final MyBlockingDequeue<Order> storage;
 
     private void setBakers(BakerJson[] bakers) {
-        Stream<BakerJson> bakerJSONStream = Arrays.stream(bakers);
-        this.bakers = bakerJSONStream
-                .map(bakerJSON -> new Baker(bakerJSON.id(), bakerJSON.workingExperience(), this.queue, this.storage))
+        Stream<BakerJson> bakerJsonStream = Arrays.stream(bakers);
+        this.bakers = bakerJsonStream
+                .map(bakerJSON -> new Baker(bakerJSON.id(), bakerJSON.workingExperience(),
+                        this.queue, this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     private void setCouriers(CourierJson[] couriers) {
-        Stream<CourierJson> courierJSONStream = Arrays.stream(couriers);
-        this.couriers = courierJSONStream
-                .map(courierJson -> new Courier(courierJson.id(), courierJson.bagCapacity(), this.storage))
+        Stream<CourierJson> courierJsonStream = Arrays.stream(couriers);
+        this.couriers = courierJsonStream
+                .map(courierJson -> new Courier(courierJson.id(),
+                        courierJson.bagCapacity(), this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -69,10 +71,12 @@ public class PizzeriaReader implements Runnable {
         Thread customersThread = new Thread(customers);
         customersThread.start();
         System.out.println("The pizzeria is up and running!");
-        while (runPizzeria && !bakersThreadPool.isTerminated() && !couriersThreadPool.isTerminated()) {
+        while (runPizzeria && !bakersThreadPool.isTerminated()
+                && !couriersThreadPool.isTerminated()) {
         }
         if (bakersThreadPool.isTerminated() || couriersThreadPool.isTerminated()) {
-            System.out.println("Oops, something went wrong. The pizzeria is closed for a technical break.");
+            System.out.println("Oops, something went wrong. "
+                    + "The pizzeria is closed for a technical break.");
         }
         runPizzeria = false;
         bakersThreadPool.shutdownNow();

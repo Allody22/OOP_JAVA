@@ -18,7 +18,6 @@ import static ru.nsu.mbogdanov2.model.constant.State.IN_STOCK;
 public class Baker extends Employee implements User<Order>, Producer<Order> {
     private static final long MAX_COOKING_TIME = 5000;
     private final int workingExperience;
-    //private final Random random = new Random();
     private final MyBlockingDequeue<Order> queue;
     private final MyBlockingDequeue<Order> storage;
 
@@ -30,7 +29,8 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
      * @param queue             - shared order queue.
      * @param storage           - place to store finished orders.
      */
-    public Baker(int id, int workingExperience, MyBlockingDequeue<Order> queue, MyBlockingDequeue<Order> storage) {
+    public Baker(int id, int workingExperience,
+                 MyBlockingDequeue<Order> queue, MyBlockingDequeue<Order> storage) {
         super(id);
         this.workingExperience = workingExperience;
         //this.random = new Random();
@@ -69,15 +69,18 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             order.setState(IN_STOCK);
             storage.put(order);
         } catch (NullPointerException exception) {
-            System.err.println("The baker with id: " + getId() + " tried to make an order that does not exist.");
+            System.err.println("The baker with id: " + getId()
+                    + " tried to make an order that does not exist.");
         } catch (InterruptedException exception) {
             System.err.println("The baker with id: " + getId() + "could not make the order.");
         }
     }
 
     /**
-     * Takes an order out of the order queue, executes the order within a certain time, and then sends it to the storage.
-     * This method is used in the run method, which allows to simulate the constant work of a baker.
+     * Takes an order out of the order queue,
+     * executes the order within a certain time, and then sends it to the storage.
+     * This method is used in the run method,
+     * which allows to simulate the constant work of a baker.
      * In case of failure, this method stops the run method.
      */
     @Override

@@ -8,6 +8,9 @@ import ru.nsu.mbogdanov2.json.PizzeriaJson;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests for PizzeriaJson class.
+ */
 public class PizzeriaJsonTest {
     @Test
     public void testQueueSize() {

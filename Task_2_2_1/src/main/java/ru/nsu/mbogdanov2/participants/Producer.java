@@ -8,7 +8,8 @@ package ru.nsu.mbogdanov2.participants;
 public interface Producer<T> {
 
     /**
-     * The implementation of this method must allow the class to add new objects to the shared resource.
+     * The implementation of this method must allow the class
+     * to add new objects to the shared resource.
      *
      * @param object - object which should be produced.
      */

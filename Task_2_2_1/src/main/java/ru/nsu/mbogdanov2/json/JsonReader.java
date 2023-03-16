@@ -9,7 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * The `JSONReader` class is responsible for reading and parsing a JSON file into a PizzeriaJSON object.
+ * The `JSONReader` class is responsible
+ * for reading and parsing a JSON file into a PizzeriaJSON object.
  */
 public class JsonReader {
     private static final String DEFAULT_FILE_NAME = "pizzeria.json";
@@ -26,7 +27,8 @@ public class JsonReader {
     /**
      * Opens the file for reading.
      * If the file does not exist, it will be created.
-     * If an error occurs while creating the file or the reader, an exception will be printed to the console.
+     * If an error occurs while creating the file or the reader,
+     * an exception will be printed to the console.
      */
     public void open() {
         try {
@@ -58,7 +60,8 @@ public class JsonReader {
 
     /**
      * Reads the JSON file and returns a PizzeriaJSON object.
-     * If an error occurs while reading or parsing the file, an exception will be printed to the console and null will be returned.
+     * If an error occurs while reading or parsing the file,
+     * an exception will be printed to the console and null will be returned.
      *
      * @return a PizzeriaJSON object containing the parsed JSON data, or null if an error occurs
      */

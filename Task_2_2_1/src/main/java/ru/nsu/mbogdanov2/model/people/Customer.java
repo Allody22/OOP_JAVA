@@ -39,9 +39,10 @@ public class Customer implements Producer<Order> {
             order.setState(State.IN_QUEUE);
             queue.put(order);
         } catch (NullPointerException exception) {
-            System.err.println("A non-existent order was received from a customer.");
+            System.err.print("A non-existent order was received from a customer.");
         } catch (InterruptedException exception) {
-            System.err.println("The customer was unable to place an order with id: " + order.getId());
+            System.err.print("The customer was unable "
+                    + "to place an order with id: " + order.getId());
         }
     }
 }

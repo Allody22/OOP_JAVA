@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 /**
- * Testing class for order Class.
+ * Testing class for Order class.
  */
 public class OrderTest {
 

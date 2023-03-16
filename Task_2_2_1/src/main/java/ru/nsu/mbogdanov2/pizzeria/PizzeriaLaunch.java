@@ -18,7 +18,7 @@ public class PizzeriaLaunch implements Runnable {
     /**
      * The PizzeriaJSON object that contains information about the pizzeria.
      */
-    private PizzeriaJson pizzeriaJSON;
+    private PizzeriaJson pizzeriaJson;
 
     /**
      * The PizzeriaReader object that represents the pizzeria.
@@ -28,48 +28,50 @@ public class PizzeriaLaunch implements Runnable {
     /**
      * This method sets the PizzeriaJSON object by reading it from the file.
      */
-    private void setPizzeriaJSON() {
+    private void setPizzeriaJson() {
         JsonReader jsonReader = new JsonReader();
         jsonReader.open();
-        pizzeriaJSON = jsonReader.read();
+        pizzeriaJson = jsonReader.read();
         jsonReader.close();
     }
 
     /**
-     * This method sets the PizzeriaReader object based on the information from the PizzeriaJSON object.
-     * If there is an error with the JSON file, the method prints an error message to the console.
+     * This method sets the PizzeriaReader object
+     * based on the information from the PizzeriaJSON object.
+     * If there is an error with the JSON file,
+     * the method prints an error message to the console.
      */
     private void setPizzeria() {
-        if (pizzeriaJSON == null) {
+        if (pizzeriaJson == null) {
             System.err.println("No pizzeria JSON.");
             return;
         }
-        if (pizzeriaJSON.queueSize() <= 0) {
+        if (pizzeriaJson.queueSize() <= 0) {
             System.err.println("Queue size must be greater than zero.");
             return;
         }
-        if (pizzeriaJSON.storageSize() <= 0) {
+        if (pizzeriaJson.storageSize() <= 0) {
             System.err.println("Storage size must be greater than zero.");
             return;
         }
-        BakerJson[] bakersJSON = pizzeriaJSON.bakers();
+        BakerJson[] bakersJSON = pizzeriaJson.bakers();
         if (bakersJSON == null || bakersJSON.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;
         }
-        CourierJson[] couriersJSON = pizzeriaJSON.couriers();
+        CourierJson[] couriersJSON = pizzeriaJson.couriers();
         if (couriersJSON == null || couriersJSON.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;
         }
-        pizzeriaReader = new PizzeriaReader(pizzeriaJSON);
+        pizzeriaReader = new PizzeriaReader(pizzeriaJson);
     }
 
     /**
      * Constructor of the PizzeriaApplication class.
      */
     public PizzeriaLaunch() {
-        setPizzeriaJSON();
+        setPizzeriaJson();
         setPizzeria();
     }
 

@@ -32,7 +32,6 @@ public class Courier extends Employee implements User<List<Order>> {
         super(id);
         this.bagCapacity = bagCapacity;
         this.storage = storage;
-        //this.random = new Random();
     }
 
     private void setOrdersState(State state) {
@@ -57,14 +56,16 @@ public class Courier extends Employee implements User<List<Order>> {
             setOrdersState(DELIVERED);
             return orders;
         } catch (InterruptedException exception) {
-            System.err.println("The courier with id: " + getId() + " could not deliver the order.");
+            System.err.println("The courier with id: " + getId()
+                    + " could not deliver the order.");
             return null;
         }
     }
 
     /**
      * Receives orders from the storage and delivers them.
-     * This method is used in the run method, which allows to simulate the constant work of a courier.
+     * This method is used in the run method,
+     * which allows to simulate the constant work of a courier.
      * In case of failure, this method stops the run method.
      */
     @Override
