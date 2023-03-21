@@ -46,6 +46,7 @@ class BakerTest {
         Assertions.assertTrue(queue.isEmpty());
     }
 
+
     @Test
     void testWork() throws InterruptedException {
         Order order = new Order(1);
@@ -54,5 +55,18 @@ class BakerTest {
         Assertions.assertTrue(storage.contains(order));
         assertEquals(State.IN_STOCK, order.getState());
         Assertions.assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    void testWorkSecond() throws InterruptedException {
+        Order order = new Order(1);
+        queue.put(order);
+
+        Thread bakerThread = new Thread(baker::work);
+        bakerThread.start();
+
+        bakerThread.join();
+        Assertions.assertEquals(State.IN_STOCK, order.getState());
+        Assertions.assertEquals(order, storage.get());
     }
 }

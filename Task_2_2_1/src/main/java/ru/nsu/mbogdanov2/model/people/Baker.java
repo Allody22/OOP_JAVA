@@ -71,7 +71,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             System.err.println("The baker with id: " + getId()
                     + " tried to make an order that does not exist.");
         } catch (InterruptedException exception) {
-            System.err.println("The baker with id: " + getId() + "could not make the order.");
+            System.err.println("The baker with id: " + getId() + " could not make the order.");
         }
     }
 

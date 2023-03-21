@@ -14,6 +14,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for courier entity.
@@ -72,4 +74,29 @@ class CourierTest {
         }
     }
 
+    @Test
+    public void testUseWithOneNormalOrders() throws InterruptedException {
+        MyBlockingDequeue<Order> storage = new MyBlockingDequeue<>(2);
+        storage.put(new Order(1));
+        storage.put(new Order(2));
+
+        Courier courier = new Courier(1, 1, storage);
+
+        List<Order> deliveredOrders = courier.use();
+        assertEquals(1, deliveredOrders.size());
+        assertEquals(State.DELIVERED, deliveredOrders.get(0).getState());
+    }
+
+    @Test
+    public void testUseWithEmptyStorage() throws InterruptedException {
+        Order order = new Order(1);
+        storage.put(order);
+        List<Order> orders = courier.use();
+
+        assertTrue(storage.isEmpty());
+        assertNotNull(orders);
+        assertEquals(1, orders.size());
+        assertEquals(order, orders.get(0));
+        assertEquals(State.DELIVERED, order.getState());
+    }
 }
