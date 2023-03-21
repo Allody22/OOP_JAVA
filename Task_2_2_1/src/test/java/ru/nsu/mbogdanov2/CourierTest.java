@@ -9,6 +9,9 @@ import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,6 +42,30 @@ class CourierTest {
         }
 
         courier.use();
+
+        for (Order order : expectedOrders) {
+            assertEquals(State.DELIVERED, order.getState());
+        }
+    }
+
+    @Test
+    void testInterruptedException() throws InterruptedException {
+        List<Order> expectedOrders = new ArrayList<>();
+        expectedOrders.add(new Order(1));
+        expectedOrders.add(new Order(2));
+        for (Order order : expectedOrders) {
+            storage.put(order);
+        }
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(() -> courier.use());
+
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         for (Order order : expectedOrders) {
             assertEquals(State.DELIVERED, order.getState());

@@ -8,11 +8,12 @@ import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.people.Baker;
 import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Tests for bakers. They simulate baker's work with orders.
  */
-//TODO проверка на работу с пустой очередью, выброс ошибок
 class BakerTest {
     private static final int MAX_SIZE = 10;
     private MyBlockingDequeue<Order> queue;
@@ -30,7 +31,7 @@ class BakerTest {
     void testUse() throws InterruptedException {
         Order order = new Order(1);
         queue.put(order);
-        Assertions.assertEquals(order, baker.use());
+        assertEquals(order, baker.use());
         Assertions.assertTrue(queue.isEmpty());
         Assertions.assertFalse(storage.contains(order));
     }
@@ -41,7 +42,7 @@ class BakerTest {
         queue.put(order);
         baker.work();
         Assertions.assertTrue(storage.contains(order));
-        Assertions.assertEquals(State.IN_STOCK, order.getState());
+        assertEquals(State.IN_STOCK, order.getState());
         Assertions.assertTrue(queue.isEmpty());
     }
 
@@ -51,7 +52,7 @@ class BakerTest {
         queue.put(order);
         baker.work();
         Assertions.assertTrue(storage.contains(order));
-        Assertions.assertEquals(State.IN_STOCK, order.getState());
+        assertEquals(State.IN_STOCK, order.getState());
         Assertions.assertTrue(queue.isEmpty());
     }
 }

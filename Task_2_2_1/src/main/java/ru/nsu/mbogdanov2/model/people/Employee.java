@@ -5,7 +5,7 @@ package ru.nsu.mbogdanov2.model.people;
  */
 public abstract class Employee implements Runnable {
     private final int id;
-    private boolean runEmployee;
+    public boolean runEmployee;
 
     /**
      * Constructor of an abstract class. Allows to set the employee id.
@@ -29,7 +29,7 @@ public abstract class Employee implements Runnable {
     /**
      * The implementation of this abstract method should be the execution of the employee task.
      */
-    abstract void work();
+    public abstract void work();
 
     /**
      * Simulates the permanent work of an employee.

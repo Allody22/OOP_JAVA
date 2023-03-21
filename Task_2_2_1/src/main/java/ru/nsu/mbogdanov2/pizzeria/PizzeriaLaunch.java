@@ -13,7 +13,7 @@ public class PizzeriaLaunch implements Runnable {
     /**
      * The running time of the pizzeria in milliseconds.
      */
-    private final static long RUNNING_TIME = 30 * 500;
+    private static final long RUNNING_TIME = 30 * 500;
 
     /**
      * The PizzeriaJSON object that contains information about the pizzeria.
@@ -54,13 +54,13 @@ public class PizzeriaLaunch implements Runnable {
             System.err.println("Storage size must be greater than zero.");
             return;
         }
-        BakerJson[] bakersJSON = pizzeriaJson.bakers();
-        if (bakersJSON == null || bakersJSON.length == 0) {
+        BakerJson[] bakersJson = pizzeriaJson.bakers();
+        if (bakersJson == null || bakersJson.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;
         }
-        CourierJson[] couriersJSON = pizzeriaJson.couriers();
-        if (couriersJSON == null || couriersJSON.length == 0) {
+        CourierJson[] couriersJson = pizzeriaJson.couriers();
+        if (couriersJson == null || couriersJson.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;
         }

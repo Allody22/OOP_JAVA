@@ -6,6 +6,9 @@ import ru.nsu.mbogdanov2.model.constant.State;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Testing class for state entity.
+ */
 public class StateTest {
 
     @Test

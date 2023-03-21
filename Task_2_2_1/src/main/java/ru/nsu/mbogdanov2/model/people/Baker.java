@@ -33,7 +33,6 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
                  MyBlockingDequeue<Order> queue, MyBlockingDequeue<Order> storage) {
         super(id);
         this.workingExperience = workingExperience;
-        //this.random = new Random();
         this.queue = queue;
         this.storage = storage;
     }
