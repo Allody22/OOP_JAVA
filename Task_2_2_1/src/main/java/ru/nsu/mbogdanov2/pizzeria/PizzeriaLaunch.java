@@ -46,20 +46,20 @@ public class PizzeriaLaunch implements Runnable {
             System.err.println("No pizzeria JSON.");
             return;
         }
-        if (pizzeriaJson.queueSize() <= 0) {
+        if (pizzeriaJson.getQueueSize() <= 0) {
             System.err.println("Queue size must be greater than zero.");
             return;
         }
-        if (pizzeriaJson.storageSize() <= 0) {
+        if (pizzeriaJson.getStorageSize() <= 0) {
             System.err.println("Storage size must be greater than zero.");
             return;
         }
-        BakerJson[] bakersJson = pizzeriaJson.bakers();
+        BakerJson[] bakersJson = pizzeriaJson.getBakers();
         if (bakersJson == null || bakersJson.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;
         }
-        CourierJson[] couriersJson = pizzeriaJson.couriers();
+        CourierJson[] couriersJson = pizzeriaJson.getCouriers();
         if (couriersJson == null || couriersJson.length == 0) {
             System.err.println("No information about bakers in the JSON file.");
             return;

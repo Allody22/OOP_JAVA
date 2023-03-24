@@ -30,7 +30,7 @@ public class PizzeriaReader implements Runnable {
     private void setBakers(BakerJson[] bakers) {
         Stream<BakerJson> bakerJsonStream = Arrays.stream(bakers);
         this.bakers = bakerJsonStream
-                .map(bakerJSON -> new Baker(bakerJSON.id(), bakerJSON.workingExperience(),
+                .map(bakerJSON -> new Baker(bakerJSON.getId(), bakerJSON.getWorkingExperience(),
                         this.queue, this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
@@ -38,8 +38,8 @@ public class PizzeriaReader implements Runnable {
     private void setCouriers(CourierJson[] couriers) {
         Stream<CourierJson> courierJsonStream = Arrays.stream(couriers);
         this.couriers = courierJsonStream
-                .map(courierJson -> new Courier(courierJson.id(),
-                        courierJson.bagCapacity(), this.storage))
+                .map(courierJson -> new Courier(courierJson.getId(),
+                        courierJson.getBagCapacity(), this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -50,11 +50,11 @@ public class PizzeriaReader implements Runnable {
      */
     public PizzeriaReader(PizzeriaJson settings) {
         this.runPizzeria = false;
-        this.queue = new MyBlockingDeque<>(settings.queueSize());
-        this.storage = new MyBlockingDeque<>(settings.storageSize());
+        this.queue = new MyBlockingDeque<>(settings.getQueueSize());
+        this.storage = new MyBlockingDeque<>(settings.getStorageSize());
         this.customers = new Customers(this.queue);
-        setBakers(settings.bakers());
-        setCouriers(settings.couriers());
+        setBakers(settings.getBakers());
+        setCouriers(settings.getCouriers());
     }
 
     /**

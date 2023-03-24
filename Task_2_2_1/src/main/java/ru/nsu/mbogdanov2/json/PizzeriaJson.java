@@ -13,20 +13,4 @@ public class PizzeriaJson {
     private int storageSize;
     private BakerJson[] bakers;
     private CourierJson[] couriers;
-
-    public int queueSize() {
-        return queueSize;
-    }
-
-    public int storageSize() {
-        return storageSize;
-    }
-
-    public BakerJson[] bakers() {
-        return bakers;
-    }
-
-    public CourierJson[] couriers() {
-        return couriers;
-    }
 }

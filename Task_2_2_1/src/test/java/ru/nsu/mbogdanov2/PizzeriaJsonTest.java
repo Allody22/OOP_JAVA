@@ -31,7 +31,7 @@ public class PizzeriaJsonTest {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
         BakerJson baker = new BakerJson();
         pizzeriaJson.setBakers(new BakerJson[]{baker});
-        assertArrayEquals(new BakerJson[]{baker}, pizzeriaJson.bakers());
+        assertArrayEquals(new BakerJson[]{baker}, pizzeriaJson.getBakers());
     }
 
     @Test
@@ -39,7 +39,8 @@ public class PizzeriaJsonTest {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
         CourierJson courier = new CourierJson();
         pizzeriaJson.setCouriers(new CourierJson[]{courier});
-        assertArrayEquals(new CourierJson[]{courier}, pizzeriaJson.couriers());
+        assertArrayEquals(new CourierJson[]{courier}, pizzeriaJson.getCouriers());
     }
+
 
 }
