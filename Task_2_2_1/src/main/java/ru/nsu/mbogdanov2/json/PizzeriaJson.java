@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * Class for storing a json pizzeria object with all needed fields.
  */
-@Getter @Setter
+@Getter
+@Setter
 public class PizzeriaJson {
     private int queueSize;
     private int storageSize;

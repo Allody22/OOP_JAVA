@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * Class for storing a json courier object with id and bax capacity.
  */
-@Getter @Setter
+@Getter
+@Setter
 public class CourierJson {
     private int id;
     private int bagCapacity;

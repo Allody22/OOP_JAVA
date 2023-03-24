@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * Class for storing a json baker object with id and working experience.
  */
-@Getter @Setter
+@Getter
+@Setter
 public class BakerJson {
     private int id;
     private int workingExperience;

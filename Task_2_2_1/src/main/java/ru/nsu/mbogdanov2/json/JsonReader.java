@@ -14,7 +14,8 @@ import java.io.IOException;
  * The `JSONReader` class is responsible
  * for reading and parsing a JSON file into a PizzeriaJSON object.
  */
-@Getter @Setter
+@Getter
+@Setter
 public class JsonReader {
     private static final String DEFAULT_FILE_NAME = "pizzeria.json";
     private final File file;
