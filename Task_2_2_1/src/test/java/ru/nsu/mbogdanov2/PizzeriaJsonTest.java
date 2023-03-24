@@ -15,22 +15,22 @@ public class PizzeriaJsonTest {
     @Test
     public void testQueueSize() {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
-        pizzeriaJson.queueSize = 10;
-        assertEquals(10, pizzeriaJson.queueSize());
+        pizzeriaJson.setQueueSize(10);
+        assertEquals(10, pizzeriaJson.getQueueSize());
     }
 
     @Test
     public void testStorageSize() {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
-        pizzeriaJson.storageSize = 10;
-        assertEquals(10, pizzeriaJson.storageSize());
+        pizzeriaJson.setStorageSize(10);
+        assertEquals(10, pizzeriaJson.getStorageSize());
     }
 
     @Test
     public void testBakers() {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
         BakerJson baker = new BakerJson();
-        pizzeriaJson.bakers = new BakerJson[]{baker};
+        pizzeriaJson.setBakers(new BakerJson[]{baker});
         assertArrayEquals(new BakerJson[]{baker}, pizzeriaJson.bakers());
     }
 
@@ -38,7 +38,7 @@ public class PizzeriaJsonTest {
     public void testCouriers() {
         PizzeriaJson pizzeriaJson = new PizzeriaJson();
         CourierJson courier = new CourierJson();
-        pizzeriaJson.couriers = new CourierJson[]{courier};
+        pizzeriaJson.setCouriers(new CourierJson[]{courier});
         assertArrayEquals(new CourierJson[]{courier}, pizzeriaJson.couriers());
     }
 

@@ -8,64 +8,64 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * This class provides methods for working with a dequeue for different models.
+ * This class provides methods for working with a deque for different models.
  *
- * @param <T> - The type of data stored in a dequeue.
+ * @param <T> - The type of data stored in a deque.
  */
-public class MyBlockingDequeue<T> {
+public class MyBlockingDeque<T> {
     private final int size;
-    private final Deque<T> dequeue;
+    private final Deque<T> deque;
 
     /**
-     * Constructor of the class MyBlockingDequeue.
+     * Constructor of the class MyBlockingdeque.
      *
-     * @param size maximal size of the dequeue.
+     * @param size maximal size of the deque.
      */
-    public MyBlockingDequeue(int size) {
+    public MyBlockingDeque(int size) {
         this.size = size;
-        this.dequeue = new ArrayDeque<>();
+        this.deque = new ArrayDeque<>();
     }
 
     /**
-     * Checks if the dequeue is empty.
+     * Checks if the deque is empty.
      *
-     * @return true if dequeue is empty.
+     * @return true if deque is empty.
      */
     public synchronized boolean isEmpty() {
-        return dequeue.size() == 0;
+        return deque.size() == 0;
     }
 
     /**
-     * Returns the number of objects in the dequeue.
+     * Returns the number of objects in the deque.
      *
-     * @return number of objects in the dequeue.
+     * @return number of objects in the deque.
      */
     public synchronized int getSize() {
-        return dequeue.size();
+        return deque.size();
     }
 
     /**
-     * Gets the object from the dequeue and deletes it.
+     * Gets the object from the deque and deletes it.
      *
-     * @return object from dequeue.
+     * @return object from deque.
      * @throws InterruptedException in case of an error.
      */
     public synchronized T get() throws InterruptedException {
-        while (dequeue.isEmpty()) {
+        while (deque.isEmpty()) {
             wait();
         }
-        T object = dequeue.pop();
+        T object = deque.pop();
         notifyAll();
         return object;
     }
 
     /**
-     * Gets several objects from the dequeue and deletes them.
+     * Gets several objects from the deque and deletes them.
      *
      * @param amount - amount of objects.
-     * @return - objects from dequeue.
+     * @return - objects from deque.
      * @throws IllegalArgumentException if the amount argument
-     *                                  is not positive or exceeds the maximum dequeue size.
+     *                                  is not positive or exceeds the maximum deque size.
      * @throws InterruptedException     in case of an exception.
      */
     public synchronized List<T> get(int amount)
@@ -73,31 +73,31 @@ public class MyBlockingDequeue<T> {
         if (amount < 1 || amount > size) {
             throw new IllegalArgumentException();
         }
-        while (dequeue.isEmpty()) {
+        while (deque.isEmpty()) {
             wait();
         }
         List<T> objects = new ArrayList<>();
-        while (!dequeue.isEmpty() && objects.size() != amount) {
-            objects.add(dequeue.pop());
+        while (!deque.isEmpty() && objects.size() != amount) {
+            objects.add(deque.pop());
         }
         return objects;
     }
 
     /**
-     * Puts one object in a dequeue.
+     * Puts one object in a deque.
      *
-     * @param object - the object to be added to the dequeue.
+     * @param object - the object to be added to the deque.
      * @throws InterruptedException in case of an exception.
      */
     public synchronized void put(@NotNull T object) throws InterruptedException {
-        while (dequeue.size() == size) {
+        while (deque.size() == size) {
             wait();
         }
-        dequeue.push(object);
+        deque.push(object);
         notifyAll();
     }
 
     public boolean contains(@NotNull T object) {
-        return dequeue.contains(object);
+        return deque.contains(object);
     }
 }

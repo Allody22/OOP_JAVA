@@ -42,7 +42,7 @@ public class JsonReaderTest {
     public void testOpen() {
         JsonReader reader = new JsonReader();
         reader.open();
-        assertNotNull(reader.reader);
+        assertNotNull(reader.getReader());
         reader.close();
     }
 }

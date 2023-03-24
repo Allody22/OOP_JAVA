@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.model.constant.State;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.people.Customer;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -23,7 +23,7 @@ class CustomerTest {
 
     @Test
     void testProduce() throws InterruptedException {
-        MyBlockingDequeue<Order> queue = new MyBlockingDequeue<>(10);
+        MyBlockingDeque<Order> queue = new MyBlockingDeque<>(10);
         Customer customer = new Customer(queue);
         Order order = new Order(1);
 
@@ -41,7 +41,7 @@ class CustomerTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setErr(new PrintStream(outContent));
 
-        MyBlockingDequeue<Order> queue = new MyBlockingDequeue<>(1);
+        MyBlockingDeque<Order> queue = new MyBlockingDeque<>(1);
         Customer customer = new Customer(queue);
         customer.produce(null);
 
@@ -53,7 +53,7 @@ class CustomerTest {
 
     @Test
     public void testInterruptedException() {
-        MyBlockingDequeue<Order> queue = new MyBlockingDequeue<>(1);
+        MyBlockingDeque<Order> queue = new MyBlockingDeque<>(1);
         Order order = new Order(1);
         order.setState(State.IN_QUEUE);
         Customer customer = new Customer(queue);

@@ -77,10 +77,6 @@ public class PizzeriaLaunch implements Runnable {
 
     @Override
     public void run() {
-        if (pizzeriaReader == null) {
-            System.err.println("Failed to start pizzeria application.");
-            System.exit(1);
-        }
         Thread pizzeriaThread = new Thread(pizzeriaReader);
         pizzeriaThread.start();
         try {

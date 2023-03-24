@@ -1,13 +1,17 @@
 package ru.nsu.mbogdanov2.json;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Class for storing a json pizzeria object with all needed fields.
  */
+@Getter @Setter
 public class PizzeriaJson {
-    public int queueSize;
-    public int storageSize;
-    public BakerJson[] bakers;
-    public CourierJson[] couriers;
+    private int queueSize;
+    private int storageSize;
+    private BakerJson[] bakers;
+    private CourierJson[] couriers;
 
     public int queueSize() {
         return queueSize;

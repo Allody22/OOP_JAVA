@@ -3,7 +3,7 @@ package ru.nsu.mbogdanov2.model.people;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.participants.Producer;
 import ru.nsu.mbogdanov2.participants.User;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import java.util.Random;
 
@@ -18,8 +18,8 @@ import static ru.nsu.mbogdanov2.model.constant.State.IN_STOCK;
 public class Baker extends Employee implements User<Order>, Producer<Order> {
     private static final long MAX_COOKING_TIME = 5000;
     private final int workingExperience;
-    private final MyBlockingDequeue<Order> queue;
-    private final MyBlockingDequeue<Order> storage;
+    private final MyBlockingDeque<Order> queue;
+    private final MyBlockingDeque<Order> storage;
 
     /**
      * Constructor for the baker entity.
@@ -30,7 +30,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
      * @param storage           - place to store finished orders.
      */
     public Baker(int id, int workingExperience,
-                 MyBlockingDequeue<Order> queue, MyBlockingDequeue<Order> storage) {
+                 MyBlockingDeque<Order> queue, MyBlockingDeque<Order> storage) {
         super(id);
         this.workingExperience = workingExperience;
         this.queue = queue;

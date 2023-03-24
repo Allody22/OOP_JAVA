@@ -24,8 +24,8 @@ public class PizzeriaReader implements Runnable {
     private List<Baker> bakers;
     private List<Courier> couriers;
     private final Customers customers;
-    private final MyBlockingDequeue<Order> queue;
-    private final MyBlockingDequeue<Order> storage;
+    private final MyBlockingDeque<Order> queue;
+    private final MyBlockingDeque<Order> storage;
 
     private void setBakers(BakerJson[] bakers) {
         Stream<BakerJson> bakerJsonStream = Arrays.stream(bakers);
@@ -50,8 +50,8 @@ public class PizzeriaReader implements Runnable {
      */
     public PizzeriaReader(PizzeriaJson settings) {
         this.runPizzeria = false;
-        this.queue = new MyBlockingDequeue<>(settings.queueSize());
-        this.storage = new MyBlockingDequeue<>(settings.storageSize());
+        this.queue = new MyBlockingDeque<>(settings.queueSize());
+        this.storage = new MyBlockingDeque<>(settings.storageSize());
         this.customers = new Customers(this.queue);
         setBakers(settings.bakers());
         setCouriers(settings.couriers());

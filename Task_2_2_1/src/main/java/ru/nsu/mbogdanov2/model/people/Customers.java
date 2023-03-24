@@ -1,7 +1,7 @@
 package ru.nsu.mbogdanov2.model.people;
 
 import ru.nsu.mbogdanov2.model.order.Order;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 /**
  * The Customers class simulates how several customers behave.
@@ -9,14 +9,14 @@ import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
  */
 public class Customers implements Runnable {
     private boolean runCustomers;
-    private final MyBlockingDequeue<Order> queue;
+    private final MyBlockingDeque<Order> queue;
 
     /**
      * Constructor of the class Customers.
      *
      * @param queue - shared order queue.
      */
-    public Customers(MyBlockingDequeue<Order> queue) {
+    public Customers(MyBlockingDeque<Order> queue) {
         this.runCustomers = false;
         this.queue = queue;
     }

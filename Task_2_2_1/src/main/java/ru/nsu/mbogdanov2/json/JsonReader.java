@@ -2,6 +2,8 @@ package ru.nsu.mbogdanov2.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,10 +14,13 @@ import java.io.IOException;
  * The `JSONReader` class is responsible
  * for reading and parsing a JSON file into a PizzeriaJSON object.
  */
+@Getter @Setter
 public class JsonReader {
     private static final String DEFAULT_FILE_NAME = "pizzeria.json";
     private final File file;
-    public BufferedReader reader;
+    @Getter
+    @Setter
+    private BufferedReader reader;
 
     /**
      * Constructor for fileReader class that sets the default file for reading.
@@ -75,7 +80,8 @@ public class JsonReader {
         }
 
         if (content.equals("")) {
-            return null;
+            System.err.println("Failed to start pizzeria application.");
+            System.exit(1);
         }
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(content, PizzeriaJson.class);

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.model.constant.State;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.people.Courier;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +25,12 @@ class CourierTest {
     private static final int DEFAULT_CAPACITY = 5;
     private static final int DEFAULT_BAG_CAPACITY = 3;
 
-    private MyBlockingDequeue<Order> storage;
+    private MyBlockingDeque<Order> storage;
     private Courier courier;
 
     @BeforeEach
     void setUp() {
-        storage = new MyBlockingDequeue<>(DEFAULT_CAPACITY);
+        storage = new MyBlockingDeque<>(DEFAULT_CAPACITY);
         courier = new Courier(1, DEFAULT_BAG_CAPACITY, storage);
     }
 
@@ -76,7 +76,7 @@ class CourierTest {
 
     @Test
     public void testUseWithOneNormalOrders() throws InterruptedException {
-        MyBlockingDequeue<Order> storage = new MyBlockingDequeue<>(2);
+        MyBlockingDeque<Order> storage = new MyBlockingDeque<>(2);
         storage.put(new Order(1));
         storage.put(new Order(2));
 

@@ -3,7 +3,7 @@ package ru.nsu.mbogdanov2;
 import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.people.Customers;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CustomersTest {
     @Test
     public void testStopCustomers() throws InterruptedException {
-        MyBlockingDequeue<Order> queue = new MyBlockingDequeue<>(10);
+        MyBlockingDeque<Order> queue = new MyBlockingDeque<>(10);
         Customers customers = new Customers(queue);
 
         Thread customersThread = new Thread(customers);
@@ -30,7 +30,7 @@ public class CustomersTest {
 
     @Test
     public void testCustomersQueueLimit() throws InterruptedException {
-        MyBlockingDequeue<Order> queue = new MyBlockingDequeue<>(1);
+        MyBlockingDeque<Order> queue = new MyBlockingDeque<>(1);
         Customers customers = new Customers(queue);
 
         Thread customersThread = new Thread(customers);

@@ -3,7 +3,7 @@ package ru.nsu.mbogdanov2.model.people;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.constant.State;
 import ru.nsu.mbogdanov2.participants.Producer;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import java.util.Random;
 
@@ -13,14 +13,14 @@ import java.util.Random;
  */
 public class Customer implements Producer<Order> {
     private static final long MAX_ORDERING_TIME = 100;
-    private final MyBlockingDequeue<Order> queue;
+    private final MyBlockingDeque<Order> queue;
 
     /**
      * Constructor class Customer.
      *
      * @param queue - shared order queue.
      */
-    public Customer(MyBlockingDequeue<Order> queue) {
+    public Customer(MyBlockingDeque<Order> queue) {
         this.queue = queue;
     }
 

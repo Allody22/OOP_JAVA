@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.mbogdanov2.model.constant.State;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.people.Baker;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class BakerTest {
     private static final int MAX_SIZE = 10;
-    private MyBlockingDequeue<Order> queue;
-    private MyBlockingDequeue<Order> storage;
+    private MyBlockingDeque<Order> queue;
+    private MyBlockingDeque<Order> storage;
     private Baker baker;
 
     @BeforeEach
     void setUp() {
-        queue = new MyBlockingDequeue<>(MAX_SIZE);
-        storage = new MyBlockingDequeue<>(MAX_SIZE);
+        queue = new MyBlockingDeque<>(MAX_SIZE);
+        storage = new MyBlockingDeque<>(MAX_SIZE);
         baker = new Baker(1, 2, queue, storage);
     }
 

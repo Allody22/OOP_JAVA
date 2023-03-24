@@ -1,11 +1,15 @@
 package ru.nsu.mbogdanov2.json;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Class for storing a json baker object with id and working experience.
  */
+@Getter @Setter
 public class BakerJson {
-    public int id;
-    public int workingExperience;
+    private int id;
+    private int workingExperience;
 
     public int id() {
         return id;

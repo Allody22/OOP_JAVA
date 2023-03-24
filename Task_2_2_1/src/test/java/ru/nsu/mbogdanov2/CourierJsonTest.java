@@ -13,14 +13,14 @@ public class CourierJsonTest {
     @Test
     public void testGetId() {
         CourierJson courier = new CourierJson();
-        courier.id = 123;
-        assertEquals(123, courier.id());
+        courier.setId(123);
+        assertEquals(123, courier.getId());
     }
 
     @Test
     public void testGetBagCapacity() {
         CourierJson courier = new CourierJson();
-        courier.bagCapacity = 5;
-        assertEquals(5, courier.bagCapacity());
+        courier.setBagCapacity(5);
+        assertEquals(5, courier.getBagCapacity());
     }
 }

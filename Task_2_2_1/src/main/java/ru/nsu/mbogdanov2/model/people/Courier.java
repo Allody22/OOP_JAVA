@@ -3,7 +3,7 @@ package ru.nsu.mbogdanov2.model.people;
 import ru.nsu.mbogdanov2.model.order.Order;
 import ru.nsu.mbogdanov2.model.constant.State;
 import ru.nsu.mbogdanov2.participants.User;
-import ru.nsu.mbogdanov2.pizzeria.MyBlockingDequeue;
+import ru.nsu.mbogdanov2.pizzeria.MyBlockingDeque;
 
 import java.util.List;
 import java.util.Random;
@@ -19,7 +19,7 @@ public class Courier extends Employee implements User<List<Order>> {
     private static final long MAX_DELIVERY_TIME = 1000;
     private final int bagCapacity;
     private List<Order> orders;
-    private final MyBlockingDequeue<Order> storage;
+    private final MyBlockingDeque<Order> storage;
 
     /**
      * Creates an instance of the class Courier.
@@ -28,7 +28,7 @@ public class Courier extends Employee implements User<List<Order>> {
      * @param bagCapacity - bag capacity of the courier.
      * @param storage     - place to store finished orders.
      */
-    public Courier(int id, int bagCapacity, MyBlockingDequeue<Order> storage) {
+    public Courier(int id, int bagCapacity, MyBlockingDeque<Order> storage) {
         super(id);
         this.bagCapacity = bagCapacity;
         this.storage = storage;

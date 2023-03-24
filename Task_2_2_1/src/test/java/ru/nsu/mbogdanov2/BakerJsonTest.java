@@ -14,16 +14,16 @@ public class BakerJsonTest {
     public void testId() {
         int id = 123;
         BakerJson baker = new BakerJson();
-        baker.id = id;
-        assertEquals(id, baker.id());
+        baker.setId(id);
+        assertEquals(id, baker.getId());
     }
 
     @Test
     public void testWorkingExperience() {
         int workingExperience = 5;
         BakerJson baker = new BakerJson();
-        baker.workingExperience = workingExperience;
-        assertEquals(workingExperience, baker.workingExperience());
+        baker.setWorkingExperience(workingExperience);
+        assertEquals(workingExperience, baker.getWorkingExperience());
     }
 
 }
