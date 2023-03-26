@@ -97,7 +97,7 @@ public class MyBlockingDeque<T> {
         notifyAll();
     }
 
-    public boolean contains(@NotNull T object) {
+    public synchronized boolean contains(@NotNull T object) {
         return deque.contains(object);
     }
 }
