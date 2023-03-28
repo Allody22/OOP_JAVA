@@ -17,7 +17,7 @@ public class MyBlockingDeque<T> {
     private final Deque<T> deque;
 
     /**
-     * Constructor of the class MyBlockingdeque.
+     * Constructor of the class MyBlockingDeque.
      *
      * @param size maximal size of the deque.
      */
@@ -32,7 +32,7 @@ public class MyBlockingDeque<T> {
      * @return true if deque is empty.
      */
     public synchronized boolean isEmpty() {
-        return deque.size() == 0;
+        return deque.isEmpty();
     }
 
     /**

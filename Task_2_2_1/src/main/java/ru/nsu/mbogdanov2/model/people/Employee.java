@@ -1,11 +1,16 @@
 package ru.nsu.mbogdanov2.model.people;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * The implementation of this abstract method allows you to simulate the work of an employee.
  */
+@Getter
+@Setter
 public abstract class Employee implements Runnable {
     private final int id;
-    public boolean runEmployee;
+    private boolean runEmployee;
 
     /**
      * Constructor of an abstract class. Allows to set the employee id.
@@ -15,15 +20,6 @@ public abstract class Employee implements Runnable {
     public Employee(int id) {
         this.id = id;
         this.runEmployee = false;
-    }
-
-    /**
-     * Returns id of the employee.
-     *
-     * @return - id of the employee.
-     */
-    public int getId() {
-        return id;
     }
 
     /**

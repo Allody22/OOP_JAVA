@@ -30,7 +30,7 @@ public class EmployeeTest {
         Thread.sleep(1000);
         employee.stop();
         thread.join(1000);
-        Assert.assertFalse(employee.runEmployee);
+        Assert.assertFalse(employee.isRunEmployee());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class EmployeeTest {
         int expectedId = 1;
         Employee employee = new EmployeeImpl(expectedId);
         Assert.assertEquals(expectedId, employee.getId());
-        Assert.assertFalse(employee.runEmployee);
+        Assert.assertFalse(employee.isRunEmployee());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class EmployeeTest {
         thread.start();
         Thread.sleep(1000);
         employee.stop();
-        Assert.assertFalse(employee.runEmployee);
+        Assert.assertFalse(employee.isRunEmployee());
     }
 
     private static class EmployeeImpl extends Employee {

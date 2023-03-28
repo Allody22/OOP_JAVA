@@ -8,12 +8,10 @@ import ru.nsu.mbogdanov2.json.CourierJson;
 import ru.nsu.mbogdanov2.json.PizzeriaJson;
 import ru.nsu.mbogdanov2.model.order.Order;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -32,7 +30,7 @@ public class PizzeriaReader implements Runnable {
         this.bakers = bakerJsonStream
                 .map(bakerJSON -> new Baker(bakerJSON.getId(), bakerJSON.getWorkingExperience(),
                         this.queue, this.storage))
-                .collect(Collectors.toCollection(ArrayList::new));
+                .toList();
     }
 
     private void setCouriers(CourierJson[] couriers) {
@@ -40,7 +38,7 @@ public class PizzeriaReader implements Runnable {
         this.couriers = courierJsonStream
                 .map(courierJson -> new Courier(courierJson.getId(),
                         courierJson.getBagCapacity(), this.storage))
-                .collect(Collectors.toCollection(ArrayList::new));
+                .toList();
     }
 
     /**
@@ -73,6 +71,13 @@ public class PizzeriaReader implements Runnable {
         System.out.println("The pizzeria is up and running!");
         while (runPizzeria && !bakersThreadPool.isTerminated()
                 && !couriersThreadPool.isTerminated()) {
+            synchronized (this) {
+                try {
+                    wait(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         if (bakersThreadPool.isTerminated() || couriersThreadPool.isTerminated()) {
             System.out.println("Oops, something went wrong. "

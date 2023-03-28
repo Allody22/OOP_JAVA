@@ -19,8 +19,6 @@ import java.io.IOException;
 public class JsonReader {
     private static final String DEFAULT_FILE_NAME = "pizzeria.json";
     private final File file;
-    @Getter
-    @Setter
     private BufferedReader reader;
 
     /**
@@ -80,7 +78,7 @@ public class JsonReader {
             return null;
         }
 
-        if (content.equals("")) {
+        if (content.isEmpty()) {
             System.err.println("Failed to start pizzeria application.");
             System.exit(1);
         }
