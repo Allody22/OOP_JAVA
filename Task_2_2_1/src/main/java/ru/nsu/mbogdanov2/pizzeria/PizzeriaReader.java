@@ -80,20 +80,20 @@ public class PizzeriaReader implements Runnable {
             }
         }
         if (bakersThreadPool.isTerminated() || couriersThreadPool.isTerminated()) {
+            runPizzeria = false;
             System.out.println("Oops, something went wrong. "
                     + "The pizzeria is closed for a technical break.");
         }
-        runPizzeria = false;
+        customersThread.interrupt();
+        customers.stop();
         bakersThreadPool.shutdownNow();
         couriersThreadPool.shutdownNow();
-        customers.stop();
     }
 
     /**
      * Stops the pizzeria from working.
      */
     public void stop() {
-        System.out.println("The pizzeria is closed. На сегодня хватит!");
         runPizzeria = false;
     }
 }

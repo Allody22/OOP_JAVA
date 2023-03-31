@@ -75,6 +75,11 @@ public class PizzeriaLaunch implements Runnable {
         setPizzeria();
     }
 
+    /**
+     * We start the Pizzeria and its main thread.
+     * Then we sleep for running time to let the pizzeria work.
+     * And then we finnish working process.
+     */
     @Override
     public void run() {
         Thread pizzeriaThread = new Thread(pizzeriaReader);
@@ -82,7 +87,8 @@ public class PizzeriaLaunch implements Runnable {
         try {
             Thread.sleep(RUNNING_TIME);
             pizzeriaReader.stop();
-            System.exit(0);
+            pizzeriaThread.join();
+            System.out.println("The pizzeria is closed. На сегодня хватит!");
         } catch (InterruptedException exception) {
             System.err.println("The pizzeria application ended with an error.");
             System.exit(2);

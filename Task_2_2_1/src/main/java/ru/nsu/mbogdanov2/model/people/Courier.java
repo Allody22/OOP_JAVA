@@ -56,8 +56,6 @@ public class Courier extends Employee implements User<List<Order>> {
             setOrdersState(DELIVERED);
             return orders;
         } catch (InterruptedException exception) {
-            System.err.println("The courier with id: " + getId()
-                    + " could not deliver the order.");
             return null;
         }
     }

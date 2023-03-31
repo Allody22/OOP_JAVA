@@ -20,6 +20,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     private final int workingExperience;
     private final MyBlockingDeque<Order> queue;
     private final MyBlockingDeque<Order> storage;
+    private static boolean flag = true;
 
     /**
      * Constructor for the baker entity.
@@ -49,7 +50,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             order.setState(COOKING);
             return order;
         } catch (InterruptedException exception) {
-            System.err.println("The baker with id: " + getId() + " could not take the order.");
+            Thread.currentThread().interrupt();
             return null;
         }
     }
@@ -71,7 +72,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             System.err.println("The baker with id: " + getId()
                     + " tried to make an order that does not exist.");
         } catch (InterruptedException exception) {
-            System.err.println("The baker with id: " + getId() + " could not make the order.");
+            flag = false;
         }
     }
 
@@ -89,5 +90,8 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             stop();
         }
         produce(order);
+        if (!flag) {
+            stop();
+        }
     }
 }

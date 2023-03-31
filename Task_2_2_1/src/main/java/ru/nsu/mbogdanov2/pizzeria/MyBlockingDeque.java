@@ -97,6 +97,12 @@ public class MyBlockingDeque<T> {
         notifyAll();
     }
 
+    /**
+     * Contains method for tests to check the deque objects.
+     *
+     * @param object order
+     * @return true if there are this order
+     */
     public synchronized boolean contains(@NotNull T object) {
         return deque.contains(object);
     }
