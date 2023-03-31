@@ -41,8 +41,8 @@ public class Customer implements Producer<Order> {
         } catch (NullPointerException exception) {
             System.err.print("A non-existent order was received from a customer.");
         } catch (InterruptedException ignored) {
-            System.out.println("Not all customers had time to receive their orders, " +
-                    "but the working time is over");
+            System.out.println("Not all customers had time to receive their orders, "
+                    + "but the working time is over");
         }
     }
 }
