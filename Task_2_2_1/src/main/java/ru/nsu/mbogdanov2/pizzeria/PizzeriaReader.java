@@ -10,20 +10,22 @@ import ru.nsu.mbogdanov2.model.order.Order;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 /**
  * This class sets JSON with main pizzeria fields and implements run method.
  */
 public class PizzeriaReader implements Runnable {
-    private boolean runPizzeria;
     private List<Baker> bakers;
     private List<Courier> couriers;
     private final Customers customers;
     private final MyBlockingDeque<Order> queue;
     private final MyBlockingDeque<Order> storage;
+    private final CountDownLatch latch;
 
     private void setBakers(BakerJson[] bakers) {
         Stream<BakerJson> bakerJsonStream = Arrays.stream(bakers);
@@ -47,7 +49,7 @@ public class PizzeriaReader implements Runnable {
      * @param settings - pizzeria configuration.
      */
     public PizzeriaReader(PizzeriaJson settings) {
-        this.runPizzeria = false;
+        this.latch = new CountDownLatch(1);
         this.queue = new MyBlockingDeque<>(settings.getQueueSize());
         this.storage = new MyBlockingDeque<>(settings.getStorageSize());
         this.customers = new Customers(this.queue);
@@ -61,7 +63,6 @@ public class PizzeriaReader implements Runnable {
      */
     @Override
     public void run() {
-        runPizzeria = true;
         ExecutorService bakersThreadPool = Executors.newFixedThreadPool(bakers.size());
         ExecutorService couriersThreadPool = Executors.newFixedThreadPool(couriers.size());
         bakers.forEach(bakersThreadPool::execute);
@@ -69,31 +70,25 @@ public class PizzeriaReader implements Runnable {
         Thread customersThread = new Thread(customers);
         customersThread.start();
         System.out.println("The pizzeria is up and running!");
-        while (runPizzeria && !bakersThreadPool.isTerminated()
-                && !couriersThreadPool.isTerminated()) {
-            synchronized (this) {
-                try {
-                    wait(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            customersThread.interrupt();
+            customers.stop();
+            bakersThreadPool.shutdownNow();
+            couriersThreadPool.shutdownNow();
+            try {
+                bakersThreadPool.awaitTermination(20, TimeUnit.SECONDS);
+                couriersThreadPool.awaitTermination(20, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        if (bakersThreadPool.isTerminated() || couriersThreadPool.isTerminated()) {
-            runPizzeria = false;
-            System.out.println("Oops, something went wrong. "
-                    + "The pizzeria is closed for a technical break.");
-        }
-        customersThread.interrupt();
-        customers.stop();
-        bakersThreadPool.shutdownNow();
-        couriersThreadPool.shutdownNow();
     }
 
-    /**
-     * Stops the pizzeria from working.
-     */
     public void stop() {
-        runPizzeria = false;
+        latch.countDown();
     }
 }

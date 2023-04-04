@@ -13,7 +13,7 @@ public class PizzeriaLaunch implements Runnable {
     /**
      * The running time of the pizzeria in milliseconds.
      */
-    private static final long RUNNING_TIME = 30 * 500;
+    private static final long RUNNING_TIME = 500;
 
     /**
      * The PizzeriaJSON object that contains information about the pizzeria.
