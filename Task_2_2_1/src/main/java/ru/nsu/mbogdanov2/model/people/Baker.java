@@ -20,7 +20,6 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     private final int workingExperience;
     private final MyBlockingDeque<Order> queue;
     private final MyBlockingDeque<Order> storage;
-    private static boolean flag = true;
 
     /**
      * Constructor for the baker entity.
@@ -63,7 +62,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     @Override
     public void produce(Order order) {
         Random random = new Random();
-        long leadTime = (long) (random.nextDouble() *  MAX_COOKING_TIME) / workingExperience;
+        long leadTime = (long) (random.nextDouble() * MAX_COOKING_TIME) / workingExperience;
         try {
             Thread.sleep(leadTime);
             order.setState(IN_STOCK);
@@ -72,7 +71,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             System.err.println("The baker with id: " + getId()
                     + " tried to make an order that does not exist.");
         } catch (InterruptedException exception) {
-            flag = false;
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -90,7 +89,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
             stop();
         }
         produce(order);
-        if (!flag) {
+        if (Thread.currentThread().isInterrupted()) {
             stop();
         }
     }
