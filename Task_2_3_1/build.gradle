@@ -11,7 +11,7 @@ version '1.0-SNAPSHOT'
 
 
 ext {
-    junitVersion = '5.8.2'
+    junitVersion = '5.9.2'
 }
 
 java {
@@ -42,8 +42,12 @@ jacocoTestReport {
 
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
     runtimeOnly 'org.projectlombok:lombok:1.18.26'
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
