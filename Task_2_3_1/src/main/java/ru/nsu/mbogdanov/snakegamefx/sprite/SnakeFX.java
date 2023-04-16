@@ -11,29 +11,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * The SnakeFX class that is responsible for rendering the snake's body and head using JavaFX.
+ */
 public class SnakeFX extends Snake {
+
     private ImageProcessor headImageProcessor;
     private ImageProcessor rotatedImageProcessor;
     private ImageProcessor straightImageProcessor;
     private ImageProcessor tailImageProcessor;
 
+    /**
+     * Creates a SnakeFX object with the specified width and height.
+     *
+     * @param width  - width of the snake
+     * @param height - height of the snake
+     */
     public SnakeFX(double width, double height) {
         super(width, height);
     }
 
-    public void setSkins(ImageProcessor headImageProcessor, ImageProcessor rotatedImageProcessor, ImageProcessor straightImageProcessor, ImageProcessor tailImageProcessor) {
+    /**
+     * Sets the ImageProcessor objects used to render the snake's body and head.
+     *
+     * @param headImageProcessor     - ImageProcessor for the snake's head
+     * @param rotatedImageProcessor  - ImageProcessor for rotated snake body segments
+     * @param straightImageProcessor -ImageProcessor for straight snake body segments
+     * @param tailImageProcessor     - ImageProcessor for the snake's tail
+     */
+    public void setSkins(ImageProcessor headImageProcessor, ImageProcessor rotatedImageProcessor,
+                         ImageProcessor straightImageProcessor, ImageProcessor tailImageProcessor) {
         this.headImageProcessor = headImageProcessor;
         this.rotatedImageProcessor = rotatedImageProcessor;
         this.straightImageProcessor = straightImageProcessor;
         this.tailImageProcessor = tailImageProcessor;
     }
 
+    /**
+     * Rendering of the current cell method.
+     *
+     * @param cell      - cell to be rendered
+     * @param imageView - ImageView to render the cell with
+     * @return the rendered ImageView of this cell
+     */
     private ImageView renderCell(Cell cell, ImageView imageView) {
         imageView.setX(cell.getX());
         imageView.setY(cell.getY());
         return imageView;
     }
 
+    /**
+     * Rendering of the head method.
+     *
+     * @param head      - head cell to be rendered
+     * @param direction - direction of this snake that is head
+     * @return the rendered ImageView of this cell
+     */
     private ImageView renderHead(Cell head, Direction direction) {
         ImageView imageView = switch (direction) {
             case LEFT -> headImageProcessor.getRotatedImage(180);
@@ -44,6 +77,13 @@ public class SnakeFX extends Snake {
         return renderCell(head, imageView);
     }
 
+    /**
+     * Rendering of the tail method.
+     *
+     * @param tail     - tail cell to be rendered
+     * @param previous - previous cell of the snake
+     * @return the rendered ImageView of this cell
+     */
     private ImageView renderTail(Cell tail, Cell previous) {
         if (tail.getY() == previous.getY()) {
             if (tail.getX() < previous.getX()) {
@@ -59,6 +99,14 @@ public class SnakeFX extends Snake {
         return renderCell(tail, tailImageProcessor.getRotatedImage(90));
     }
 
+    /**
+     * Rendering of the flake method.
+     *
+     * @param flake-   flake cell to be rendered
+     * @param previous - previous cell the body
+     * @param next     - next cell the body
+     * @return the rendered ImageView of this cell
+     */
     private ImageView renderFlake(Cell flake, Cell previous, Cell next) {
         if (next.getY() == previous.getY()) {
             return renderCell(flake, straightImageProcessor.getImage());
@@ -108,10 +156,16 @@ public class SnakeFX extends Snake {
         for (int i = 1; i < boundary.size() - 1; ++i) {
             body.add(renderFlake(boundary.get(i), boundary.get(i + 1), boundary.get(i - 1)));
         }
-        body.add(renderTail(boundary.get(boundary.size() - 1), boundary.get(boundary.size() - 2)));
+        body.add(renderTail(boundary.get(boundary.size() - 1),
+                boundary.get(boundary.size() - 2)));
         return body;
     }
 
+    /**
+     * Renders the snake using JavaFX.
+     *
+     * @param object the object to render the board
+     */
     @Override
     public void render(Object object) {
         Group frame = ((Group) object);

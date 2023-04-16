@@ -10,11 +10,31 @@ import ru.nsu.mbogdanov.application.configuration.Configuration;
 import java.io.IOException;
 
 
+/**
+ * Pause menu class.
+ */
 public class PauseMenu {
+
+    /**
+     * The Stage object for the pause menu.
+     */
     private Stage pauseMenuStage;
+
+    /**
+     * The controller for the pause menu.
+     */
     private PauseMenuController controller;
+
+    /**
+     * Constructor for the pause menu that creates an object and loads the FXML file.
+     *
+     * @param stage         - the Stage on which the pause menu will be displayed
+     * @param configuration - Configuration object for the game
+     * @param timeline      - Timeline object for the game
+     */
     public PauseMenu(Stage stage, Configuration configuration, Timeline timeline) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ru/nsu/mbogdanov/fxml/modalWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/ru/nsu/mbogdanov/fxml/modalWindow.fxml"));
         try {
             Parent root = loader.load();
             controller = loader.getController();
@@ -26,6 +46,11 @@ public class PauseMenu {
         }
     }
 
+    /**
+     * Method that opens the pause menu.
+     *
+     * @param header the header text for the pause menu
+     */
     public void open(String header) {
         if (controller != null && pauseMenuStage != null && !pauseMenuStage.isShowing()) {
             controller.setHeader(header);

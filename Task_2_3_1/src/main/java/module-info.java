@@ -13,6 +13,8 @@ module ru.nsu.mbogdanov {
     opens ru.nsu.mbogdanov.snakegame.sprite.snake to javafx.fxml;
     exports ru.nsu.mbogdanov.snakegame.sprite.fruit;
     opens ru.nsu.mbogdanov.snakegame.sprite.fruit to javafx.fxml;
+    exports ru.nsu.mbogdanov.snakegame.sprite.wall;
+    opens ru.nsu.mbogdanov.snakegame.sprite.wall to javafx.fxml;
     exports ru.nsu.mbogdanov.snakegame.game;
     opens ru.nsu.mbogdanov.snakegame.game to javafx.fxml;
     exports ru.nsu.mbogdanov.snakegame.cell;
