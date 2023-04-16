@@ -10,6 +10,7 @@ ru.nsu.mbogdanov.snakegame.sprite
 ru.nsu.mbogdanov.snakegame.sprite.board
 ru.nsu.mbogdanov.snakegame.sprite.fruit
 ru.nsu.mbogdanov.snakegame.sprite.snake
+ru.nsu.mbogdanov.snakegame.sprite.wall
 ru.nsu.mbogdanov.snakegamefx.game
 ru.nsu.mbogdanov.snakegamefx.proccesingofimages
 ru.nsu.mbogdanov.snakegamefx.sprite

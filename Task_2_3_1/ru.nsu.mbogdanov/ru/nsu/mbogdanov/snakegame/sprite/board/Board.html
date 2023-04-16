@@ -87,6 +87,11 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">Board</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a></span></div>
+<div class="block">This abstract class represents the game board in the Snake game.
+ It contains a board cell object, which represents the boundaries of the game board.
+ It also implements the Sprite interface and contains methods for checking intersection with other sprites,
+ updating board position,
+ and rendering the board.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -100,7 +105,9 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(double,double)" class="member-name-link">Board</a><wbr>(double&nbsp;width,
  double&nbsp;height)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new Board object with a specified width and height.</div>
+</div>
 </div>
 </section>
 </li>
@@ -117,21 +124,31 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../cell/Cell.html" title="class in ru.nsu.mbogdanov.snakegame.cell">Cell</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBoundary()" class="member-name-link">getBoundary</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the cell of the board.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#instanceCheck(ru.nsu.mbogdanov.snakegame.sprite.Sprite,ru.nsu.mbogdanov.snakegame.cell.Cell)" class="member-name-link">instanceCheck</a><wbr>(<a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a>&nbsp;sprite,
  <a href="../../cell/Cell.html" title="class in ru.nsu.mbogdanov.snakegame.cell">Cell</a>&nbsp;board)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks if this sprite intersects with the specified board cell.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#intersects(ru.nsu.mbogdanov.snakegame.sprite.Sprite)" class="member-name-link">intersects</a><wbr>(<a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a>&nbsp;sprite)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if this board intersects with the specified sprite.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#render(java.lang.Object)" class="member-name-link">render</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">It is responsible for rendering the board in the specified object.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(double,double)" class="member-name-link">update</a><wbr>(double&nbsp;x,
  double&nbsp;y)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Updates the position of the board cell to the specified x, y position.</div>
+</div>
 </div>
 </div>
 </div>
@@ -154,6 +171,12 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <h3>Board</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Board</span><wbr><span class="parameters">(double&nbsp;width,
  double&nbsp;height)</span></div>
+<div class="block">Constructs a new Board object with a specified width and height.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>width</code> - - the width of the game board</dd>
+<dd><code>height</code> - - the height of the game board</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -168,9 +191,12 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <section class="detail" id="getBoundary()">
 <h3>getBoundary</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../cell/Cell.html" title="class in ru.nsu.mbogdanov.snakegame.cell">Cell</a></span>&nbsp;<span class="element-name">getBoundary</span>()</div>
+<div class="block">Gets the cell of the board.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../Sprite.html#getBoundary()">getBoundary</a></code>&nbsp;in interface&nbsp;<code><a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a></code></dd>
+<dt>Returns:</dt>
+<dd>the cell object representing the boundaries of the board</dd>
 </dl>
 </section>
 </li>
@@ -178,9 +204,14 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <section class="detail" id="intersects(ru.nsu.mbogdanov.snakegame.sprite.Sprite)">
 <h3>intersects</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">intersects</span><wbr><span class="parameters">(<a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a>&nbsp;sprite)</span></div>
+<div class="block">Checks if this board intersects with the specified sprite.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../Sprite.html#intersects(ru.nsu.mbogdanov.snakegame.sprite.Sprite)">intersects</a></code>&nbsp;in interface&nbsp;<code><a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>sprite</code> - - the sprite to check for intersection</dd>
+<dt>Returns:</dt>
+<dd>true if this board intersects with the specified sprite</dd>
 </dl>
 </section>
 </li>
@@ -189,6 +220,14 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <h3>instanceCheck</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">instanceCheck</span><wbr><span class="parameters">(<a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a>&nbsp;sprite,
  <a href="../../cell/Cell.html" title="class in ru.nsu.mbogdanov.snakegame.cell">Cell</a>&nbsp;board)</span></div>
+<div class="block">Checks if this sprite intersects with the specified board cell.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>sprite</code> - - the sprite instance to check for intersection</dd>
+<dd><code>board</code> - - the board cell to check for intersection</dd>
+<dt>Returns:</dt>
+<dd>true if the specified sprite instance intersects with the specified board cell</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -196,9 +235,13 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(double&nbsp;x,
  double&nbsp;y)</span></div>
+<div class="block">Updates the position of the board cell to the specified x, y position.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../Sprite.html#update(double,double)">update</a></code>&nbsp;in interface&nbsp;<code><a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>x</code> - - x coordinate of the board cell position</dd>
+<dd><code>y</code> - - y coordinate of the board cell position</dd>
 </dl>
 </section>
 </li>
@@ -206,9 +249,12 @@ implements <a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakega
 <section class="detail" id="render(java.lang.Object)">
 <h3>render</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">render</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object)</span></div>
+<div class="block">It is responsible for rendering the board in the specified object.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../Sprite.html#render(java.lang.Object)">render</a></code>&nbsp;in interface&nbsp;<code><a href="../Sprite.html" title="interface in ru.nsu.mbogdanov.snakegame.sprite">Sprite</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>object</code> - the object to render the board in</dd>
 </dl>
 </section>
 </li>

@@ -78,6 +78,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">The GameController class is responsible for managing user input and updating the Snake game.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,7 +93,10 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.mbogdanov.application.snakegame.SnakeGameController,ru.nsu.mbogdanov.snakegamefx.game.GameFX,javafx.animation.Timeline)" class="member-name-link">GameController</a><wbr>(<a href="../../application/snakegame/SnakeGameController.html" title="class in ru.nsu.mbogdanov.application.snakegame">SnakeGameController</a>&nbsp;controller,
  <a href="GameFX.html" title="class in ru.nsu.mbogdanov.snakegamefx.game">GameFX</a>&nbsp;snakeGame,
  javafx.animation.Timeline&nbsp;timeline)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a GameController object with the specified SnakeGameController,
+ GameFX and Timeline objects.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,10 +113,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handle(javafx.scene.input.KeyEvent)" class="member-name-link">handle</a><wbr>(javafx.scene.input.KeyEvent&nbsp;event)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Handles the given KeyEvent by updating snakes direction and triggering the
+ appropriate action depending on which key is pressed.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#run(javafx.scene.Group)" class="member-name-link">run</a><wbr>(javafx.scene.Group&nbsp;frame)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Runs the main game loop by updating current game state,
+ score, and rendering the updated frame.</div>
+</div>
 </div>
 </div>
 </div>
@@ -136,6 +146,14 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameController</span><wbr><span class="parameters">(<a href="../../application/snakegame/SnakeGameController.html" title="class in ru.nsu.mbogdanov.application.snakegame">SnakeGameController</a>&nbsp;controller,
  <a href="GameFX.html" title="class in ru.nsu.mbogdanov.snakegamefx.game">GameFX</a>&nbsp;snakeGame,
  javafx.animation.Timeline&nbsp;timeline)</span></div>
+<div class="block">Creates a GameController object with the specified SnakeGameController,
+ GameFX and Timeline objects.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>controller</code> - - SnakeGameController that manages the Snake game</dd>
+<dd><code>snakeGame</code> - - GameFX object that contains the Snake game</dd>
+<dd><code>timeline</code> - - Timeline object that manages the game loop</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -150,12 +168,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="handle(javafx.scene.input.KeyEvent)">
 <h3>handle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handle</span><wbr><span class="parameters">(javafx.scene.input.KeyEvent&nbsp;event)</span></div>
+<div class="block">Handles the given KeyEvent by updating snakes direction and triggering the
+ appropriate action depending on which key is pressed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>event</code> - the KeyEvent to handle</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="run(javafx.scene.Group)">
 <h3>run</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span><wbr><span class="parameters">(javafx.scene.Group&nbsp;frame)</span></div>
+<div class="block">Runs the main game loop by updating current game state,
+ score, and rendering the updated frame.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>frame</code> - the Group object that represents the frame to render</dd>
+</dl>
 </section>
 </li>
 </ul>

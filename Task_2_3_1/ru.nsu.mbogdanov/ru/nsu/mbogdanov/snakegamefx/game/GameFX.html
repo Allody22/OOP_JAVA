@@ -80,6 +80,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameFX</span>
 <span class="extends-implements">extends <a href="../../snakegame/game/Game.html" title="class in ru.nsu.mbogdanov.snakegame.game">Game</a></span></div>
+<div class="block">The GameFX class extends the base Game class and is responsible for rendering the
+ game board, Snake, fruit, and walls using JavaFX graphical components.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,11 +93,14 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.mbogdanov.application.configuration.Configuration,ru.nsu.mbogdanov.snakegame.sprite.board.Board,ru.nsu.mbogdanov.snakegame.sprite.snake.Snake,java.util.List)" class="member-name-link">GameFX</a><wbr>(<a href="../../application/configuration/Configuration.html" title="class in ru.nsu.mbogdanov.application.configuration">Configuration</a>&nbsp;configuration,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.mbogdanov.application.configuration.Configuration,ru.nsu.mbogdanov.snakegame.sprite.board.Board,ru.nsu.mbogdanov.snakegame.sprite.snake.Snake,java.util.List,java.util.List)" class="member-name-link">GameFX</a><wbr>(<a href="../../application/configuration/Configuration.html" title="class in ru.nsu.mbogdanov.application.configuration">Configuration</a>&nbsp;configuration,
  <a href="../../snakegame/sprite/board/Board.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.board">Board</a>&nbsp;board,
  <a href="../../snakegame/sprite/snake/Snake.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.snake">Snake</a>&nbsp;snake,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/fruit/Fruit.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.fruit">Fruit</a>&gt;&nbsp;food)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/fruit/Fruit.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.fruit">Fruit</a>&gt;&nbsp;food,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/wall/Wall.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.wall">Wall</a>&gt;&nbsp;walls)</code></div>
+<div class="col-last even-row-color">
+<div class="block">Creates a GameFX object with the specified configuration, board, snake, fruit, and walls.</div>
+</div>
 </div>
 </section>
 </li>
@@ -112,7 +117,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#render(javafx.scene.Group)" class="member-name-link">render</a><wbr>(javafx.scene.Group&nbsp;frame)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Renders all game objects using JavaFX graphical components.</div>
+</div>
 </div>
 </div>
 </div>
@@ -134,12 +141,22 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(ru.nsu.mbogdanov.application.configuration.Configuration,ru.nsu.mbogdanov.snakegame.sprite.board.Board,ru.nsu.mbogdanov.snakegame.sprite.snake.Snake,java.util.List)">
+<section class="detail" id="&lt;init&gt;(ru.nsu.mbogdanov.application.configuration.Configuration,ru.nsu.mbogdanov.snakegame.sprite.board.Board,ru.nsu.mbogdanov.snakegame.sprite.snake.Snake,java.util.List,java.util.List)">
 <h3>GameFX</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameFX</span><wbr><span class="parameters">(<a href="../../application/configuration/Configuration.html" title="class in ru.nsu.mbogdanov.application.configuration">Configuration</a>&nbsp;configuration,
  <a href="../../snakegame/sprite/board/Board.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.board">Board</a>&nbsp;board,
  <a href="../../snakegame/sprite/snake/Snake.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.snake">Snake</a>&nbsp;snake,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/fruit/Fruit.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.fruit">Fruit</a>&gt;&nbsp;food)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/fruit/Fruit.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.fruit">Fruit</a>&gt;&nbsp;food,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../snakegame/sprite/wall/Wall.html" title="class in ru.nsu.mbogdanov.snakegame.sprite.wall">Wall</a>&gt;&nbsp;walls)</span></div>
+<div class="block">Creates a GameFX object with the specified configuration, board, snake, fruit, and walls.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>configuration</code> - - configuration for the game</dd>
+<dd><code>board</code> - - board to render</dd>
+<dd><code>snake</code> - - snake to render</dd>
+<dd><code>food</code> - - fruits to render</dd>
+<dd><code>walls</code> - - walls to render</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -154,6 +171,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="render(javafx.scene.Group)">
 <h3>render</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">render</span><wbr><span class="parameters">(javafx.scene.Group&nbsp;frame)</span></div>
+<div class="block">Renders all game objects using JavaFX graphical components.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>frame</code> - the group object that represents the frame to render</dd>
+</dl>
 </section>
 </li>
 </ul>

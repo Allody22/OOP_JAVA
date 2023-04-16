@@ -78,6 +78,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ImageProcessor</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">The ImageProcessor that is responsible for processing images and creating
+ image views.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,7 +94,9 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(double,double,javafx.scene.image.Image)" class="member-name-link">ImageProcessor</a><wbr>(double&nbsp;width,
  double&nbsp;height,
  javafx.scene.image.Image&nbsp;image)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates an ImageProcessor with the specified width, height, and image.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,10 +113,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.scene.image.ImageView</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getImage()" class="member-name-link">getImage</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Function that returns ImageView object of the processed image.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.scene.image.ImageView</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRotatedImage(double)" class="member-name-link">getRotatedImage</a><wbr>(double&nbsp;degrees)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns an ImageView object of the processed image rotated by the specified degrees.</div>
+</div>
 </div>
 </div>
 </div>
@@ -136,6 +144,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ImageProcessor</span><wbr><span class="parameters">(double&nbsp;width,
  double&nbsp;height,
  javafx.scene.image.Image&nbsp;image)</span></div>
+<div class="block">Creates an ImageProcessor with the specified width, height, and image.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>width</code> - - width of the image</dd>
+<dd><code>height</code> - - height of the image</dd>
+<dd><code>image</code> - - image to process</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -150,12 +165,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getImage()">
 <h3>getImage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.scene.image.ImageView</span>&nbsp;<span class="element-name">getImage</span>()</div>
+<div class="block">Function that returns ImageView object of the processed image.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>an ImageView object of the processed image</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRotatedImage(double)">
 <h3>getRotatedImage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.scene.image.ImageView</span>&nbsp;<span class="element-name">getRotatedImage</span><wbr><span class="parameters">(double&nbsp;degrees)</span></div>
+<div class="block">Returns an ImageView object of the processed image rotated by the specified degrees.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>degrees</code> - - degrees to rotate the image</dd>
+<dt>Returns:</dt>
+<dd>an ImageView object of the processed image rotated by the specified degrees</dd>
+</dl>
 </section>
 </li>
 </ul>
