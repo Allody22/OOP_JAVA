@@ -8,7 +8,7 @@
 
 <BorderPane styleClass="background" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/16"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ru.nsu.mbogdanov.application.snakegame.SnakeGameController">
+            fx:controller="ru.nsu.mbogdanov.controllers.windows.SnakeGameController">
     <top>
         <BorderPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" BorderPane.alignment="CENTER">
             <left>
