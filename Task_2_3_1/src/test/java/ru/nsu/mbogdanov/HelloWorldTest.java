@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class HelloWorldTest {
     @Test
-    public void testingTest(){
+    public void testingTest() {
         int i = 1;
-        Assertions.assertEquals(1,i);
+        Assertions.assertEquals(1, i);
     }
 }

@@ -55,8 +55,8 @@ public class SnakeGraphics extends Snake {
      * @return the rendered ImageView of this cell
      */
     private ImageView renderCell(Cell cell, ImageView imageView) {
-        imageView.setX(cell.getXCoordinate());
-        imageView.setY(cell.getYCoordinate());
+        imageView.setX(cell.getRowCoordinate());
+        imageView.setY(cell.getColumnCoordinate());
         return imageView;
     }
 
@@ -85,15 +85,15 @@ public class SnakeGraphics extends Snake {
      * @return the rendered ImageView of this cell
      */
     private ImageView renderTail(Cell tail, Cell previous) {
-        if (tail.getYCoordinate() == previous.getYCoordinate()) {
-            if (tail.getXCoordinate() < previous.getXCoordinate()) {
+        if (tail.getColumnCoordinate() == previous.getColumnCoordinate()) {
+            if (tail.getRowCoordinate() < previous.getRowCoordinate()) {
                 return renderCell(tail, tailImageProcessor.getImage());
             }
-            if (tail.getXCoordinate() > previous.getXCoordinate()) {
+            if (tail.getRowCoordinate() > previous.getRowCoordinate()) {
                 return renderCell(tail, tailImageProcessor.getRotatedImage(180));
             }
         }
-        if (tail.getYCoordinate() > previous.getYCoordinate()) {
+        if (tail.getColumnCoordinate() > previous.getColumnCoordinate()) {
             return renderCell(tail, tailImageProcessor.getRotatedImage(270));
         }
         return renderCell(tail, tailImageProcessor.getRotatedImage(90));
@@ -102,47 +102,47 @@ public class SnakeGraphics extends Snake {
     /**
      * Rendering of the flake method.
      *
-     * @param flake-   flake cell to be rendered
+     * @param flake    -   flake cell to be rendered
      * @param previous - previous cell the body
      * @param next     - next cell the body
      * @return the rendered ImageView of this cell
      */
     private ImageView renderFlake(Cell flake, Cell previous, Cell next) {
-        if (next.getYCoordinate() == previous.getYCoordinate()) {
+        if (next.getColumnCoordinate() == previous.getColumnCoordinate()) {
             return renderCell(flake, straightImageProcessor.getImage());
         }
-        if (flake.getXCoordinate() == previous.getXCoordinate()) {
-            if (next.getYCoordinate() < previous.getYCoordinate()) {
-                if (next.getXCoordinate() < previous.getXCoordinate()) {
+        if (flake.getRowCoordinate() == previous.getRowCoordinate()) {
+            if (next.getColumnCoordinate() < previous.getColumnCoordinate()) {
+                if (next.getRowCoordinate() < previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getImage());
                 }
-                if (next.getXCoordinate() > previous.getXCoordinate()) {
+                if (next.getRowCoordinate() > previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(270));
                 }
             }
-            if (next.getYCoordinate() > previous.getYCoordinate()) {
-                if (next.getXCoordinate() < previous.getXCoordinate()) {
+            if (next.getColumnCoordinate() > previous.getColumnCoordinate()) {
+                if (next.getRowCoordinate() < previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(90));
                 }
-                if (next.getXCoordinate() > previous.getXCoordinate()) {
+                if (next.getRowCoordinate() > previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(180));
                 }
             }
         }
-        if (flake.getXCoordinate() == next.getXCoordinate()) {
-            if (next.getYCoordinate() < previous.getYCoordinate()) {
-                if (next.getXCoordinate() < previous.getXCoordinate()) {
+        if (flake.getRowCoordinate() == next.getRowCoordinate()) {
+            if (next.getColumnCoordinate() < previous.getColumnCoordinate()) {
+                if (next.getRowCoordinate() < previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(180));
                 }
-                if (next.getXCoordinate() > previous.getXCoordinate()) {
+                if (next.getRowCoordinate() > previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(90));
                 }
             }
-            if (next.getYCoordinate() > previous.getYCoordinate()) {
-                if (next.getXCoordinate() < previous.getXCoordinate()) {
+            if (next.getColumnCoordinate() > previous.getColumnCoordinate()) {
+                if (next.getRowCoordinate() < previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getRotatedImage(270));
                 }
-                if (next.getXCoordinate() > previous.getXCoordinate()) {
+                if (next.getRowCoordinate() > previous.getRowCoordinate()) {
                     return renderCell(flake, rotatedImageProcessor.getImage());
                 }
             }
@@ -170,7 +170,7 @@ public class SnakeGraphics extends Snake {
     /**
      * Renders the snake using JavaFX.
      *
-     * @param object the object to render the board
+     * @param object - the object to render the board
      */
     @Override
     public void render(Object object) {

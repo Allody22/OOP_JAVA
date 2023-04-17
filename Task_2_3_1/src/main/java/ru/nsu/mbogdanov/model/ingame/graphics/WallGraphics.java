@@ -33,9 +33,16 @@ public class WallGraphics extends Wall {
         rectangle.setFill(color);
     }
 
+    /**
+     * Renders a cell on the specified rectangle, using the cell's coordinates as the Rectangle's x and y position.
+     *
+     * @param cell      - the cell to be rendered.
+     * @param rectangle - the rectangle used to render the cell.
+     * @return the modified rectangle.
+     */
     public Rectangle renderCell(Cell cell, Rectangle rectangle) {
-        rectangle.setX(cell.getXCoordinate());
-        rectangle.setY(cell.getYCoordinate());
+        rectangle.setX(cell.getRowCoordinate());
+        rectangle.setY(cell.getColumnCoordinate());
         return rectangle;
     }
 

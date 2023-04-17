@@ -200,7 +200,7 @@ public class SnakeGame {
     }
 
     /**
-     *
+     * Sets up scene for the snake game, loading the FXML and creating the necessary objects.
      */
     private void setScene() {
         frame = new Group();

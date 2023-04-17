@@ -48,7 +48,8 @@ public abstract class Fruit implements Sprite {
     }
 
     /**
-     * Updates the position of the fruit to a random position within the specified number of rows and columns.
+     * Updates the position of the fruit to a
+     * random position within the specified number of rows and columns.
      *
      * @param rowsNumber    - number of rows on the game board
      * @param columnsNumber - number of columns on the game board

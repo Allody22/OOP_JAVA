@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * Configuration file that
+ * Configuration file of the game settings.
  */
 @Data
 @AllArgsConstructor

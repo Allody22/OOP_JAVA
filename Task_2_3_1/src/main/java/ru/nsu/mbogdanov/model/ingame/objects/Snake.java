@@ -16,7 +16,7 @@ import static ru.nsu.mbogdanov.model.constants.Direction.RIGHT;
  * This abstract class represents a snake sprite in the Snake game.
  */
 public abstract class Snake implements Sprite {
-    private final int INITIAL_LENGTH = 3;
+    private final int startLength = 3;
     @Getter
     private Direction direction;
     private Cell head;
@@ -29,7 +29,7 @@ public abstract class Snake implements Sprite {
      * @param height - the height of this snakes cell
      */
     public Snake(double width, double height) {
-        this.body = IntStream.range(0, INITIAL_LENGTH)
+        this.body = IntStream.range(0, startLength)
                 .mapToObj(i -> new Cell(width, height))
                 .collect(Collectors.toCollection(ArrayList::new));
 
@@ -67,8 +67,8 @@ public abstract class Snake implements Sprite {
     public void start(double headPositionX, double headPositionY) {
         direction = RIGHT;
         head.setPosition(headPositionX, headPositionY);
-        for (int i = 1; i < INITIAL_LENGTH; ++i) {
-            body.get(i).setPosition(body.get(i - 1).getXCoordinate()
+        for (int i = 1; i < startLength; ++i) {
+            body.get(i).setPosition(body.get(i - 1).getRowCoordinate()
                     - head.getWidth(), headPositionY);
         }
     }
@@ -114,22 +114,22 @@ public abstract class Snake implements Sprite {
     /**
      * Updates coordinates of the current sprite.
      *
-     * @param xCoordinate - x coordinate of the sprite position
-     * @param yCoordinate - y coordinate of the sprite position
+     * @param rowCoordinate - x coordinate of the sprite position
+     * @param columnCoordinate - y coordinate of the sprite position
      */
 
     @Override
-    public void update(double xCoordinate, double yCoordinate) {
+    public void update(double rowCoordinate, double columnCoordinate) {
         Cell head = new Cell(this.head.getWidth(), this.head.getHeight());
         switch (direction) {
-            case RIGHT -> head.setPosition(this.head.getXCoordinate()
-                    + xCoordinate, this.head.getYCoordinate());
-            case LEFT -> head.setPosition(this.head.getXCoordinate()
-                    - xCoordinate, this.head.getYCoordinate());
-            case UP -> head.setPosition(this.head.getXCoordinate(),
-                    this.head.getYCoordinate() - yCoordinate);
-            case DOWN -> head.setPosition(this.head.getXCoordinate(),
-                    this.head.getYCoordinate() + yCoordinate);
+            case RIGHT -> head.setPosition(this.head.getRowCoordinate()
+                    + rowCoordinate, this.head.getColumnCoordinate());
+            case LEFT -> head.setPosition(this.head.getRowCoordinate()
+                    - rowCoordinate, this.head.getColumnCoordinate());
+            case UP -> head.setPosition(this.head.getRowCoordinate(),
+                    this.head.getColumnCoordinate() - columnCoordinate);
+            case DOWN -> head.setPosition(this.head.getRowCoordinate(),
+                    this.head.getColumnCoordinate() + columnCoordinate);
             default -> throw new RuntimeException("Something wrong with snake direction");
         }
         this.head = head;

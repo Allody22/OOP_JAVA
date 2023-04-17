@@ -54,8 +54,8 @@ public class FruitGraphics extends Fruit {
      * @return the rendered ImageView of the fruit
      */
     private ImageView renderFruit(Cell fruit, ImageView imageView) {
-        imageView.setX(fruit.getXCoordinate());
-        imageView.setY(fruit.getYCoordinate());
+        imageView.setX(fruit.getRowCoordinate());
+        imageView.setY(fruit.getColumnCoordinate());
         return imageView;
     }
 }

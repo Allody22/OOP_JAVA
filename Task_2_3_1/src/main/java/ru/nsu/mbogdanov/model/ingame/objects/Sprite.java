@@ -16,10 +16,10 @@ public interface Sprite {
     /**
      * Updates the position of the sprite to the specified x, y position.
      *
-     * @param xCoordinate - x coordinate of the sprite position
-     * @param yCoordinate - y coordinate of the sprite position
+     * @param rowCoordinate - x coordinate of the sprite position
+     * @param columnCoordinate - y coordinate of the sprite position
      */
-    void update(double xCoordinate, double yCoordinate);
+    void update(double rowCoordinate, double columnCoordinate);
 
     /**
      * Checks if this sprite intersects with the specified sprite.

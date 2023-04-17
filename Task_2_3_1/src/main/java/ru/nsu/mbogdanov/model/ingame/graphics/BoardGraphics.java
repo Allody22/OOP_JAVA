@@ -54,8 +54,8 @@ public class BoardGraphics extends Board {
      * @return the rendered ImageView of the cell
      */
     private ImageView renderBoard(Cell board, ImageView imageView) {
-        imageView.setX(board.getXCoordinate());
-        imageView.setY(board.getYCoordinate());
+        imageView.setX(board.getRowCoordinate());
+        imageView.setY(board.getColumnCoordinate());
         return imageView;
     }
 }

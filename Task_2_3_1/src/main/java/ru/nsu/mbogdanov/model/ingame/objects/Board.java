@@ -70,12 +70,12 @@ public abstract class Board implements Sprite {
     /**
      * Updates the position of the board cell to the specified x, y position.
      *
-     * @param xCoordinate - x coordinate of the board cell position
-     * @param yCoordinate - y coordinate of the board cell position
+     * @param rowCoordinate - x coordinate of the board cell position
+     * @param columnCoordinate - y coordinate of the board cell position
      */
     @Override
-    public void update(double xCoordinate, double yCoordinate) {
-        board.setPosition(xCoordinate, yCoordinate);
+    public void update(double rowCoordinate, double columnCoordinate) {
+        board.setPosition(rowCoordinate, columnCoordinate);
     }
 
     /**

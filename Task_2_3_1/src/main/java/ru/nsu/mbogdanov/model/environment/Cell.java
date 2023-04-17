@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * This class represents a cell in the Snake game grid.
- * It contains the width and height of the cell, as well as its position (xCoordinate, yCoordinate coordinates).
+ * It contains the width and height of the cell, as well as its position (rowCoordinate, columnCoordinate coordinates).
  */
 @Getter
 public class Cell {
@@ -20,37 +20,37 @@ public class Cell {
     private final double height;
 
     /**
-     * The xCoordinate coordinate of the current cell.
+     * The rowCoordinate coordinate of the current cell.
      */
-    private double xCoordinate;
+    private double rowCoordinate;
 
     /**
-     * The yCoordinate coordinate of the current cell.
+     * The columnCoordinate coordinate of the current cell.
      */
-    private double yCoordinate;
+    private double columnCoordinate;
 
     /**
      * Constructs a new Cell with a specified width and height.
      *
-     * @param width  - width the width of the cell
+     * @param width - width the width of the cell
      * @param height - height the height of the cell
      */
     public Cell(double width, double height) {
         this.width = width;
         this.height = height;
-        this.xCoordinate = 0;
-        this.yCoordinate = 0;
+        this.rowCoordinate = 0;
+        this.columnCoordinate = 0;
     }
 
     /**
      * Sets the position of the cell.
      *
-     * @param xCoordinate - the xCoordinate coordinate of the current of the cell
-     * @param yCoordinate - the yCoordinate coordinate of the current of the cell
+     * @param rowCoordinate - the rowCoordinate coordinate of the current of the cell
+     * @param columnCoordinate - the columnCoordinate coordinate of the current of the cell
      */
-    public void setPosition(double xCoordinate, double yCoordinate) {
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
+    public void setPosition(double rowCoordinate, double columnCoordinate) {
+        this.rowCoordinate = rowCoordinate;
+        this.columnCoordinate = columnCoordinate;
     }
 
     /**
@@ -60,10 +60,10 @@ public class Cell {
      * @return true if this cell intersects the specified cell.
      */
     public boolean intersects(Cell cell) {
-        return (cell.xCoordinate + cell.width > xCoordinate)
-                && (cell.yCoordinate + cell.height > yCoordinate)
-                && (cell.xCoordinate < xCoordinate + width)
-                && (cell.yCoordinate < yCoordinate + height);
+        return (cell.rowCoordinate + cell.width > rowCoordinate)
+                && (cell.columnCoordinate + cell.height > columnCoordinate)
+                && (cell.rowCoordinate < rowCoordinate + width)
+                && (cell.columnCoordinate < columnCoordinate + height);
     }
 
     /**
@@ -78,9 +78,9 @@ public class Cell {
             return true;
         }
         if (object instanceof Cell cell) {
-            return cell.xCoordinate == xCoordinate && cell.yCoordinate == yCoordinate
-                    && cell.xCoordinate + cell.width == xCoordinate + width
-                    && cell.yCoordinate + cell.height == yCoordinate + height;
+            return cell.rowCoordinate == rowCoordinate && cell.columnCoordinate == columnCoordinate
+                    && cell.rowCoordinate + cell.width == rowCoordinate + width
+                    && cell.columnCoordinate + cell.height == columnCoordinate + height;
         }
         return false;
     }
