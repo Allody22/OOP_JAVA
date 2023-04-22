@@ -227,6 +227,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Initialization method for the controller.</div>
 </dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/SettingsController.html#initialize(javafx.stage.Stage,ru.nsu.mbogdanov.model.environment.Configuration)" class="member-name-link">initialize(Stage, Configuration)</a> - Method in class ru.nsu.mbogdanov.controllers.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/SettingsController.html" title="class in ru.nsu.mbogdanov.controllers.windows">SettingsController</a></dt>
+<dd>
+<div class="block">Init of the settings with configuration.</div>
+</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/PauseMenuController.html#initialize(javafx.stage.Stage,ru.nsu.mbogdanov.model.environment.Configuration,javafx.animation.Timeline)" class="member-name-link">initialize(Stage, Configuration, Timeline)</a> - Method in class ru.nsu.mbogdanov.controllers.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/PauseMenuController.html" title="class in ru.nsu.mbogdanov.controllers.windows">PauseMenuController</a></dt>
 <dd>
 <div class="block">Initialization method for the controller.</div>
@@ -366,10 +370,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Renders all game objects using JavaFX graphical components.</div>
 </dd>
-<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html#renderCell(ru.nsu.mbogdanov.model.environment.Cell,javafx.scene.shape.Rectangle)" class="member-name-link">renderCell(Cell, Rectangle)</a> - Method in class ru.nsu.mbogdanov.model.ingame.graphics.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html" title="class in ru.nsu.mbogdanov.model.ingame.graphics">WallGraphics</a></dt>
-<dd>
-<div class="block">Renders a cell on the specified rectangle, using the cell's coordinates as the Rectangle's x and y position.</div>
-</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/constants/Direction.html#RIGHT" class="member-name-link">RIGHT</a> - Enum constant in enum class ru.nsu.mbogdanov.model.constants.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/constants/Direction.html" title="enum class in ru.nsu.mbogdanov.model.constants">Direction</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.mbogdanov/module-summary.html">ru.nsu.mbogdanov</a> - module ru.nsu.mbogdanov</dt>
@@ -398,10 +398,6 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html#setColor(javafx.scene.paint.Paint)" class="member-name-link">setColor(Paint)</a> - Method in class ru.nsu.mbogdanov.model.ingame.graphics.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html" title="class in ru.nsu.mbogdanov.model.ingame.graphics">WallGraphics</a></dt>
-<dd>
-<div class="block">Changes wall color.</div>
-</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/objects/Snake.html#setDirection(ru.nsu.mbogdanov.model.constants.Direction)" class="member-name-link">setDirection(Direction)</a> - Method in class ru.nsu.mbogdanov.model.ingame.objects.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/objects/Snake.html" title="class in ru.nsu.mbogdanov.model.ingame.objects">Snake</a></dt>
 <dd>
 <div class="block">Function changes the snake direction.</div>
@@ -422,6 +418,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the ImageProcessor object used to render the fruit.</div>
 </dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html#setSkin(ru.nsu.mbogdanov.controllers.other.ImageProcessor)" class="member-name-link">setSkin(ImageProcessor)</a> - Method in class ru.nsu.mbogdanov.model.ingame.graphics.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/WallGraphics.html" title="class in ru.nsu.mbogdanov.model.ingame.graphics">WallGraphics</a></dt>
+<dd>
+<div class="block">Sets the ImageProcessor object used to render the fruit.</div>
+</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/SnakeGraphics.html#setSkins(ru.nsu.mbogdanov.controllers.other.ImageProcessor,ru.nsu.mbogdanov.controllers.other.ImageProcessor,ru.nsu.mbogdanov.controllers.other.ImageProcessor,ru.nsu.mbogdanov.controllers.other.ImageProcessor)" class="member-name-link">setSkins(ImageProcessor, ImageProcessor, ImageProcessor, ImageProcessor)</a> - Method in class ru.nsu.mbogdanov.model.ingame.graphics.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/graphics/SnakeGraphics.html" title="class in ru.nsu.mbogdanov.model.ingame.graphics">SnakeGraphics</a></dt>
 <dd>
 <div class="block">Sets the ImageProcessor objects used to render the snake's body and head.</div>
@@ -434,10 +434,28 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Method that sets the menu scene on a given Stage object.</div>
 </dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/Settings.html#setStage(javafx.stage.Stage)" class="member-name-link">setStage(Stage)</a> - Method in class ru.nsu.mbogdanov.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/Settings.html" title="class in ru.nsu.mbogdanov.windows">Settings</a></dt>
+<dd>
+<div class="block">Allows to open settings in the specified window.</div>
+</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/SnakeGame.html#setStage(javafx.stage.Stage)" class="member-name-link">setStage(Stage)</a> - Method in class ru.nsu.mbogdanov.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/SnakeGame.html" title="class in ru.nsu.mbogdanov.windows">SnakeGame</a></dt>
 <dd>
 <div class="block">Finally we set the snake game the special window.</div>
 </dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/Settings.html" class="type-name-link" title="class in ru.nsu.mbogdanov.windows">Settings</a> - Class in <a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/package-summary.html">ru.nsu.mbogdanov.windows</a></dt>
+<dd>
+<div class="block">This class represents the settings window for the snake game.</div>
+</dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/Settings.html#%3Cinit%3E(ru.nsu.mbogdanov.model.environment.Configuration)" class="member-name-link">Settings(Configuration)</a> - Constructor for class ru.nsu.mbogdanov.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/windows/Settings.html" title="class in ru.nsu.mbogdanov.windows">Settings</a></dt>
+<dd>
+<div class="block">Constructor that initializes a settings scene and a controller.</div>
+</dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/SettingsController.html" class="type-name-link" title="class in ru.nsu.mbogdanov.controllers.windows">SettingsController</a> - Class in <a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/package-summary.html">ru.nsu.mbogdanov.controllers.windows</a></dt>
+<dd>
+<div class="block">Controller for the setting window with all configuration fields.</div>
+</dd>
+<dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/SettingsController.html#%3Cinit%3E()" class="member-name-link">SettingsController()</a> - Constructor for class ru.nsu.mbogdanov.controllers.windows.<a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/controllers/windows/SettingsController.html" title="class in ru.nsu.mbogdanov.controllers.windows">SettingsController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/objects/Snake.html" class="type-name-link" title="class in ru.nsu.mbogdanov.model.ingame.objects">Snake</a> - Class in <a href="ru.nsu.mbogdanov/ru/nsu/mbogdanov/model/ingame/objects/package-summary.html">ru.nsu.mbogdanov.model.ingame.objects</a></dt>
 <dd>
 <div class="block">This abstract class represents a snake sprite in the Snake game.</div>
