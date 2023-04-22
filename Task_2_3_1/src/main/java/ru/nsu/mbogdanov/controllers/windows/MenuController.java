@@ -2,6 +2,7 @@ package ru.nsu.mbogdanov.controllers.windows;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import ru.nsu.mbogdanov.windows.Settings;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.SnakeGame;
 
@@ -39,6 +40,15 @@ public class MenuController {
     private void startGame() {
         SnakeGame snakeGame = new SnakeGame(configuration);
         snakeGame.setStage(stage);
+    }
+
+    /**
+     * When click on the button with the specified handler, the settings window opens.
+     */
+    @FXML
+    private void openSettings() {
+        Settings settings = new Settings(configuration);
+        settings.setStage(stage);
     }
 
     /**

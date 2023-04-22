@@ -21,6 +21,10 @@
             <Button minHeight="40.0" minWidth="100.0" text="Start" onAction="#startGame"/>
         </HBox>
         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" text="Settings"
+                    onAction="#openSettings"/>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
             <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" text="Exit" onAction="#exit"/>
         </HBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

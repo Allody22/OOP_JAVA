@@ -9,8 +9,8 @@ import ru.nsu.mbogdanov.windows.Menu;
  * Main class of the application that can launch it.
  */
 public class Application extends javafx.application.Application {
-    private final Configuration defaultConfiguration = new Configuration(40, 15,
-            15, 100, 5, 10, 100);
+    private final Configuration defaultConfiguration = new Configuration(40, 20, 20, 13,
+            10, 10, 100);
     private final Image gameIcon = new Image(String.valueOf(getClass()
             .getResource("/ru/nsu/mbogdanov/images/fruit/heart.png")));
 

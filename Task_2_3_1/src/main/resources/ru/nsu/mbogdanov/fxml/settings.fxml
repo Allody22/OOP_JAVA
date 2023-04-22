@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="500.0" prefWidth="500.0" styleClass="background" stylesheets="@../css/styles.css"
+           xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ru.nsu.mbogdanov.controllers.windows.SettingsController">
+    <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+        <StackPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+        </StackPane.margin>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Label alignment="CENTER" styleClass="h1" text="SETTINGS"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label styleClass="h2" text="Square size:"/>
+            <Slider fx:id="squareSize" majorTickUnit="10" max="60" min="20" showTickLabels="true" showTickMarks="true"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Rows number:"/>
+            <TextField fx:id="rowsNumber"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label styleClass="h2" text="Columns number:"/>
+            <TextField fx:id="columnsNumber"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Maximum score:"/>
+            <TextField fx:id="maximumScore"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Walls number: "/>
+            <Slider fx:id="wallsNumber" blockIncrement="5" majorTickUnit="5" max="15" showTickLabels="true"
+                    showTickMarks="true"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Fruits number: "/>
+            <Slider fx:id="fruitsNumber" blockIncrement="5" majorTickUnit="5" max="15" min="1" showTickLabels="true"
+                    showTickMarks="true"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label styleClass="h2" text="Snake speed:"/>
+            <MenuButton fx:id="snakeSpeed" text="Select speed">
+                <items>
+                    <MenuItem onAction="#changeSpeed" text="Slowly"/>
+                    <MenuItem onAction="#changeSpeed" text="Normal"/>
+                    <MenuItem onAction="#changeSpeed" text="Fast"/>
+                    <MenuItem onAction="#changeSpeed" text="Extra speed"/>
+                </items>
+            </MenuButton>
+        </HBox>
+        <BorderPane prefHeight="100.0" prefWidth="200.0">
+            <left>
+                <Button onAction="#saveConfiguration" text="Save" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <Button onAction="#openMenu" text="Menu" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+    </VBox>
+</StackPane>

@@ -1,8 +1,8 @@
 package ru.nsu.mbogdanov.model.ingame.graphics;
 
 import javafx.scene.Group;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
+import ru.nsu.mbogdanov.controllers.other.ImageProcessor;
 import ru.nsu.mbogdanov.model.environment.Cell;
 import ru.nsu.mbogdanov.model.ingame.objects.Wall;
 
@@ -11,7 +11,7 @@ import ru.nsu.mbogdanov.model.ingame.objects.Wall;
  * Provides with an interface for rendering wall on the specified frame.
  */
 public class WallGraphics extends Wall {
-    private final Rectangle rectangle;
+    private ImageProcessor imageProcessor;
 
     /**
      * Class constructor. Creates a wall with specified width and height.
@@ -21,29 +21,21 @@ public class WallGraphics extends Wall {
      */
     public WallGraphics(double width, double height) {
         super(width, height);
-        rectangle = new Rectangle(width, height);
     }
 
     /**
-     * Changes wall color.
+     * Sets the ImageProcessor object used to render the fruit.
      *
-     * @param color - new wall color.
+     * @param imageProcessor - ImageProcessor object to use
      */
-    public void setColor(Paint color) {
-        rectangle.setFill(color);
+    public void setSkin(ImageProcessor imageProcessor) {
+        this.imageProcessor = imageProcessor;
     }
 
-    /**
-     * Renders a cell on the specified rectangle, using the cell's coordinates as the Rectangle's x and y position.
-     *
-     * @param cell      - the cell to be rendered.
-     * @param rectangle - the rectangle used to render the cell.
-     * @return the modified rectangle.
-     */
-    public Rectangle renderCell(Cell cell, Rectangle rectangle) {
-        rectangle.setX(cell.getRowCoordinate());
-        rectangle.setY(cell.getColumnCoordinate());
-        return rectangle;
+    private ImageView renderWall(Cell wall, ImageView imageView) {
+        imageView.setX(wall.getRowCoordinate());
+        imageView.setY(wall.getColumnCoordinate());
+        return imageView;
     }
 
     /**
@@ -55,7 +47,7 @@ public class WallGraphics extends Wall {
     public void render(Object object) {
         Group frame = ((Group) object);
         Group fruit = new Group();
-        fruit.getChildren().add(renderCell(getBoundary(), rectangle));
+        fruit.getChildren().add(renderWall(getBoundary(), imageProcessor.getImage()));
         frame.getChildren().add(fruit);
     }
 }
