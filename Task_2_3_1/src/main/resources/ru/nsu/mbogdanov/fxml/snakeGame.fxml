@@ -24,7 +24,7 @@
                 </HBox>
             </left>
             <right>
-                <Button focusTraversable="false" text="Menu" BorderPane.alignment="CENTER" onAction="#openModalWindow">
+                <Button focusTraversable="false" text="Menu" BorderPane.alignment="CENTER" onAction="#openPauseWindow">
                     <font>
                         <Font size="15.0"/>
                     </font>

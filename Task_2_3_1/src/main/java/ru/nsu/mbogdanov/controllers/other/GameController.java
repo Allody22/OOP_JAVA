@@ -59,8 +59,9 @@ public class GameController {
             case LEFT -> snakeGame.setSnakeDirection(LEFT);
             case UP -> snakeGame.setSnakeDirection(UP);
             case DOWN -> snakeGame.setSnakeDirection(DOWN);
-            case ESCAPE -> controller.openModalWindow();
-            default -> throw new RuntimeException("Something went wrong");
+            case ESCAPE -> controller.openPauseWindow();
+            default -> {
+            }
         }
     }
 
@@ -74,7 +75,7 @@ public class GameController {
         if (timeline.getStatus() == RUNNING && (snakeGame.getGameState() == DEFEAT
                 || snakeGame.getGameState() == VICTORY)) {
             timeline.stop();
-            controller.openModalWindow();
+            controller.openPauseWindow();
         }
         snakeGame.update();
         controller.updateScore();

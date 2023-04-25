@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * This class represents the settings window for the snake game.
  */
-public class Settings {
+public class SettingsWindow {
     private final Configuration configuration;
     private SettingsController controller;
     private Scene scene;
@@ -22,9 +22,10 @@ public class Settings {
      *
      * @param configuration - configuration of the current snake game.
      */
-    public Settings(Configuration configuration) {
+    public SettingsWindow(Configuration configuration) {
         this.configuration = configuration;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ru/nsu/mbogdanov/fxml/settings.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/ru/nsu/mbogdanov/fxml/settings.fxml"));
         try {
             Parent root = loader.load();
             controller = loader.getController();

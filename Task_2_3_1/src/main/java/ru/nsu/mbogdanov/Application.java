@@ -5,11 +5,12 @@ import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.Menu;
 
+//TODO КНОПКА CONTINUE ЕСЛИ ИГРА ЗАКОНЧЕНА (ПОБЕДА/ЛУЗ)
 /**
  * Main class of the application that can launch it.
  */
 public class Application extends javafx.application.Application {
-    private final Configuration defaultConfiguration = new Configuration(40, 20, 20, 13,
+    private final Configuration defaultConfiguration = new Configuration(40, 20, 20, 25,
             10, 10, 100);
     private final Image gameIcon = new Image(String.valueOf(getClass()
             .getResource("/ru/nsu/mbogdanov/images/fruit/heart.png")));

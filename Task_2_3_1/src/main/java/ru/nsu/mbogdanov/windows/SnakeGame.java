@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import ru.nsu.mbogdanov.controllers.other.GameController;
@@ -124,8 +125,6 @@ public class SnakeGame {
                 .getResource("/ru/nsu/mbogdanov/images/snake/tail.png"))));
         images.put("apple", new Image(String.valueOf(getClass()
                 .getResource("/ru/nsu/mbogdanov/images/fruit/apple.png"))));
-        images.put("wall", new Image(String.valueOf(getClass()
-                .getResource("/ru/nsu/mbogdanov/images/board/wall2.png"))));
     }
 
     /**
@@ -178,14 +177,10 @@ public class SnakeGame {
      * Creates the walls and sets them on the board.
      */
     private void setWalls() {
-        ImageProcessor imageProcessor = new ImageProcessor(configuration.getSquareSize(),
-                configuration.getSquareSize(), images.get("wall"));
         List<Wall> walls = new ArrayList<>();
         for (int i = 0; i < configuration.getWallsNumber(); ++i) {
-            WallGraphics wall = new WallGraphics(configuration.getSquareSize(),
-                    configuration.getSquareSize());
-            wall.setSkin(imageProcessor);
-            //wall.setColor(Color.web("#bcae76"));
+            WallGraphics wall = new WallGraphics(configuration.getSquareSize(), configuration.getSquareSize());
+            wall.setColor(Color.web("#bcae76"));
             walls.add(wall);
         }
         this.walls = walls;

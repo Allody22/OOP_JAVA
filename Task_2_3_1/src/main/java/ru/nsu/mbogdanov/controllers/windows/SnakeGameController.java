@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
-import ru.nsu.mbogdanov.windows.PauseMenu;
 import ru.nsu.mbogdanov.model.environment.Game;
+import ru.nsu.mbogdanov.windows.EndGameWindow;
+import ru.nsu.mbogdanov.windows.PauseWindow;
 
 import static ru.nsu.mbogdanov.model.constants.GameState.DEFEAT;
 import static ru.nsu.mbogdanov.model.constants.GameState.VICTORY;
@@ -20,7 +21,12 @@ public class SnakeGameController {
     /**
      * The pause modal window.
      */
-    private PauseMenu pauseMenu;
+    private PauseWindow pauseWindow;
+
+    /**
+     * Menu after the win or loose.
+     */
+    private EndGameWindow endGameWindow;
 
     /**
      * The game timeline that tracks each game frame.
@@ -48,7 +54,8 @@ public class SnakeGameController {
      */
     public void initialize(Stage mainStage, Configuration configuration,
                            Timeline timeline, Game game) {
-        this.pauseMenu = new PauseMenu(mainStage, configuration, timeline);
+        this.pauseWindow = new PauseWindow(mainStage, configuration, timeline);
+        this.endGameWindow = new EndGameWindow(mainStage, configuration, timeline);
         this.game = game;
         this.timeline = timeline;
     }
@@ -68,12 +75,12 @@ public class SnakeGameController {
      * Else the pause modal window with the label "PAUSE" will open.
      */
     @FXML
-    public void openModalWindow() {
+    public void openPauseWindow() {
         timeline.pause();
         if (game.getGameState() != DEFEAT && game.getGameState() != VICTORY) {
-            pauseMenu.open("PAUSE");
+            pauseWindow.open();
             return;
         }
-        pauseMenu.open(game.getGameState().toString());
+        endGameWindow.open();
     }
 }

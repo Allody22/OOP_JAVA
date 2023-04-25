@@ -4,7 +4,8 @@ import lombok.Getter;
 
 /**
  * This class represents a cell in the Snake game grid.
- * It contains the width and height of the cell, as well as its position (rowCoordinate, columnCoordinate coordinates).
+ * It contains the width and height of the cell,
+ * as well as its position (rowCoordinate, columnCoordinate coordinates).
  */
 @Getter
 public class Cell {

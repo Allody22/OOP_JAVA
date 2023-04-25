@@ -2,18 +2,13 @@ package ru.nsu.mbogdanov.controllers.windows;
 
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.Menu;
 import ru.nsu.mbogdanov.windows.SnakeGame;
 
-
-/**
- * Controller class for the pause menu.
- */
-public class PauseMenuController {
+public class EndGameController {
 
     /**
      * The Stage on which the game is displayed.
@@ -34,13 +29,7 @@ public class PauseMenuController {
      * The stack pane for the modal window.
      */
     @FXML
-    StackPane modalWindow;
-
-    /**
-     * The label for the header of the pause menu.
-     */
-    @FXML
-    private Label header;
+    StackPane endGameWindow;
 
     /**
      * Initialization method for the controller.
@@ -56,19 +45,10 @@ public class PauseMenuController {
     }
 
     /**
-     * Method that sets the header text for the pause menu.
-     *
-     * @param text the header text to be set
-     */
-    public void setHeader(String text) {
-        header.setText(text);
-    }
-
-    /**
      * Method that closes the modal window for the pause menu.
      */
-    private void closeModalWindow() {
-        Stage stage = (Stage) modalWindow.getScene().getWindow();
+    void closeModalWindow() {
+        Stage stage = (Stage) endGameWindow.getScene().getWindow();
         stage.close();
     }
 
@@ -79,15 +59,6 @@ public class PauseMenuController {
     private void restartGame() {
         SnakeGame snakeGame = new SnakeGame(configuration);
         snakeGame.setStage(stage);
-        closeModalWindow();
-    }
-
-    /**
-     * Method that continues the game when the continue button is clicked on the pause menu.
-     */
-    @FXML
-    private void continueGame() {
-        timeline.play();
         closeModalWindow();
     }
 

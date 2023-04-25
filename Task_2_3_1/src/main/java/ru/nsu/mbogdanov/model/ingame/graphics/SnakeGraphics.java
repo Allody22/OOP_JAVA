@@ -102,7 +102,7 @@ public class SnakeGraphics extends Snake {
     /**
      * Rendering of the flake method.
      *
-     * @param flake    -   flake cell to be rendered
+     * @param flake    - flake cell to be rendered
      * @param previous - previous cell the body
      * @param next     - next cell the body
      * @return the rendered ImageView of this cell

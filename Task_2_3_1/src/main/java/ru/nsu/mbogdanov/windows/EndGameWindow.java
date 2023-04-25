@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.nsu.mbogdanov.controllers.windows.PauseMenuController;
+import ru.nsu.mbogdanov.controllers.windows.EndGameController;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Pause menu class.
  */
-public class PauseMenu {
+public class EndGameWindow {
 
     /**
      * The Stage object for the pause menu.
@@ -24,7 +24,7 @@ public class PauseMenu {
     /**
      * The controller for the pause menu.
      */
-    private PauseMenuController controller;
+    private EndGameController controller;
 
     /**
      * Constructor for the pause menu that creates an object and loads the FXML file.
@@ -33,9 +33,9 @@ public class PauseMenu {
      * @param configuration - Configuration object for the game
      * @param timeline      - Timeline object for the game
      */
-    public PauseMenu(Stage stage, Configuration configuration, Timeline timeline) {
+    public EndGameWindow(Stage stage, Configuration configuration, Timeline timeline) {
         FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/ru/nsu/mbogdanov/fxml/modalWindow.fxml"));
+                .getResource("/ru/nsu/mbogdanov/fxml/endGameWindow.fxml"));
         try {
             Parent root = loader.load();
             pauseMenuStage = new Stage();
@@ -49,12 +49,9 @@ public class PauseMenu {
 
     /**
      * Method that opens the pause menu.
-     *
-     * @param header the header text for the pause menu
      */
-    public void open(String header) {
+    public void open() {
         if (controller != null && pauseMenuStage != null && !pauseMenuStage.isShowing()) {
-            controller.setHeader(header);
             pauseMenuStage.show();
         }
     }

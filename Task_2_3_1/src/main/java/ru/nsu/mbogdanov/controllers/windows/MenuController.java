@@ -2,7 +2,7 @@ package ru.nsu.mbogdanov.controllers.windows;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import ru.nsu.mbogdanov.windows.Settings;
+import ru.nsu.mbogdanov.windows.SettingsWindow;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.SnakeGame;
 
@@ -47,8 +47,8 @@ public class MenuController {
      */
     @FXML
     private void openSettings() {
-        Settings settings = new Settings(configuration);
-        settings.setStage(stage);
+        SettingsWindow settingsWindow = new SettingsWindow(configuration);
+        settingsWindow.setStage(stage);
     }
 
     /**

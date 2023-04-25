@@ -1,8 +1,8 @@
 package ru.nsu.mbogdanov.model.ingame.graphics;
 
 import javafx.scene.Group;
-import javafx.scene.image.ImageView;
-import ru.nsu.mbogdanov.controllers.other.ImageProcessor;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import ru.nsu.mbogdanov.model.environment.Cell;
 import ru.nsu.mbogdanov.model.ingame.objects.Wall;
 
@@ -11,7 +11,7 @@ import ru.nsu.mbogdanov.model.ingame.objects.Wall;
  * Provides with an interface for rendering wall on the specified frame.
  */
 public class WallGraphics extends Wall {
-    private ImageProcessor imageProcessor;
+    private final Rectangle rectangle;
 
     /**
      * Class constructor. Creates a wall with specified width and height.
@@ -21,21 +21,22 @@ public class WallGraphics extends Wall {
      */
     public WallGraphics(double width, double height) {
         super(width, height);
+        rectangle = new Rectangle(width, height);
     }
 
     /**
-     * Sets the ImageProcessor object used to render the fruit.
+     * Changes wall color.
      *
-     * @param imageProcessor - ImageProcessor object to use
+     * @param color - new wall color.
      */
-    public void setSkin(ImageProcessor imageProcessor) {
-        this.imageProcessor = imageProcessor;
+    public void setColor(Paint color) {
+        rectangle.setFill(color);
     }
 
-    private ImageView renderWall(Cell wall, ImageView imageView) {
-        imageView.setX(wall.getRowCoordinate());
-        imageView.setY(wall.getColumnCoordinate());
-        return imageView;
+    public Rectangle renderCell(Cell cell, Rectangle rectangle) {
+        rectangle.setX(cell.getRowCoordinate());
+        rectangle.setY(cell.getColumnCoordinate());
+        return rectangle;
     }
 
     /**
@@ -47,7 +48,7 @@ public class WallGraphics extends Wall {
     public void render(Object object) {
         Group frame = ((Group) object);
         Group fruit = new Group();
-        fruit.getChildren().add(renderWall(getBoundary(), imageProcessor.getImage()));
+        fruit.getChildren().add(renderCell(getBoundary(), rectangle));
         frame.getChildren().add(fruit);
     }
 }
