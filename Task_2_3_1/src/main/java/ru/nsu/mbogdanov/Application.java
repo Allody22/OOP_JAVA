@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.Menu;
 
-//TODO КНОПКА CONTINUE ЕСЛИ ИГРА ЗАКОНЧЕНА (ПОБЕДА/ЛУЗ)
+
 /**
  * Main class of the application that can launch it.
  */
