@@ -121,10 +121,14 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Renders wall on the specified frame depending on its coordinates and bounds.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSkin(ru.nsu.mbogdanov.controllers.other.ImageProcessor)" class="member-name-link">setSkin</a><wbr>(<a href="../../../controllers/other/ImageProcessor.html" title="class in ru.nsu.mbogdanov.controllers.other">ImageProcessor</a>&nbsp;imageProcessor)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the ImageProcessor object used to render the fruit.</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.scene.shape.Rectangle</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderCell(ru.nsu.mbogdanov.model.environment.Cell,javafx.scene.shape.Rectangle)" class="member-name-link">renderCell</a><wbr>(<a href="../../environment/Cell.html" title="class in ru.nsu.mbogdanov.model.environment">Cell</a>&nbsp;cell,
+ javafx.scene.shape.Rectangle&nbsp;rectangle)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setColor(javafx.scene.paint.Paint)" class="member-name-link">setColor</a><wbr>(javafx.scene.paint.Paint&nbsp;color)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Changes wall color.</div>
 </div>
 </div>
 </div>
@@ -168,14 +172,21 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="setSkin(ru.nsu.mbogdanov.controllers.other.ImageProcessor)">
-<h3>setSkin</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setSkin</span><wbr><span class="parameters">(<a href="../../../controllers/other/ImageProcessor.html" title="class in ru.nsu.mbogdanov.controllers.other">ImageProcessor</a>&nbsp;imageProcessor)</span></div>
-<div class="block">Sets the ImageProcessor object used to render the fruit.</div>
+<section class="detail" id="setColor(javafx.scene.paint.Paint)">
+<h3>setColor</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setColor</span><wbr><span class="parameters">(javafx.scene.paint.Paint&nbsp;color)</span></div>
+<div class="block">Changes wall color.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>imageProcessor</code> - - ImageProcessor object to use</dd>
+<dd><code>color</code> - - new wall color.</dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="renderCell(ru.nsu.mbogdanov.model.environment.Cell,javafx.scene.shape.Rectangle)">
+<h3>renderCell</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.scene.shape.Rectangle</span>&nbsp;<span class="element-name">renderCell</span><wbr><span class="parameters">(<a href="../../environment/Cell.html" title="class in ru.nsu.mbogdanov.model.environment">Cell</a>&nbsp;cell,
+ javafx.scene.shape.Rectangle&nbsp;rectangle)</span></div>
 </section>
 </li>
 <li>
