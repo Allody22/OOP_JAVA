@@ -60,6 +60,7 @@ public class GameController {
             case UP -> snakeGame.setSnakeDirection(UP);
             case DOWN -> snakeGame.setSnakeDirection(DOWN);
             case ESCAPE -> controller.openPauseWindow();
+            case SHIFT -> {}
             default -> {
             }
         }

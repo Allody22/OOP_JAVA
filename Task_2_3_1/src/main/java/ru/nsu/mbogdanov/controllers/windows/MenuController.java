@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import ru.nsu.mbogdanov.windows.SettingsWindow;
 import ru.nsu.mbogdanov.model.environment.Configuration;
-import ru.nsu.mbogdanov.windows.SnakeGame;
+import ru.nsu.mbogdanov.windows.SnakeBoardWindow;
 
 
 /**
@@ -38,8 +38,8 @@ public class MenuController {
      */
     @FXML
     private void startGame() {
-        SnakeGame snakeGame = new SnakeGame(configuration);
-        snakeGame.setStage(stage);
+        SnakeBoardWindow snakeBoardWindow = new SnakeBoardWindow(configuration);
+        snakeBoardWindow.setStage(stage);
     }
 
     /**

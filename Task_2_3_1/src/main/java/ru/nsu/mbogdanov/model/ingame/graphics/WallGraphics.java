@@ -33,6 +33,13 @@ public class WallGraphics extends Wall {
         rectangle.setFill(color);
     }
 
+    /**
+     * Rendering method that sets the walls on the stage.
+     *
+     * @param cell - cell information.
+     * @param rectangle - rectangle for the wall.
+     * @return wall rectangle with special size and coordinates.
+     */
     public Rectangle renderCell(Cell cell, Rectangle rectangle) {
         rectangle.setX(cell.getRowCoordinate());
         rectangle.setY(cell.getColumnCoordinate());

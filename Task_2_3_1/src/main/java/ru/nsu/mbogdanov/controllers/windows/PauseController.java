@@ -6,8 +6,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.Menu;
-import ru.nsu.mbogdanov.windows.SnakeGame;
+import ru.nsu.mbogdanov.windows.SnakeBoardWindow;
 
+/**
+ * Controller for pause window.
+ * It contains main buttons and methods.
+ */
 public class PauseController {
 
     /**
@@ -57,8 +61,8 @@ public class PauseController {
      */
     @FXML
     private void restartGame() {
-        SnakeGame snakeGame = new SnakeGame(configuration);
-        snakeGame.setStage(stage);
+        SnakeBoardWindow snakeBoardWindow = new SnakeBoardWindow(configuration);
+        snakeBoardWindow.setStage(stage);
         closeModalWindow();
     }
 

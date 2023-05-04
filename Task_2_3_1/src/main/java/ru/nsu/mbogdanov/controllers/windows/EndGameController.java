@@ -6,8 +6,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import ru.nsu.mbogdanov.model.environment.Configuration;
 import ru.nsu.mbogdanov.windows.Menu;
-import ru.nsu.mbogdanov.windows.SnakeGame;
+import ru.nsu.mbogdanov.windows.SnakeBoardWindow;
 
+/**
+ * Controller for the end window.
+ * It contains main buttons and methods that user can do
+ * after loose or win.
+ */
 public class EndGameController {
 
     /**
@@ -57,8 +62,8 @@ public class EndGameController {
      */
     @FXML
     private void restartGame() {
-        SnakeGame snakeGame = new SnakeGame(configuration);
-        snakeGame.setStage(stage);
+        SnakeBoardWindow snakeBoardWindow = new SnakeBoardWindow(configuration);
+        snakeBoardWindow.setStage(stage);
         closeModalWindow();
     }
 

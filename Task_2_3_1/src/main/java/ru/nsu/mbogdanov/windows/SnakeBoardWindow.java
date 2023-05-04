@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * The SnakeGame class that manages the game logic and rendering.
  */
-public class SnakeGame {
+public class SnakeBoardWindow {
 
     /**
      * The Stage on which the game is displayed.
@@ -102,7 +102,7 @@ public class SnakeGame {
      *
      * @param configuration - number of walls and size of the current game.
      */
-    public SnakeGame(Configuration configuration) {
+    public SnakeBoardWindow(Configuration configuration) {
         this.configuration = configuration;
         setImages();
         setSnakeGame();
@@ -179,7 +179,8 @@ public class SnakeGame {
     private void setWalls() {
         List<Wall> walls = new ArrayList<>();
         for (int i = 0; i < configuration.getWallsNumber(); ++i) {
-            WallGraphics wall = new WallGraphics(configuration.getSquareSize(), configuration.getSquareSize());
+            WallGraphics wall = new WallGraphics(configuration.getSquareSize(),
+                    configuration.getSquareSize());
             wall.setColor(Color.web("#bcae76"));
             walls.add(wall);
         }
